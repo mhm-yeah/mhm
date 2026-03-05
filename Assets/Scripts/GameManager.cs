@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public bool gameIsOver = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,5 +13,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void GameOver()
+    {
+        gameIsOver = true;
     }
 }
