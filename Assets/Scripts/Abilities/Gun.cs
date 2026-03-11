@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Gun : MonoBehaviour
 {
@@ -7,6 +9,7 @@ public class Gun : MonoBehaviour
     private GameObject hands;
     private GameObject bulletsFolder;
     private GameObject bulletPrefab;
+    public InputActionReference fireAction;
 
     public float bulletSpeed = 10f;
 
@@ -21,19 +24,22 @@ public class Gun : MonoBehaviour
         hands = transform.Find("Hands").gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnEnable()
     {
-        if (gameManager.gameIsOver) return;
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Shoot();
-        }
+        //fireAction.action.Enable();
+        fireAction.action.started += Fire;
     }
 
-    void Shoot()
+    void OnDisable()
     {
+        //fireAction.action.Disable();
+        fireAction.action.started -= Fire;
+    }
+
+    void Fire(InputAction.CallbackContext context)
+    {
+        if (gameManager.gameIsOver) return; // ?
+
         GameObject bullet = Instantiate(bulletPrefab, hands.transform.position, hands.transform.rotation, bulletsFolder.transform);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(hands.transform.up * bulletSpeed, ForceMode2D.Impulse);
