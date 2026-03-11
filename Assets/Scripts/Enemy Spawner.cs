@@ -4,6 +4,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject enemyPrefab;
+    private GameObject enemyFolder;
 
     [SerializeField]
     private float minimumSpawnTime;
@@ -15,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Awake()
     {
+        enemyFolder = GameObject.Find("Enemies");
         SetTimeUntilSpawn();
     }
 
@@ -24,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
         timeUntilSpawn -= Time.deltaTime;
         if(timeUntilSpawn <= 0)
         {
-            Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+            Instantiate(enemyPrefab, transform.position, Quaternion.identity, enemyFolder.transform);
             SetTimeUntilSpawn();
         }
     }

@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     private GameManager gameManager;
+    private LevelsManager levelsManager;
 
     public float maxHealth = 100f;
     private float currentHealth;
@@ -10,13 +11,14 @@ public class EnemyHealth : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        levelsManager = GameObject.Find("GameManager").GetComponent<LevelsManager>();
         currentHealth = maxHealth;
     }
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        Debug.Log("Enemy took " + damage + " damage. Current health: " + currentHealth);
+        //Debug.Log("Enemy took " + damage + " damage. Current health: " + currentHealth);
         if (currentHealth <= 0)
         {
             Die();
@@ -27,6 +29,8 @@ public class EnemyHealth : MonoBehaviour
     {
         // Add death animation or effects here
         // drop xp and loot here
+
+        levelsManager.IncreaseXP(10); // Example XP increase, adjust as needed
         Destroy(gameObject);
         Debug.Log("Enemy died!");
     }
