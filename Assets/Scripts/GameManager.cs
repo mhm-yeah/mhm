@@ -25,9 +25,16 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("Restart");
     }
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        Debug.Log("MainMenu");
+    }
+    public void Quit()
+    {
+        Application.Quit();
+        Debug.Log("Quit");
     }
 }
