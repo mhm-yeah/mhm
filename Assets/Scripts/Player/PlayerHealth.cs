@@ -6,7 +6,8 @@ public class PlayerHealth : MonoBehaviour
 
     private int currentHealth;
     private PlayerDefense playerDefense;
-
+    public GameManager gameManager;
+    bool isDead;
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -23,8 +24,10 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
         Debug.Log("Player took " + damage + " damage. Health left: " + currentHealth);
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isDead)
         {
+            isDead = true;
+            gameManager.GameOver();
             Die();
         }
     }
