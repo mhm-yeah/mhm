@@ -1,38 +1,51 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject enemyPrefab;
-    private GameObject enemyFolder;
+    private GameObject meleeEnemyPrefab;
+    [SerializeField]
+    private GameObject rangedEnemyPrefab;
 
     [SerializeField]
-    private float minimumSpawnTime;
+    private float screenOffset = 3f; //how far outside the screen 
+
 
     [SerializeField]
-    private float maximumSpawnTime;
-
-    private float timeUntilSpawn;
-
-    private void Awake()
+    private float meleeEnemyInterval = 3f;
+    [SerializeField]
+    private float rangedEnemyInterval = 7f;
+    private void Start()
     {
-        enemyFolder = GameObject.Find("Enemies");
-        SetTimeUntilSpawn();
+        StartCoroutine(spawnEnemy(meleeEnemyInterval, meleeEnemyPrefab));
+        StartCoroutine(spawnEnemy(rangedEnemyInterval, rangedEnemyPrefab));
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator spawnEnemy(float spawnTime, GameObject enemy)
     {
-        timeUntilSpawn -= Time.deltaTime;
-        if(timeUntilSpawn <= 0)
+        while (true)
         {
-            Instantiate(enemyPrefab, transform.position, Quaternion.identity, enemyFolder.transform);
-            SetTimeUntilSpawn();
+            yield return new WaitForSeconds(spawnTime);
+            Instantiate(enemy, GetOffScreenCoord(), Quaternion.identity);
         }
     }
-
-    private void SetTimeUntilSpawn()
+    private Vector3 GetOffScreenCoord()
     {
-        timeUntilSpawn = Random.Range(minimumSpawnTime, maximumSpawnTime);
+        Vector2 bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        //float offset = 3f; 
+        float x = Random.Range(-bounds.x - screenOffset, bounds.x + screenOffset);
+        float y = Random.Range(-bounds.y - screenOffset, bounds.y + screenOffset);
+
+        if (Mathf.Abs(x) < bounds.x) // if inside screen - froce it out
+        {
+            x = Mathf.Sign(x) * (bounds.x + screenOffset);
+        }
+        if (Mathf.Abs(y) < bounds.y) // same but y axis
+        {
+            y = Mathf.Sign(y) * (bounds.y + screenOffset);
+        }
+
+        return new Vector3(x, y, 0);
     }
 }
