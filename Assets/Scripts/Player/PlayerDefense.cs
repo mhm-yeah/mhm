@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// IT IS AN ABILITY, MOVE IT TO ABILITIES FOLDER LATER
+/// </summary>
 public class PlayerDefense : MonoBehaviour
 {
     [Header("Defense Settings")]
