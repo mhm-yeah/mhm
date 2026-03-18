@@ -26,7 +26,7 @@ public class PlayerDefense : MonoBehaviour
         }
     }
 
-    public int ApplyDefense(int incomingDamage) 
+    public float ApplyDefense(float incomingDamage) 
     {
         if (!isDefending)
             return incomingDamage;

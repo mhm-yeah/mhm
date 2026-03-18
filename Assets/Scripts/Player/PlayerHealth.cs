@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 10;
-
-    private int currentHealth;
+    private float currentHealth;
     private PlayerDefense playerDefense;
+    private PlayerStats playerStats;
     public GameManager gameManager;
     bool isDead;
     private void Awake()
     {
-        currentHealth = maxHealth;
         playerDefense = GetComponent<PlayerDefense>();
+        playerStats = GetComponent<PlayerStats>();
+        currentHealth = playerStats.maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (playerDefense != null)
         {
