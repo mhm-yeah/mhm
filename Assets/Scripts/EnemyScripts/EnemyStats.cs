@@ -11,4 +11,5 @@ public class EnemyStats : MonoBehaviour
     public float damage = 10f;
     public float baseDefense = 0f;
     public float defense = 0f;
+    public float xpValue = 25f;
 }

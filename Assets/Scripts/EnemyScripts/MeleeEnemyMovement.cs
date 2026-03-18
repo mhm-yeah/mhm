@@ -31,4 +31,13 @@ public class EnemyMovement : MonoBehaviour
 
         transform.position = transform.position + direction * enemyStats.moveSpeed * Time.deltaTime;
     }
+
+    // perhaps change later?
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(enemyStats.damage);
+        }
+    }
 }

@@ -10,17 +10,17 @@ public class LevelsManager : MonoBehaviour
 
     [Space(10)]
     [Header("Settings")]
-    [SerializeField] int targetXP = 100;
-    [SerializeField] int targetXPIncrease= 25;
+    [SerializeField] float targetXP = 100;
+    [SerializeField] float targetXPIncrease = 25;
     int currentLVL;
-    int currentXP;
+    float currentXP;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentLVL= 0;
         Update();
     }
-    public void IncreaseXP(int amount)
+    public void IncreaseXP(float amount)
     {
         currentXP += amount;
         CheckForLVLUP();

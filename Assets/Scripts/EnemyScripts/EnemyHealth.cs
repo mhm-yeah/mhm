@@ -31,7 +31,7 @@ public class EnemyHealth : MonoBehaviour
         // Add death animation or effects here
         // drop xp and loot here
 
-        levelsManager.IncreaseXP(10); // Example XP increase, adjust as needed
+        levelsManager.IncreaseXP(enemyStats.xpValue); // Example XP increase, adjust as needed
         Destroy(gameObject);
         Debug.Log("Enemy died!");
     }
