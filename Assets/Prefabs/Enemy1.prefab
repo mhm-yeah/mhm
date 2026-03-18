@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7921282595702166422}
   - component: {fileID: 4627217164810859708}
   - component: {fileID: -2491510421747228988}
+  - component: {fileID: 6314571839289180564}
   - component: {fileID: 8712956145752622714}
   - component: {fileID: 5041783467545488130}
   m_Layer: 0
@@ -168,6 +169,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &6314571839289180564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395343294680337530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ef6e32ea633e094197276da6ce054b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
+  moveSpeed: 3
+  baseMoveSpeed: 3
+  baseMaxHealth: 100
+  maxHealth: 100
+  baseDamage: 10
+  damage: 10
+  baseDefense: 0
+  defense: 0
 --- !u!114 &8712956145752622714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,7 +201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 947ee872a3484b742a2dcdf95cdec9b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 100
 --- !u!114 &5041783467545488130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,4 +213,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 700e1aaba5cd83e449718397ee71ec54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  moveSpeed: 2

@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class Gun : MonoBehaviour
 {
     private GameManager gameManager;
+    private PlayerStats playerStats;
     private ItemManager itemManager;
     private GameObject hands;
     private GameObject bulletsFolder;
@@ -13,7 +14,6 @@ public class Gun : MonoBehaviour
 
     public float bulletSpeed = 10f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         itemManager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
@@ -22,6 +22,8 @@ public class Gun : MonoBehaviour
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         hands = transform.Find("Hands").gameObject;
+        playerStats = GetComponent<PlayerStats>();
+
     }
 
     void OnEnable()
@@ -38,7 +40,12 @@ public class Gun : MonoBehaviour
 
     void Fire(InputAction.CallbackContext context)
     {
-        if (gameManager.gameIsOver) return; // ?
+        if (gameManager.gameIsOver == true || playerStats.getAttackActionStatus() == false)
+        {
+            return;
+        }
+        
+        playerStats.applyAttackCooldown();
 
         GameObject bullet = Instantiate(bulletPrefab, hands.transform.position, hands.transform.rotation, bulletsFolder.transform);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();

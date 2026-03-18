@@ -1067,6 +1067,7 @@ GameObject:
   - component: {fileID: 1877392715}
   - component: {fileID: 1877392714}
   - component: {fileID: 1877392713}
+  - component: {fileID: 1877392722}
   - component: {fileID: 1877392718}
   - component: {fileID: 1877392720}
   - component: {fileID: 1877392721}
@@ -1268,8 +1269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 021a88b6393ed304e90d5c559e969c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveSpeed: 5
-  sprintSpeed: 8
 --- !u!114 &1877392720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1298,6 +1297,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Gun
   fireAction: {fileID: 3502370264273996388, guid: ba7c5e20b2b235b489f49d3374feb39a, type: 3}
   bulletSpeed: 10
+--- !u!114 &1877392722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877392712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18837ae88ff8b424887e0c66df86d6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  baseMoveSpeed: 5
+  moveSpeed: 5
+  sprintSpeed: 8
+  baseMaxHealth: 100
+  maxHealth: 100
+  baseDamage: 25
+  damage: 25
+  fireRate: 3
+  baseDefense: 0
+  defense: 0
+  dodgeChance: 0
 --- !u!1 &1904038571
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,10 +3,11 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     Transform player;
-    [SerializeField] private float moveSpeed = 2f;
+    private EnemyStats enemyStats;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        enemyStats = GetComponent<EnemyStats>();
         GameObject playerObject;
 
         playerObject = GameObject.FindWithTag("Player");
@@ -28,6 +29,6 @@ public class EnemyMovement : MonoBehaviour
         direction.x = direction.x / distance;
         direction.y = direction.y / distance;
 
-        transform.position = transform.position + direction * moveSpeed * Time.deltaTime;
+        transform.position = transform.position + direction * enemyStats.moveSpeed * Time.deltaTime;
     }
 }

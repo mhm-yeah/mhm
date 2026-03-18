@@ -4,21 +4,22 @@ public class EnemyHealth : MonoBehaviour
 {
     private GameManager gameManager;
     private LevelsManager levelsManager;
-
-    public float maxHealth = 100f;
+    private EnemyStats enemyStats;
+    private PlayerStats playerStats;
     private float currentHealth;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         levelsManager = GameObject.Find("GameManager").GetComponent<LevelsManager>();
-        currentHealth = maxHealth;
+        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        enemyStats = GetComponent<EnemyStats>();
+        currentHealth = enemyStats.maxHealth;
     }
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        //Debug.Log("Enemy took " + damage + " damage. Current health: " + currentHealth);
         if (currentHealth <= 0)
         {
             Die();
@@ -39,8 +40,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (collision.CompareTag("Projectile"))
         {
-            float damage = 25f; // to change later
-            TakeDamage(damage);
+            TakeDamage(playerStats.damage);
             Destroy(collision.gameObject);
         }
     }
