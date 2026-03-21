@@ -11,7 +11,7 @@ public class RangedEnemyMovement : MonoBehaviour
     public float retreatDelay = 0.3f;
 
     float retreatTimer = 0f;
-    float strafeDirection = 1f;
+    float strafeDirection;
     float strafeTimer = 0f;
     public float strafeChangeTime = 2f;
 
@@ -45,8 +45,8 @@ public class RangedEnemyMovement : MonoBehaviour
         if (distance > preferredDistance)
         {
             retreatTimer = 0f;
-            float moveX = (dirX + perpX * 0.3f) * enemyStats.moveSpeed * Time.deltaTime;
-            float moveY = (dirY + perpY * 0.3f) * enemyStats.moveSpeed * Time.deltaTime;
+            float moveX = (dirX + perpX) * enemyStats.moveSpeed * Time.deltaTime;
+            float moveY = (dirY + perpY) * enemyStats.moveSpeed * Time.deltaTime;
             transform.position = transform.position + new Vector3(moveX, moveY, 0);
         }
         else if (distance < retreatDistance)
@@ -54,8 +54,8 @@ public class RangedEnemyMovement : MonoBehaviour
             retreatTimer += Time.deltaTime;
             if (retreatTimer >= retreatDelay)
             {
-                float moveX = (-dirX + perpX) * enemyStats.moveSpeed * Time.deltaTime;
-                float moveY = (-dirY + perpY) * enemyStats.moveSpeed * Time.deltaTime;
+                float moveX = (-dirX + perpX * 0.3f) * enemyStats.moveSpeed * Time.deltaTime;
+                float moveY = (-dirY + perpY * 0.3f) * enemyStats.moveSpeed * Time.deltaTime;
                 transform.position = transform.position + new Vector3(moveX, moveY, 0);
             }
         }
