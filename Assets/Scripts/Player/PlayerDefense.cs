@@ -1,9 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// IT IS AN ABILITY, MOVE IT TO ABILITIES FOLDER LATER
-/// </summary>
 public class PlayerDefense : MonoBehaviour
 {
     [Header("Defense Settings")]
@@ -29,11 +26,11 @@ public class PlayerDefense : MonoBehaviour
         }
     }
 
-    public float ApplyDefense(float incomingDamage) 
+    public float ApplyDefense(float incomingDamage)
     {
         if (!isDefending)
             return incomingDamage;
 
-        return Mathf.CeilToInt(incomingDamage * damageReductionMultiplier);
+        return incomingDamage * damageReductionMultiplier;
     }
 }
