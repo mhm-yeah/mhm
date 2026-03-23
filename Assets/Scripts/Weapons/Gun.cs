@@ -40,7 +40,7 @@ public class Gun : MonoBehaviour
 
     void Fire(InputAction.CallbackContext context)
     {
-        if (gameManager.gameIsOver == true || playerStats.getAttackActionStatus() == false)
+        if (gameManager.isGameOver == true || playerStats.getAttackActionStatus() == false)
         {
             return;
         }

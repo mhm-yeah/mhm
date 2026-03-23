@@ -17,14 +17,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!gameManager.gameIsOver)
-        {
-            mousePosition = mousePositionAction.action.ReadValue<Vector2>();
-            Vector2 mousePos = cam.ScreenToWorldPoint(mousePosition);
-            Vector2 lookDirection = mousePos - (Vector2)transform.position;
-            float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
+        if (gameManager.isGameOver) return;
+        
+        mousePosition = mousePositionAction.action.ReadValue<Vector2>();
+        Vector2 mousePos = cam.ScreenToWorldPoint(mousePosition);
+        Vector2 lookDirection = mousePos - (Vector2)transform.position;
+        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
 
-            hands.transform.rotation = Quaternion.Euler(0, 0, angle);       
-        }
+        hands.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 }
