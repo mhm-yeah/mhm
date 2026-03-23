@@ -4,7 +4,7 @@ public class RangedEnemyShot : MonoBehaviour
 {
     Transform player;
     private EnemyStats enemyStats;
-
+    GameManager gameManager;
     public GameObject projectilePrefab;
     public float shootCooldown = 2f;
     float shootTimer = 0f;
@@ -14,10 +14,13 @@ public class RangedEnemyShot : MonoBehaviour
     {
         enemyStats = GetComponent<EnemyStats>();
         player = GameObject.FindWithTag("Player").transform;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
     {
+        if (gameManager.isGameOver) return;
+
         float dx = player.position.x - transform.position.x;
         float dy = player.position.y - transform.position.y;
         float distance = Mathf.Sqrt(dx * dx + dy * dy);
