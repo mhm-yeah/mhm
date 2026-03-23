@@ -428,6 +428,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &283661820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 283661822}
+  - component: {fileID: 283661821}
+  m_Layer: 0
+  m_Name: Wave Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &283661821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283661820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d1927e2256267c4ca9b89de5cca0dc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wave
+  waves:
+  - waveName: 1
+    numberOfEnemies: 20
+    enemyTypes:
+    - {fileID: 7395343294680337530, guid: dcf17bf59f05d7a4ebd304d97fb1655f, type: 3}
+    - {fileID: 6155065009679422498, guid: eb71ec8fc5f5f9e4ba2407af3cec6cfe, type: 3}
+  - waveName: 2
+    numberOfEnemies: 10
+    enemyTypes:
+    - {fileID: 7395343294680337530, guid: dcf17bf59f05d7a4ebd304d97fb1655f, type: 3}
+  - waveName: 3
+    numberOfEnemies: 10
+    enemyTypes:
+    - {fileID: 7395343294680337530, guid: dcf17bf59f05d7a4ebd304d97fb1655f, type: 3}
+    - {fileID: 6155065009679422498, guid: eb71ec8fc5f5f9e4ba2407af3cec6cfe, type: 3}
+  - waveName: 4
+    numberOfEnemies: 20
+    enemyTypes:
+    - {fileID: 7395343294680337530, guid: dcf17bf59f05d7a4ebd304d97fb1655f, type: 3}
+  - waveName: 5
+    numberOfEnemies: 10
+    enemyTypes:
+    - {fileID: 7395343294680337530, guid: dcf17bf59f05d7a4ebd304d97fb1655f, type: 3}
+    - {fileID: 6155065009679422498, guid: eb71ec8fc5f5f9e4ba2407af3cec6cfe, type: 3}
+--- !u!4 &283661822
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283661820}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &347292377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1307,6 +1375,7 @@ GameObject:
   - component: {fileID: 1877392721}
   - component: {fileID: 1877392723}
   - component: {fileID: 1877392717}
+  - component: {fileID: 1877392724}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1567,6 +1636,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc117f376a1c63a4e861cc82ed402beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+--- !u!114 &1877392724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877392712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b78f9ef1e1e2b43821805da843aace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ArrowVolley
+  arrowPrefab: {fileID: 2449417635060409822, guid: 3a9b00255f642ae42bb8ba1547584728, type: 3}
+  arrowSpeed: 12
+  arrowCount: 7
+  spreadAngle: 30
 --- !u!1 &1904038571
 GameObject:
   m_ObjectHideFlags: 0
@@ -1683,3 +1768,4 @@ SceneRoots:
   - {fileID: 118593204}
   - {fileID: 1853799398}
   - {fileID: 587543232}
+  - {fileID: 283661822}
