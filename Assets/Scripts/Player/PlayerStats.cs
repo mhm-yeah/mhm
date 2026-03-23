@@ -13,7 +13,8 @@ public class PlayerStats : MonoBehaviour
     public float fireRate = 3f;
     public float baseDefense = 0f;
     public float defense = 0f;
-    public float dodgeChance = 0f;
+    [Range(0f, 1f)]
+    public float dodgeChance = 0.2f;
     private bool canAttack = true;
 
     public bool getAttackActionStatus()

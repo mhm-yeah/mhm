@@ -2,19 +2,16 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [Header("Health Settings")]
-    [SerializeField] private float maxHealth = 10f;
-    private float currentHealth;
-
-    [Header("Dodge Settings")]
-    [Range(0f, 1f)]
-    [SerializeField] private float dodgeChance = 0.2f;
-
+    private PlayerStats playerStats;
     private PlayerDefense playerDefense;
+    private GameManager gameManager;
+    private float currentHealth;
 
     private void Awake()
     {
-        currentHealth = maxHealth;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        playerStats = GetComponent<PlayerStats>();
+        currentHealth = playerStats.maxHealth;
         playerDefense = GetComponent<PlayerDefense>();
     }
 
@@ -40,6 +37,12 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void Heal(float amount)
+    {
+        currentHealth = Mathf.Min(currentHealth + amount, playerStats.maxHealth);
+        Debug.Log("Player healed");
+    }
+
     public float GetCurrentHealth()
     {
         return currentHealth;
@@ -47,12 +50,13 @@ public class PlayerHealth : MonoBehaviour
 
     private bool TryDodge()
     {
-        return Random.value < dodgeChance;
+        return Random.value < playerStats.dodgeChance;
     }
 
     private void Die()
     {
         Debug.Log("Player died.");
+        gameManager.GameOver();
         Destroy(gameObject);
     }
 }

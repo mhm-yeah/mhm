@@ -5,6 +5,7 @@ public class RangedEnemyMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     Transform player;
     private EnemyStats enemyStats;
+    private GameManager gameManager;
 
     public float preferredDistance = 5f;
     public float retreatDistance = 3f;
@@ -17,6 +18,8 @@ public class RangedEnemyMovement : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         enemyStats = GetComponent<EnemyStats>();
         player = GameObject.FindWithTag("Player").transform;
         strafeDirection = Random.value > 0.5f ? 1f : -1f;
@@ -24,6 +27,8 @@ public class RangedEnemyMovement : MonoBehaviour
 
     void Update()
     {
+        if (gameManager.isGameOver) return;
+
         float dx = player.position.x - transform.position.x;
         float dy = player.position.y - transform.position.y;
         float distance = Mathf.Sqrt(dx * dx + dy * dy);
