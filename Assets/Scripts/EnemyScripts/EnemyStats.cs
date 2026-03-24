@@ -13,4 +13,5 @@ public class EnemyStats : MonoBehaviour
     public float defense = 0f;
     public float xpValue = 25f;
     public float healthDropChance = 0.1f;
+    public bool isStunned = false;
 }

@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.isGameOver) return;
+        if (gameManager.isGameOver || enemyStats.isStunned) return;
         
         Vector3 direction;
         direction.x = player.position.x - transform.position.x;
