@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -9,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
     private ItemManager itemManager;
     private GameObject collectiblesFolder;
     private float currentHealth;
+    public GameObject damageNumberPrefab;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +26,10 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+
+        GameObject dmgNum = Instantiate(damageNumberPrefab, transform.position, Quaternion.identity);
+        dmgNum.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(Mathf.RoundToInt(damage).ToString());
+
         if (currentHealth <= 0)
         {
             Die();
