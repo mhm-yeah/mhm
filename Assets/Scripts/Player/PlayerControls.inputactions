@@ -7,6 +7,15 @@
             "id": "0359098f-cabf-4f9c-a0a5-afd23a0a99e4",
             "actions": [
                 {
+                    "name": "Fireball",
+                    "type": "Button",
+                    "id": "9a10e0f0-f07d-4e74-b90d-da38f6c9c277",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Move",
                     "type": "Value",
                     "id": "99b8c1df-41b7-425a-8015-3b6c88c34548",
@@ -215,6 +224,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "SpellCast",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "62be6bb1-42f2-48d3-8a8d-f0626e374950",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fireball",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
