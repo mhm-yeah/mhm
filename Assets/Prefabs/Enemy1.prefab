@@ -154,7 +154,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 99999
+  m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -190,7 +190,7 @@ MonoBehaviour:
   baseDefense: 0
   defense: 0
   xpValue: 25
-  healthDropChance: 1
+  healthDropChance: 0.1
 --- !u!114 &8712956145752622714
 MonoBehaviour:
   m_ObjectHideFlags: 0

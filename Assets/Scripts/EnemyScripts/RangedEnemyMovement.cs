@@ -27,7 +27,7 @@ public class RangedEnemyMovement : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.isGameOver) return;
+        if (gameManager.isGameOver || enemyStats.isStunned) return;
 
         float dx = player.position.x - transform.position.x;
         float dy = player.position.y - transform.position.y;
