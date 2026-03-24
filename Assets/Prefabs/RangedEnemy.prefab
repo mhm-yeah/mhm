@@ -192,6 +192,7 @@ MonoBehaviour:
   defense: 0
   xpValue: 25
   healthDropChance: 0.1
+  isStunned: 0
 --- !u!114 &4403835757932231331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 947ee872a3484b742a2dcdf95cdec9b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  damageNumberPrefab: {fileID: 4224606381231520095, guid: 9b8cb2e70fa2ea74b845fbfda6817d6f, type: 3}
 --- !u!114 &8545646290731247975
 MonoBehaviour:
   m_ObjectHideFlags: 0
