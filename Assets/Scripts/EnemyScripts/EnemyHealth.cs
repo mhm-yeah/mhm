@@ -9,6 +9,7 @@ public class EnemyHealth : MonoBehaviour
     private PlayerStats playerStats;
     private ItemManager itemManager;
     private GameObject collectiblesFolder;
+    private LightningChain lightningChainAttack; // to change later
     private float currentHealth;
     public GameObject damageNumberPrefab;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,6 +20,7 @@ public class EnemyHealth : MonoBehaviour
         levelsManager = GameObject.Find("GameManager").GetComponent<LevelsManager>();
         collectiblesFolder = GameObject.Find("Collectibles");
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        lightningChainAttack = GameObject.Find("Player").GetComponent<LightningChain>(); // to change later
         enemyStats = GetComponent<EnemyStats>();
         currentHealth = enemyStats.maxHealth;
     }
@@ -61,6 +63,11 @@ public class EnemyHealth : MonoBehaviour
         {
             TakeDamage(playerStats.damage);
             Destroy(collision.gameObject);
+        }
+        else if (collision.CompareTag("LightningChain")) // to change later
+        {
+            Destroy(collision.gameObject);
+            lightningChainAttack.StartImpact(transform.GetComponent<Collider2D>()); // to change later
         }
     }
 }

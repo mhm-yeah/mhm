@@ -1190,6 +1190,7 @@ GameObject:
   - component: {fileID: 1877392717}
   - component: {fileID: 1877392724}
   - component: {fileID: 1877392725}
+  - component: {fileID: 1877392728}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1523,6 +1524,24 @@ MonoBehaviour:
   - {fileID: 8026287790980907168, guid: 73b027f1cd824364784faaa586834ee6, type: 3}
   - {fileID: -8816075442470627808, guid: 73b027f1cd824364784faaa586834ee6, type: 3}
   frameRate: 10
+--- !u!114 &1877392728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877392712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f384853bb64ea0b44bfb917bb888d0c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightningChain
+  lightningChainPrefab: {fileID: 2946929514335495902, guid: 1826df1b673aa7c45beed1d691fc3610, type: 3}
+  lightningChainSpeed: 10
+  damage: 20
+  maxChainCount: 3
+  chainRange: 5
+  stunLength: 1
 --- !u!1 &1904038571
 GameObject:
   m_ObjectHideFlags: 0
