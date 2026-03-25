@@ -13,6 +13,7 @@ public class IceBlast : MonoBehaviour
     public float stunLength = 3f;
     public float damage = 10f;
     public float cooldownTime = 5f;
+    public float blastRadius = 5f; // adjusted because player sprite has weird measurements
     private bool isOnCooldown = false;
 
     void Start()
@@ -64,7 +65,7 @@ public class IceBlast : MonoBehaviour
 
     private void ActivateBlast(GameObject ring)
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(ring.transform.position, ring.transform.localScale.x / 2);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(ring.transform.position, blastRadius);
         foreach (Collider2D enemy in hitEnemies)
         {
             if (enemy.CompareTag("Enemy"))
@@ -81,13 +82,20 @@ public class IceBlast : MonoBehaviour
 
     IEnumerator StunEnemy(Collider2D enemy)
     {
-        EnemyStats enemyStats = enemy.GetComponent<EnemyStats>();   
+        EnemyStats enemyStats = enemy.GetComponent<EnemyStats>();
+        SpriteRenderer enemySprite = enemy.GetComponent<SpriteRenderer>(); 
         if (enemyStats != null)
         {
             float now = Time.time;
             enemyStats.isStunned = true;
+            Color originalColor = enemySprite.color;
+            enemySprite.color = Color.cyan;
+
             yield return new WaitForSeconds(stunLength);
+            
             enemyStats.isStunned = false;
+            enemySprite.color = originalColor;
+
             Debug.Log("Enemy was stunned for " + (Time.time - now) + " seconds");
         }
     }

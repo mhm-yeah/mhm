@@ -3,11 +3,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerFireball : MonoBehaviour
 {
-    [SerializeField] private GameObject fireballPrefab;
     private Transform hands;
+    private GameObject projectilesFolder;
+    [SerializeField] private GameObject fireballPrefab;
 
     void Start()
     {
+        projectilesFolder = GameObject.Find("Projectiles");
         hands = transform.Find("Hands");
     }
 
@@ -21,7 +23,8 @@ public class PlayerFireball : MonoBehaviour
         GameObject fireball = Instantiate(
             fireballPrefab,
             hands.position,
-            hands.rotation
+            hands.rotation,
+            projectilesFolder.transform
         );
 
         Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();

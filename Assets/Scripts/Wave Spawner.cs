@@ -5,11 +5,17 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] Wave[] waves;
 
     private Wave currentWave;
+    private GameObject enemyFolder;
     private int currentWaveNumber;
     private bool canSpawn = true;
     private float nextSpawnTime;
     private float spawnInterval = 1f;
     private int minimumEnemiesLeft = 5;
+
+    private void Start()
+    {
+        enemyFolder = GameObject.Find("Enemies");
+    }
 
     private void Update()
     {
@@ -28,7 +34,7 @@ public class WaveSpawner : MonoBehaviour
         if (canSpawn && nextSpawnTime < Time.time)
         {
             GameObject randomEnemy = currentWave.enemyTypes[Random.Range(0, currentWave.enemyTypes.Length)];
-            Instantiate(randomEnemy, GetOffScreenCoord(), Quaternion.identity);
+            Instantiate(randomEnemy, GetOffScreenCoord(), Quaternion.identity, enemyFolder.transform);
             currentWave.numberOfEnemies--;
             nextSpawnTime = Time.time + spawnInterval;
             if (currentWave.numberOfEnemies <= 0)

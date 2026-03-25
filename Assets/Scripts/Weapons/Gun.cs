@@ -8,7 +8,7 @@ public class Gun : MonoBehaviour
     private PlayerStats playerStats;
     private ItemManager itemManager;
     private GameObject hands;
-    private GameObject bulletsFolder;
+    private GameObject projectilesFolder;
     private GameObject bulletPrefab;
     public InputActionReference fireAction;
 
@@ -17,7 +17,7 @@ public class Gun : MonoBehaviour
     void Start()
     {
         itemManager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
-        bulletsFolder = GameObject.Find("Bullets");
+        projectilesFolder = GameObject.Find("Projectiles");
         bulletPrefab = itemManager.bulletPrefabs[0];
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -47,7 +47,7 @@ public class Gun : MonoBehaviour
         
         playerStats.applyAttackCooldown();
 
-        GameObject bullet = Instantiate(bulletPrefab, hands.transform.position, hands.transform.rotation, bulletsFolder.transform);
+        GameObject bullet = Instantiate(bulletPrefab, hands.transform.position, hands.transform.rotation, projectilesFolder.transform);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(hands.transform.up * bulletSpeed, ForceMode2D.Impulse);
     }

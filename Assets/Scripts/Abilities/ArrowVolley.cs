@@ -9,10 +9,12 @@ public class ArrowVolley : MonoBehaviour
     [SerializeField] private float spreadAngle = 30f;
 
     private Camera mainCam;
+    private GameObject projectilesFolder;
 
     void Start()
     {
         mainCam = Camera.main;
+        projectilesFolder = GameObject.Find("Projectiles");
     }
 
     private void OnSpellCast(InputValue input)
@@ -36,7 +38,7 @@ public class ArrowVolley : MonoBehaviour
         {
             float angle = startAngle + (angleStep * i);
             Vector2 rotatedDir = RotateVector(direction, angle);
-            GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity);
+            GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity, projectilesFolder.transform);
             Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
             if (rb != null)
             {

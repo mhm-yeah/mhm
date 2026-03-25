@@ -129,6 +129,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -202,7 +215,7 @@ TextureImporter:
       name: man_3
       rect:
         serializedVersion: 2
-        x: 97
+        x: 96
         y: 0
         width: 32
         height: 32
@@ -290,7 +303,7 @@ TextureImporter:
       name: man_7
       rect:
         serializedVersion: 2
-        x: 225
+        x: 224
         y: 0
         width: 32
         height: 32
@@ -356,7 +369,7 @@ TextureImporter:
       name: man_10
       rect:
         serializedVersion: 2
-        x: 321
+        x: 320
         y: 0
         width: 32
         height: 32
