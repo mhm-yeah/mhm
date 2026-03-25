@@ -93,10 +93,13 @@ public class IceBlast : MonoBehaviour
 
             yield return new WaitForSeconds(stunLength);
             
-            enemyStats.isStunned = false;
-            enemySprite.color = originalColor;
+            if (enemyStats != null)
+            {
+                enemyStats.isStunned = false;
+                enemySprite.color = originalColor;
 
-            Debug.Log("Enemy was stunned for " + (Time.time - now) + " seconds");
+                Debug.Log("Enemy was stunned for " + (Time.time - now) + " seconds");
+            }
         }
     }
 }
