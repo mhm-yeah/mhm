@@ -1058,6 +1058,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 700549552685950144, guid: 23c1e688c4e14d1408a150aae998c111, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1497587721}
+    - target: {fileID: 700549552685950144, guid: 23c1e688c4e14d1408a150aae998c111, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 853859939621644684, guid: 23c1e688c4e14d1408a150aae998c111, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1497587721}
+    - target: {fileID: 853859939621644684, guid: 23c1e688c4e14d1408a150aae998c111, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Quit
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539790754347116935, guid: 23c1e688c4e14d1408a150aae998c111, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1497587721}
+    - target: {fileID: 4539790754347116935, guid: 23c1e688c4e14d1408a150aae998c111, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
+      objectReference: {fileID: 0}
     - target: {fileID: 8559898194883789665, guid: 23c1e688c4e14d1408a150aae998c111, type: 3}
       propertyPath: m_Name
       value: GameOverScreen
