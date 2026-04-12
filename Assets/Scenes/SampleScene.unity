@@ -1596,7 +1596,7 @@ RectTransform:
   m_GameObject: {fileID: 1639245670}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 59.667492, y: 64.2217, z: 60.885193}
+  m_LocalScale: {x: 36.04036, y: 38.79119, z: 36.775875}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 669114754}
@@ -1605,7 +1605,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 5, y: 385}
+  m_AnchoredPosition: {x: 1, y: 231}
   m_SizeDelta: {x: 12, y: 14}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1853799397
@@ -1662,6 +1662,7 @@ GameObject:
   - component: {fileID: 1877392724}
   - component: {fileID: 1877392725}
   - component: {fileID: 1877392728}
+  - component: {fileID: 1877392729}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2014,6 +2015,21 @@ MonoBehaviour:
   chainRange: 5
   stunLength: 1
   cooldownTime: 5
+--- !u!114 &1877392729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877392712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace95e2222b0766429c1f5fd42f8d141, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Thornmail
+  hasThornmail: 0
+  thornmailDamage: 10
+  thornmailPrefab: {fileID: 0}
 --- !u!1 &1904038571
 GameObject:
   m_ObjectHideFlags: 0
