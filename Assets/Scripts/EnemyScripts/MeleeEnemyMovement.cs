@@ -43,7 +43,7 @@ public class EnemyMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             GameObject player = collision.gameObject;
-            player.GetComponent<PlayerHealth>().TakeDamage(enemyStats.damage);
+            player.GetComponent<PlayerHealth>().TakeDamage(enemyStats.damage, gameObject);
         }
     }
 }

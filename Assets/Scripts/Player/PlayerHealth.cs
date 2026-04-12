@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -15,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
         playerDefense = GetComponent<PlayerDefense>();
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, GameObject attacker)
     {
         if (TryDodge())
         {
@@ -27,7 +28,15 @@ public class PlayerHealth : MonoBehaviour
         {
             damage = playerDefense.ApplyDefense(damage);
         }
-
+        Thornmail thornmail = GetComponent<Thornmail>();
+        if (thornmail.hasThornmail && attacker != null)
+        {
+            EnemyHealth enemy = attacker.GetComponent<EnemyHealth>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(thornmail.thornmailDamage);
+            }
+        }
         currentHealth -= damage;
         Debug.Log("Player took " + damage + " damage. Health left: " + currentHealth);
 
@@ -36,7 +45,11 @@ public class PlayerHealth : MonoBehaviour
             Die();
         }
     }
-
+    //This is for enemies that do not collide, thornmail ability:)
+    public void TakeDamage(float damage)
+    {
+        TakeDamage(damage, null);
+    }
     public void Heal(float amount)
     {
         currentHealth = Mathf.Min(currentHealth + amount, playerStats.maxHealth);
