@@ -31,29 +31,74 @@ public class LevelsManager : MonoBehaviour
         CheckForLVLUP();
         UpdateUI();
     }
+
+    // public void CheckForLVLUP()
+    // {
+    //     while (currentXP >= targetXP)
+    //     {
+    //         currentXP -= targetXP;
+    //         currentLVL++;
+    //         targetXP += targetXPIncrease;
+    //         Debug.Log("Leveled up to " + currentLVL);
+            
+    //         if (currentLVL % levelsPerCard == 0)
+    //         {
+    //             Debug.Log("Level up trigger");
+    //             if (cardUI.HasCardsAvailable())
+    //                 TriggerCardSelection();
+    //         }
+    //     }
+    // }
+
+    // IEnumerator TriggerCardSelection()
+    // {
+    //     Debug.Log("Triggering card selection");
+    //     yield return new WaitForSeconds(3);
+    //     Debug.Log("Showing card selection");
+    //     cardUI.ShowCards();
+    // }
+
+    // public void CheckForLVLUP()
+    // {
+    //     while (currentXP >= targetXP)
+    //     {
+    //         currentLVL++;
+    //         currentXP -= targetXP;
+    //         targetXP += targetXPIncrease;
+    //         Debug.Log("Leveled Up! LVL: " + currentLVL);
+    //         if (currentLVL % levelsPerCard == 0)
+    //         {
+    //             if (cardUI.HasCardsAvailable())
+    //                 TriggerCardSelection();
+    //         }
+    //     }
+    // }
+
+    // void TriggerCardSelection()
+    // {
+    //     Time.timeScale = 0f;
+    //     cardUI.ShowCards();
+    // }
+
     public void CheckForLVLUP()
     {
         while (currentXP >= targetXP)
         {
-            currentXP -= targetXP;
             currentLVL++;
+            currentXP -= targetXP;
             targetXP += targetXPIncrease;
-            Debug.Log("Leveled up to " + currentLVL);
-            
+            Debug.Log("Leveled Up! LVL: " + currentLVL);
             if (currentLVL % levelsPerCard == 0)
             {
-                Debug.Log("Level up trigger");
                 if (cardUI.HasCardsAvailable())
                     TriggerCardSelection();
             }
         }
     }
 
-    IEnumerator TriggerCardSelection()
+    void TriggerCardSelection()
     {
-        Debug.Log("Triggering card selection");
-        yield return new WaitForSeconds(3);
-        Debug.Log("Showing card selection");
+        Time.timeScale = 0f;
         cardUI.ShowCards();
     }
     // Update is called once per frame
