@@ -21,6 +21,22 @@ public class IceBlast : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
+
+    // for the cards - will change later :<
+    public bool unlocked = false;
+    void Awake()
+    {
+        enabled = false;
+    }
+    public void Activate()
+    {
+        unlocked = true;
+        enabled = true;
+
+        Debug.Log("Ice Blast unlocked!");
+    }
+
+
     void Update()
     {
         if (gameManager.isGameOver) return;

@@ -26,7 +26,22 @@ public class LightningChain : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
+
+    // for the cards - will change later :<
+    public bool unlocked = false;
+    void Awake()
+    {
+        enabled = false;
+    }
+    public void Activate()
+    {
+        unlocked = true;
+        enabled = true;
+
+        Debug.Log("Lightning Chain unlocked!");
+    }
+
+
     void Update()
     {
         if (gameManager.isGameOver) return;

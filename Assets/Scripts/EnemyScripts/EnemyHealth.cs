@@ -59,7 +59,7 @@ public class EnemyHealth : MonoBehaviour
         }
 
         Destroy(gameObject);
-        Debug.Log("Enemy died!");
+        //Debug.Log("Enemy died!");
     }
 
     void OnTriggerEnter2D(Collider2D collision)

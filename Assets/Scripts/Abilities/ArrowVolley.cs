@@ -5,11 +5,27 @@ public class ArrowVolley : MonoBehaviour
 {
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] private float arrowSpeed = 10f;
-    [SerializeField] private int arrowCount = 5;
+    [SerializeField] private int arrowCount = 3;
     [SerializeField] private float spreadAngle = 30f;
+    public int level = 0;
 
     private Camera mainCam;
     private GameObject projectilesFolder;
+
+    public bool unlocked = false;
+
+    void Awake()
+    {
+        enabled = false;
+    }
+
+    public void Activate()
+    {
+        unlocked = true;
+        enabled = true;
+
+        Debug.Log("Arrow Volley unlocked!");
+    }
 
     void Start()
     {
@@ -19,6 +35,8 @@ public class ArrowVolley : MonoBehaviour
 
     private void OnSpellCast(InputValue input)
     {
+        if (!enabled) return; // also for da cards
+
         if (input.isPressed)
         {
             FireVolley();
