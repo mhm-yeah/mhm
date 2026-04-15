@@ -982,6 +982,7 @@ MonoBehaviour:
   bulletPrefabs:
   - {fileID: 3653670497441011542, guid: ca3fb927ee072d745a4fadb462c48bc1, type: 3}
   healthDrop: {fileID: 3705173890697611791, guid: 269d7388ccc47a64a8eceb9312c67538, type: 3}
+  experienceDrop: {fileID: 7064260479175915047, guid: 5e823c07570f74243b5e40b75141c6b9, type: 3}
 --- !u!4 &851839734
 Transform:
   m_ObjectHideFlags: 0
@@ -1735,7 +1736,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.3125, y: 0.46875}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

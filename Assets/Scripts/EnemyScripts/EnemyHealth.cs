@@ -52,6 +52,11 @@ public class EnemyHealth : MonoBehaviour
             GameObject healthDrop = itemManager.healthDrop;
             Instantiate(healthDrop, transform.position, transform.rotation, collectiblesFolder.transform);
         }
+        else
+        {
+            GameObject expDrop = itemManager.experienceDrop;
+            Instantiate(expDrop, transform.position, transform.rotation, collectiblesFolder.transform);
+        }
 
         Destroy(gameObject);
         Debug.Log("Enemy died!");
