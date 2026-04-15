@@ -284,6 +284,7 @@ MonoBehaviour:
   bulletPrefabs:
   - {fileID: 685316658}
   healthDrop: {fileID: 3705173890697611791, guid: 269d7388ccc47a64a8eceb9312c67538, type: 3}
+  experienceDrop: {fileID: 0}
 --- !u!4 &60411588
 Transform:
   m_ObjectHideFlags: 0
@@ -1268,6 +1269,7 @@ MonoBehaviour:
   - waveName: 1
     numberOfEnemies: 20
     enemyTypes:
+    - {fileID: 7395343294680337530, guid: 3ac6826e2e0625547bf3c909211eaac5, type: 3}
     - {fileID: 6155065009679422498, guid: eb71ec8fc5f5f9e4ba2407af3cec6cfe, type: 3}
     - {fileID: 7395343294680337530, guid: dcf17bf59f05d7a4ebd304d97fb1655f, type: 3}
 --- !u!4 &952603091
@@ -1732,7 +1734,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.3125, y: 0.46875}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

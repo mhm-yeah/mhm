@@ -40,6 +40,13 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
+        ExplosiveEnemy explosive = GetComponent<ExplosiveEnemy>();
+        if (explosive != null && !explosive.IsTriggered())
+        {
+            explosive.TriggerExplosion();
+            Debug.Log("explodes");
+            return;
+        }
         // Add death animation or effects here
         // drop xp and loot here
 

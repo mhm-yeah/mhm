@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public class LevelsManager : MonoBehaviour
 {
     [Header("References")]
-    // [SerializeField] TextMeshProUGUI currentLVLText;
-    // [SerializeField] Image xpBar;
+    [SerializeField] TextMeshProUGUI currentLVLText;
+    [SerializeField] Image xpBar;
 
     [Space(10)]
     [Header("Settings")]
@@ -20,28 +20,24 @@ public class LevelsManager : MonoBehaviour
 
     void Start()
     {
-        currentLVL= 1;
-        Update();
+        currentLVL= 0;
+        currentXP = 0;
+        UpdateUI();
     }
     public void IncreaseXP(float amount)
     {
         currentXP += amount;
         CheckForLVLUP();
-        Update();
+        UpdateUI();
     }
     public void CheckForLVLUP()
     {
         while (currentXP >= targetXP)
         {
-            currentLVL++;
             currentXP -= targetXP;
+            currentLVL++;
             targetXP += targetXPIncrease;
-            Debug.Log("Leveled Up! LVL: " + currentLVL);
-            if (currentLVL % levelsPerCard == 0)
-            {
-                if (cardUI.HasCardsAvailable())
-                    TriggerCardSelection();
-            }
+            Debug.Log("Leveled Up!");
         }
     }
 
@@ -51,9 +47,9 @@ public class LevelsManager : MonoBehaviour
         cardUI.ShowCards();
     }
     // Update is called once per frame
-    void Update()
+    void UpdateUI()
     {
-        // currentLVLText.text = "LV." + currentLVL;
-        // xpBar.fillAmount = (float)currentXP / (float)targetXP;
+         currentLVLText.text = "LV." + currentLVL;
+         xpBar.fillAmount = (float)currentXP / (float)targetXP;
     }
 }
