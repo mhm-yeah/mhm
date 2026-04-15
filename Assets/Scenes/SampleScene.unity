@@ -401,6 +401,7 @@ MonoBehaviour:
     enemyTypes:
     - {fileID: 7395343294680337530, guid: dcf17bf59f05d7a4ebd304d97fb1655f, type: 3}
     - {fileID: 6155065009679422498, guid: eb71ec8fc5f5f9e4ba2407af3cec6cfe, type: 3}
+    - {fileID: 7395343294680337530, guid: 3ac6826e2e0625547bf3c909211eaac5, type: 3}
   - waveName: 2
     numberOfEnemies: 10
     enemyTypes:

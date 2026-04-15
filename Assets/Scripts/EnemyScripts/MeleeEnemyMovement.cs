@@ -44,6 +44,14 @@ public class EnemyMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            ExplosiveEnemy explosive = GetComponent<ExplosiveEnemy>();
+
+            if (explosive != null && !explosive.IsTriggered())
+            {
+                explosive.TriggerExplosion();
+                Debug.Log("explodes");
+                return;
+            }
             GameObject player = collision.gameObject;
             player.GetComponent<PlayerHealth>().TakeDamage(enemyStats.damage, gameObject);
         }

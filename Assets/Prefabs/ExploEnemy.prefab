@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7064260479175915047
+--- !u!1 &7395343294680337530
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1601960997808984264}
-  - component: {fileID: 1339150617613266783}
-  - component: {fileID: 8293999631649723139}
-  - component: {fileID: 1002927979905447130}
-  - component: {fileID: 4255123898377165581}
+  - component: {fileID: 4813827810376884282}
+  - component: {fileID: 7921282595702166422}
+  - component: {fileID: 4627217164810859708}
+  - component: {fileID: -2491510421747228988}
+  - component: {fileID: 6314571839289180564}
+  - component: {fileID: 8712956145752622714}
+  - component: {fileID: 5041783467545488130}
+  - component: {fileID: 7195963956120423594}
   m_Layer: 0
-  m_Name: ExperienceDrop
-  m_TagString: Untagged
+  m_Name: ExploEnemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1601960997808984264
+--- !u!4 &4813827810376884282
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7064260479175915047}
+  m_GameObject: {fileID: 7395343294680337530}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1339150617613266783
+--- !u!212 &7921282595702166422
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7064260479175915047}
+  m_GameObject: {fileID: 7395343294680337530}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -84,8 +87,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.14951938, g: 0.6293468, b: 0.9056604, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: a1c6ee16d1f7ed240812445ada5a1f9e, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -94,13 +97,13 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!61 &8293999631649723139
+--- !u!61 &4627217164810859708
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7064260479175915047}
+  m_GameObject: {fileID: 7395343294680337530}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -124,7 +127,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -138,16 +141,16 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.15, y: 0.15}
   m_EdgeRadius: 0
---- !u!50 &1002927979905447130
+--- !u!50 &-2491510421747228988
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7064260479175915047}
+  m_GameObject: {fileID: 7395343294680337530}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -166,17 +169,68 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &4255123898377165581
+  m_Constraints: 4
+--- !u!114 &6314571839289180564
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7064260479175915047}
+  m_GameObject: {fileID: 7395343294680337530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc8992d1294296047b37c39d8026e478, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ef6e32ea633e094197276da6ce054b8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ExperienceDrop
-  expAmount: 0
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
+  moveSpeed: 3
+  baseMoveSpeed: 3
+  baseMaxHealth: 100
+  maxHealth: 100
+  baseDamage: 10
+  damage: 10
+  baseDefense: 0
+  defense: 0
+  xpValue: 25
+  isStunned: 0
+  healthDropChance: 0.1
+  experienceDropChance: 0.9
+--- !u!114 &8712956145752622714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395343294680337530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947ee872a3484b742a2dcdf95cdec9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  damageNumberPrefab: {fileID: 4224606381231520095, guid: 9b8cb2e70fa2ea74b845fbfda6817d6f, type: 3}
+--- !u!114 &5041783467545488130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395343294680337530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 700e1aaba5cd83e449718397ee71ec54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+--- !u!114 &7195963956120423594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395343294680337530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a725f9db3e6ca419292cd42c9e15b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExplosiveEnemy
+  explosionDelay: 1
+  explosionRadius: 5
+  explosionDamage: 10
