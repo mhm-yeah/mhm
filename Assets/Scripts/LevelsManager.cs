@@ -12,9 +12,12 @@ public class LevelsManager : MonoBehaviour
     [Header("Settings")]
     [SerializeField] float targetXP = 100;
     [SerializeField] float targetXPIncrease = 25;
+
+    [SerializeField] int levelsPerCard = 3;
+    [SerializeField] CardSelectionUI cardUI;
     int currentLVL;
     float currentXP;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         currentLVL= 0;
@@ -29,13 +32,19 @@ public class LevelsManager : MonoBehaviour
     }
     public void CheckForLVLUP()
     {
-        while(currentXP >= targetXP)
+        while (currentXP >= targetXP)
         {
             currentXP -= targetXP;
             currentLVL++;
             targetXP += targetXPIncrease;
             Debug.Log("Leveled Up!");
         }
+    }
+
+    void TriggerCardSelection()
+    {
+        Time.timeScale = 0f;
+        cardUI.ShowCards();
     }
     // Update is called once per frame
     void UpdateUI()

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+public class Fireball : Ability
 {
     [SerializeField] private float damage = 40f;
     [SerializeField] private float lifetime = 3f;

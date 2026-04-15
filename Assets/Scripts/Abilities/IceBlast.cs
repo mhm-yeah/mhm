@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
-public class IceBlast : MonoBehaviour
+public class IceBlast : Ability
 {
     public GameObject ringPrefab;
     public GameObject iceBlastPrefab;
@@ -20,6 +20,22 @@ public class IceBlast : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
+
+
+    // for the cards - will change later :<
+    public bool unlocked = false;
+    void Awake()
+    {
+        enabled = false;
+    }
+    public void Activate()
+    {
+        unlocked = true;
+        enabled = true;
+
+        Debug.Log("Ice Blast unlocked!");
+    }
+
 
     void Update()
     {
@@ -88,7 +104,6 @@ public class IceBlast : MonoBehaviour
         {
             float now = Time.time;
             enemyStats.isStunned = true;
-            Color originalColor = enemySprite.color;
             enemySprite.color = Color.cyan;
 
             yield return new WaitForSeconds(stunLength);
@@ -96,7 +111,7 @@ public class IceBlast : MonoBehaviour
             if (enemyStats != null)
             {
                 enemyStats.isStunned = false;
-                enemySprite.color = originalColor;
+                enemySprite.color = enemyStats.GetOriginalColor();
 
                 Debug.Log("Enemy was stunned for " + (Time.time - now) + " seconds");
             }

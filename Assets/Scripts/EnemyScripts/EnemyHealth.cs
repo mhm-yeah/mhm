@@ -62,11 +62,13 @@ public class EnemyHealth : MonoBehaviour
         else
         {
             GameObject expDrop = itemManager.experienceDrop;
+            ExperienceDrop expScript = expDrop.GetComponent<ExperienceDrop>();
+            expScript.expAmount = enemyStats.xpValue;
             Instantiate(expDrop, transform.position, transform.rotation, collectiblesFolder.transform);
         }
 
         Destroy(gameObject);
-        Debug.Log("Enemy died!");
+        //Debug.Log("Enemy died!");
     }
 
     void OnTriggerEnter2D(Collider2D collision)

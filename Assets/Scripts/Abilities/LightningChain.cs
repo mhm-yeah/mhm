@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Analytics;
 
-public class LightningChain : MonoBehaviour
+public class LightningChain : Ability
 {
     private Transform hands;
     private GameObject projectilesFolder;
@@ -26,7 +26,22 @@ public class LightningChain : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
+
+    // for the cards - will change later :<
+    public bool unlocked = false;
+    void Awake()
+    {
+        enabled = false;
+    }
+    public void Activate()
+    {
+        unlocked = true;
+        enabled = true;
+
+        Debug.Log("Lightning Chain unlocked!");
+    }
+
+
     void Update()
     {
         if (gameManager.isGameOver) return;
@@ -112,7 +127,6 @@ public class LightningChain : MonoBehaviour
         {
             float now = Time.time;
             enemyStats.isStunned = true;
-            Color originalColor = enemySprite.color;
             enemySprite.color = Color.softYellow;
 
             yield return new WaitForSeconds(stunLength);
@@ -120,7 +134,7 @@ public class LightningChain : MonoBehaviour
             if (enemyStats != null) // it is possible for the enemy to die while stunned.
             {
                 enemyStats.isStunned = false;
-                enemySprite.color = originalColor;
+                enemySprite.color = enemyStats.GetOriginalColor();
 
                 Debug.Log("Enemy was stunned for " + (Time.time - now) + " seconds");
             }
