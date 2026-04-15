@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class RangedEnemyMovement : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     Transform player;
     private EnemyStats enemyStats;
     private GameManager gameManager;
+    private SpriteRenderer spriteRenderer;
 
     public float preferredDistance = 5f;
     public float retreatDistance = 3f;
@@ -22,6 +22,8 @@ public class RangedEnemyMovement : MonoBehaviour
 
         enemyStats = GetComponent<EnemyStats>();
         player = GameObject.FindWithTag("Player").transform;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         strafeDirection = Random.value > 0.5f ? 1f : -1f;
     }
 
@@ -36,7 +38,6 @@ public class RangedEnemyMovement : MonoBehaviour
         float dirX = dx / distance;
         float dirY = dy / distance;
 
-        
         float perpX = -dirY * strafeDirection;
         float perpY = dirX * strafeDirection;
 
@@ -71,5 +72,7 @@ public class RangedEnemyMovement : MonoBehaviour
             float moveY = perpY * enemyStats.moveSpeed * Time.deltaTime;
             transform.position = transform.position + new Vector3(moveX, moveY, 0);
         }
+
+        spriteRenderer.flipX = dx < 0;
     }
 }
