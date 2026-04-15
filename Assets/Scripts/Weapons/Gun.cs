@@ -13,6 +13,7 @@ public class Gun : Weapon
     public InputActionReference fireAction;
 
     public float bulletSpeed = 10f;
+    private bool isFiring = false;
 
     void Start()
     {
@@ -23,28 +24,47 @@ public class Gun : Weapon
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         hands = transform.Find("Hands").gameObject;
         playerStats = GetComponent<PlayerStats>();
-
     }
 
-    void OnEnable()
-    {
-        //fireAction.action.Enable();
-        fireAction.action.started += Fire;
-    }
-
-    void OnDisable()
-    {
-        //fireAction.action.Disable();
-        fireAction.action.started -= Fire;
-    }
-
-    void Fire(InputAction.CallbackContext context)
+    void Update()
     {
         if (gameManager.isGameOver == true || playerStats.getAttackActionStatus() == false)
         {
             return;
         }
-        
+
+        if (isFiring)
+        {
+            Fire();
+        }
+    }
+
+    void OnEnable()
+    {
+        //fireAction.action.Enable();
+        fireAction.action.started += OnFireStarted;
+        fireAction.action.canceled += OnFireEnded;
+    }
+
+    void OnDisable()
+    {
+        //fireAction.action.Disable();
+        fireAction.action.started -= OnFireStarted;
+        fireAction.action.canceled -= OnFireEnded;
+    }
+
+    void OnFireStarted(InputAction.CallbackContext context)
+    {
+        isFiring = true;
+    }
+
+    void OnFireEnded(InputAction.CallbackContext context)
+    {
+        isFiring = false;
+    }
+
+    void Fire()
+    {
         playerStats.applyAttackCooldown();
 
         GameObject bullet = Instantiate(bulletPrefab, hands.transform.position, hands.transform.rotation, projectilesFolder.transform);

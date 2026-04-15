@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     {
         weapons[weaponInd].enabled = false;
         weaponInd = (weaponInd + 1) % weapons.Length;
+        Debug.Log("Equipped " + weapons[weaponInd]);
         weapons[weaponInd].enabled = true;
     }
 }

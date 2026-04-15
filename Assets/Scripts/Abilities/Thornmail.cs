@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class Thornmail : MonoBehaviour
+public class Thornmail : Ability
 {
 
     public bool hasThornmail = false;
