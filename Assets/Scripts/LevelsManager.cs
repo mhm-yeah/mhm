@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,13 +38,22 @@ public class LevelsManager : MonoBehaviour
             currentXP -= targetXP;
             currentLVL++;
             targetXP += targetXPIncrease;
-            Debug.Log("Leveled Up!");
+            Debug.Log("Leveled up to " + currentLVL);
+            
+            if (currentLVL % levelsPerCard == 0)
+            {
+                Debug.Log("Level up trigger");
+                if (cardUI.HasCardsAvailable())
+                    TriggerCardSelection();
+            }
         }
     }
 
-    void TriggerCardSelection()
+    IEnumerator TriggerCardSelection()
     {
-        Time.timeScale = 0f;
+        Debug.Log("Triggering card selection");
+        yield return new WaitForSeconds(3);
+        Debug.Log("Showing card selection");
         cardUI.ShowCards();
     }
     // Update is called once per frame
