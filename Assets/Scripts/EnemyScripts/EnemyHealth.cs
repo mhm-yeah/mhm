@@ -50,7 +50,7 @@ public class EnemyHealth : MonoBehaviour
         // Add death animation or effects here
         // drop xp and loot here
 
-        levelsManager.IncreaseXP(enemyStats.xpValue); // Example XP increase, adjust as needed
+        //levelsManager.IncreaseXP(enemyStats.xpValue); // Example XP increase, adjust as needed
 
         // make a function to check all the possible drops and their chances.
         int healthDropRoll = Random.Range(0, 100);
