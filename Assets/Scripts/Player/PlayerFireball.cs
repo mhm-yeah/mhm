@@ -13,12 +13,29 @@ public class PlayerFireball : MonoBehaviour
         hands = transform.Find("Hands");
     }
 
+    // for the cards - will change later :<
+    public bool unlocked = false;
+    void Awake()
+    {
+        enabled = false;
+    }
+    public void Activate()
+    {
+        unlocked = true;
+        enabled = true;
+
+        Debug.Log("FireBall unlocked!");
+    }
+
+
     public void OnFireball(InputValue value)
     {
+        if (!enabled) return; // also for da cards
+
         if (!value.isPressed)
             return;
 
-        Debug.Log("FIREBALL");
+        //Debug.Log("FIREBALL");
 
         GameObject fireball = Instantiate(
             fireballPrefab,
