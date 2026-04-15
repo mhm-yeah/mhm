@@ -9,9 +9,8 @@ public class LightningChain : MonoBehaviour
     private Transform hands;
     private GameObject projectilesFolder;
     private GameManager gameManager;
-
     public GameObject lightningChainPrefab;
-
+    
     public float lightningChainSpeed = 10f;
     public float damage = 20f;
     public int maxChainCount = 3;
