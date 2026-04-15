@@ -32,54 +32,6 @@ public class LevelsManager : MonoBehaviour
         UpdateUI();
     }
 
-    // public void CheckForLVLUP()
-    // {
-    //     while (currentXP >= targetXP)
-    //     {
-    //         currentXP -= targetXP;
-    //         currentLVL++;
-    //         targetXP += targetXPIncrease;
-    //         Debug.Log("Leveled up to " + currentLVL);
-            
-    //         if (currentLVL % levelsPerCard == 0)
-    //         {
-    //             Debug.Log("Level up trigger");
-    //             if (cardUI.HasCardsAvailable())
-    //                 TriggerCardSelection();
-    //         }
-    //     }
-    // }
-
-    // IEnumerator TriggerCardSelection()
-    // {
-    //     Debug.Log("Triggering card selection");
-    //     yield return new WaitForSeconds(3);
-    //     Debug.Log("Showing card selection");
-    //     cardUI.ShowCards();
-    // }
-
-    // public void CheckForLVLUP()
-    // {
-    //     while (currentXP >= targetXP)
-    //     {
-    //         currentLVL++;
-    //         currentXP -= targetXP;
-    //         targetXP += targetXPIncrease;
-    //         Debug.Log("Leveled Up! LVL: " + currentLVL);
-    //         if (currentLVL % levelsPerCard == 0)
-    //         {
-    //             if (cardUI.HasCardsAvailable())
-    //                 TriggerCardSelection();
-    //         }
-    //     }
-    // }
-
-    // void TriggerCardSelection()
-    // {
-    //     Time.timeScale = 0f;
-    //     cardUI.ShowCards();
-    // }
-
     public void CheckForLVLUP()
     {
         while (currentXP >= targetXP)
@@ -91,16 +43,18 @@ public class LevelsManager : MonoBehaviour
             if (currentLVL % levelsPerCard == 0)
             {
                 if (cardUI.HasCardsAvailable())
-                    TriggerCardSelection();
+                    //TriggerCardSelection();
+                    StartCoroutine(TriggerCardSelection());
             }
         }
     }
 
-    void TriggerCardSelection()
-    {
+    IEnumerator TriggerCardSelection() {
         Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(1.5f); // wait a frame to ensure everything is set up
         cardUI.ShowCards();
     }
+    
     // Update is called once per frame
     void UpdateUI()
     {

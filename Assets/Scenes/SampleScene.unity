@@ -1060,6 +1060,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -198.97609
       objectReference: {fileID: 0}
+    - target: {fileID: 3561524772137559932, guid: 3dce9f27579783d45b120372398adf17, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1877392731}
     - target: {fileID: 3627113497887860958, guid: 3dce9f27579783d45b120372398adf17, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2080,6 +2084,7 @@ GameObject:
   - component: {fileID: 1877392729}
   - component: {fileID: 1877392721}
   - component: {fileID: 1877392730}
+  - component: {fileID: 1877392731}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2467,6 +2472,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FireStaff
   fireAction: {fileID: 3502370264273996388, guid: ba7c5e20b2b235b489f49d3374feb39a, type: 3}
   bulletSpeed: 10
+--- !u!114 &1877392731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877392712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f923bae0dbea54e81bd76ad6b589a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAbilities
 --- !u!1 &1904038571
 GameObject:
   m_ObjectHideFlags: 0

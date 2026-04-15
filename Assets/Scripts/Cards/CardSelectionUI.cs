@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +12,6 @@ public class CardSelectionUI : MonoBehaviour
     public void ShowCards()
     {
         gameObject.SetActive(true);
-        Time.timeScale = 0f;
         int amount = Mathf.Min(3, allCards.Count);
         currentCards = GetRandomCards(amount);
 

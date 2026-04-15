@@ -38,7 +38,6 @@ public class PlayerHealth : MonoBehaviour
             }
         }
         currentHealth -= damage;
-        Debug.Log("Player took " + damage + " damage. Health left: " + currentHealth);
 
         if (currentHealth <= 0)
         {
@@ -53,7 +52,6 @@ public class PlayerHealth : MonoBehaviour
     public void Heal(float amount)
     {
         currentHealth = Mathf.Min(currentHealth + amount, playerStats.maxHealth);
-        Debug.Log("Player healed");
     }
 
     public float GetCurrentHealth()

@@ -141,7 +141,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.15, y: 0.15}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &-2491510421747228988
 Rigidbody2D:
@@ -182,16 +182,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef6e32ea633e094197276da6ce054b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
-  moveSpeed: 3
   baseMoveSpeed: 3
   baseMaxHealth: 100
-  maxHealth: 100
   baseDamage: 10
-  damage: 10
   baseDefense: 0
+  moveSpeed: 3
+  maxHealth: 100
+  damage: 10
   defense: 0
-  xpValue: 25
+  xpValue: 100
   isStunned: 0
+  isInvulnerable: 0
   healthDropChance: 0.1
   experienceDropChance: 0.9
 --- !u!114 &8712956145752622714
