@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ArrowVolley : MonoBehaviour
+public class ArrowVolley : Ability
 {
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] private float arrowSpeed = 10f;

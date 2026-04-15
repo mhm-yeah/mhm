@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
-public class IceBlast : MonoBehaviour
+public class IceBlast : Ability
 {
     public GameObject ringPrefab;
     public GameObject iceBlastPrefab;
@@ -104,7 +104,6 @@ public class IceBlast : MonoBehaviour
         {
             float now = Time.time;
             enemyStats.isStunned = true;
-            Color originalColor = enemySprite.color;
             enemySprite.color = Color.cyan;
 
             yield return new WaitForSeconds(stunLength);
@@ -112,7 +111,7 @@ public class IceBlast : MonoBehaviour
             if (enemyStats != null)
             {
                 enemyStats.isStunned = false;
-                enemySprite.color = originalColor;
+                enemySprite.color = enemyStats.GetOriginalColor();
 
                 Debug.Log("Enemy was stunned for " + (Time.time - now) + " seconds");
             }
