@@ -193,8 +193,8 @@ MonoBehaviour:
   xpValue: 100
   isStunned: 0
   isInvulnerable: 0
-  healthDropChance: 0.1
-  experienceDropChance: 0.9
+  healthDropChance: 0.25
+  experienceDropChance: 1
 --- !u!114 &8712956145752622714
 MonoBehaviour:
   m_ObjectHideFlags: 0
