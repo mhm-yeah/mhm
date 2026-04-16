@@ -6,6 +6,12 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverUI;
     public bool isGameOver = false;
 
+    void Start()
+    {
+        Time.timeScale = 1f;
+        isGameOver = false;
+    }
+
     public void GameOver()
     {
         isGameOver = true;
