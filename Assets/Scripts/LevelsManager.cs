@@ -51,7 +51,7 @@ public class LevelsManager : MonoBehaviour
 
     IEnumerator TriggerCardSelection() {
         Time.timeScale = 0f;
-        yield return new WaitForSecondsRealtime(1.5f); // wait a frame to ensure everything is set up
+        yield return new WaitForSecondsRealtime(1f); // wait a frame to ensure everything is set up
         cardUI.ShowCards();
     }
     

@@ -986,7 +986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 529417377270939593, guid: 3dce9f27579783d45b120372398adf17, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -459.1804
+      value: -459.18042
       objectReference: {fileID: 0}
     - target: {fileID: 850845619606367826, guid: 3dce9f27579783d45b120372398adf17, type: 3}
       propertyPath: m_Name
@@ -1102,7 +1102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4052869765312597244, guid: 3dce9f27579783d45b120372398adf17, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -459.1804
+      value: -459.18042
       objectReference: {fileID: 0}
     - target: {fileID: 4231625751280926138, guid: 3dce9f27579783d45b120372398adf17, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1330,7 +1330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8823690494088163124, guid: 3dce9f27579783d45b120372398adf17, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -459.1804
+      value: -459.18042
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2457,7 +2457,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Thornmail
   hasThornmail: 0
   thornmailDamage: 10
-  thornmailPrefab: {fileID: 0}
 --- !u!114 &1877392730
 MonoBehaviour:
   m_ObjectHideFlags: 0

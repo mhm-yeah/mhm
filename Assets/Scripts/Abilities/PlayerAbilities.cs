@@ -27,7 +27,7 @@ public class PlayerAbilities : MonoBehaviour
                 fireball.Activate();
                 break;
             case AbilityID.Thornmail:
-                //thornmail.Activate();
+              //  thornmail.EquipThornmail;
                 break;
             case AbilityID.LightningChain:
                 lightning.Activate();
