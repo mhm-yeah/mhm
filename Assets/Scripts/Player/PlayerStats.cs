@@ -6,15 +6,15 @@ public class PlayerStats : MonoBehaviour
     public float baseMoveSpeed = 5f;
     public float sprintSpeed = 8f;
     public float baseMaxHealth = 100f;
-    public float baseDamage = 25f;
-    public float baseFireRate = 3f;
+    public float baseDamage = 0f;
+    public float baseAttackSpeed = 0f;
     public float baseDefense = 0f;
 
     [Header("Live stats")]
     public float moveSpeed = 5f;
     public float maxHealth = 100f;
     public float damage = 25f;
-    public float fireRate = 3f;
+    public float attackSpeed = 3f;
     public float defense = 0f;
 
     [Header("Chance stats")]
@@ -27,6 +27,7 @@ public class PlayerStats : MonoBehaviour
     private GameManager gameManager;
     private Weapon[] weapons;
     private Weapon currentWeapon;
+    private Utilities.Element currentElement = Utilities.Element.Default;
     private int weaponInd = 0;
 
 
@@ -35,6 +36,8 @@ public class PlayerStats : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         currentWeapon = transform.GetComponent<Gun>();
         weapons = transform.GetComponents<Weapon>();
+
+        ChangeStats();
     }
 
     void Update()
@@ -52,20 +55,25 @@ public class PlayerStats : MonoBehaviour
         return canAttack;
     }
 
-    public void ApplyWeaponCooldown()
-    {
-        canAttack = false;
-        Invoke(nameof(ResetWeapon), 1f / fireRate);
-    }
-
-    private void ResetWeapon()
-    {
-        canAttack = true;
-    }
-
     public Weapon GetCurrentWeapon()
     {
         return currentWeapon;
+    }
+
+    public Utilities.Element GetCurrentElement()
+    {
+        return currentElement;
+    }
+
+    public void ApplyWeaponCooldown()
+    {
+        canAttack = false;
+        Invoke(nameof(RemoveWeaponCooldown), 1f / attackSpeed);
+    }
+
+    private void RemoveWeaponCooldown()
+    {
+        canAttack = true;
     }
 
     private void ChangeWeapon()
@@ -75,5 +83,13 @@ public class PlayerStats : MonoBehaviour
         Debug.Log(weaponInd + ", Equipped: " + weapons[weaponInd]);
         weapons[weaponInd].enabled = true;
         currentWeapon = weapons[weaponInd];
+    }
+
+    private void ChangeStats()
+    {
+        Weapon weapon = weapons[weaponInd];
+        currentElement = weapon.element;
+        damage = baseDamage + weapon.damage;
+        attackSpeed = baseAttackSpeed + weapon.attackSpeed;
     }
 }

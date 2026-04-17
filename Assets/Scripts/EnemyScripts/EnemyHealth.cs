@@ -3,24 +3,16 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    private GameManager gameManager;
-    private LevelsManager levelsManager;
     private EnemyStats enemyStats;
-    private PlayerStats playerStats;
     private ItemManager itemManager;
     private GameObject collectiblesFolder;
-    private LightningChain lightningChainAttack; // to change later
     private float currentHealth;
     public GameObject damageNumberPrefab;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         itemManager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
-        levelsManager = GameObject.Find("GameManager").GetComponent<LevelsManager>();
         collectiblesFolder = GameObject.Find("Collectibles");
-        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
-        lightningChainAttack = GameObject.Find("Player").GetComponent<LightningChain>(); // to change later
         enemyStats = GetComponent<EnemyStats>();
         currentHealth = enemyStats.maxHealth;
     }
@@ -50,8 +42,6 @@ public class EnemyHealth : MonoBehaviour
         // Add death animation or effects here
         // drop xp and loot here
 
-        //levelsManager.IncreaseXP(enemyStats.xpValue); // Example XP increase, adjust as needed
-
         // make a function to check all the possible drops and their chances.
         int healthDropRoll = Random.Range(0, 100);
         if (healthDropRoll < enemyStats.healthDropChance * 100)
@@ -68,24 +58,6 @@ public class EnemyHealth : MonoBehaviour
         }
 
         Destroy(gameObject);
-        //Debug.Log("Enemy died!");
-    }
-
-    // this event should be deleted in the future (projectiles should handle their own collisions)
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        // should be deleted in the future
-        // if (collision.CompareTag("Projectile"))
-        // {
-        //     TakeDamage(playerStats.damage);
-        //     Destroy(collision.gameObject);
-        // }
-
-        if (collision.CompareTag("LightningChain")) // to change later
-        {
-            Destroy(collision.gameObject);
-            lightningChainAttack.StartImpact(transform.GetComponent<Collider2D>()); // to change later
-        }
     }
 }
 
