@@ -1,23 +1,58 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Fireball : Ability
 {
-    [SerializeField] private float damage = 40f;
-    [SerializeField] private float lifetime = 3f;
+    private Transform hands;
+    private GameObject projectilesFolder;
 
-    private void Start()
+    [Header("Fireball prefab")]
+    [SerializeField] private GameObject fireballPrefab;
+
+    void Start()
     {
-        Destroy(gameObject, lifetime);
+        projectilesFolder = GameObject.Find("Projectiles");
+        hands = transform.Find("Hands");
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void Awake()
     {
-        EnemyHealth enemy = collision.GetComponent<EnemyHealth>();
+        //enabled = false;
+        enabled = true;
+        unlocked = true;
+    }
+    public void Activate()
+    {
+        unlocked = true;
+        enabled = true;
 
-        if (enemy != null)
+        Debug.Log("FireBall unlocked!");
+    }
+
+    public void OnFireball(InputValue value)
+    {
+        if (!enabled) return; // also for da cards
+
+        if (!value.isPressed)
+            return;
+
+        //Debug.Log("FIREBALL");
+
+        GameObject fireball = Instantiate(
+            fireballPrefab,
+            hands.position,
+            hands.rotation,
+            projectilesFolder.transform
+        );
+
+        FireProjectile projectileScript = fireball.GetComponent<FireProjectile>();
+        projectileScript.Init(this);
+
+        Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
+
+        if (rb != null)
         {
-            enemy.TakeDamage(damage);
-            Destroy(gameObject);
+            rb.linearVelocity = hands.up * abilitySpeed;
         }
     }
 }

@@ -3,13 +3,13 @@ using UnityEngine;
 public class PlayerAbilities : MonoBehaviour
 {
     private ArrowVolley arrowVolley;
-    private PlayerFireball fireball;
+    private Fireball fireball;
     private Thornmail thornmail;
     private LightningChain lightning;
     private IceBlast iceBlast;
     void Awake()
     {
-        fireball = GetComponent<PlayerFireball>();
+        fireball = GetComponent<Fireball>();
         arrowVolley = GetComponent<ArrowVolley>();
         thornmail = GetComponent<Thornmail>();
         lightning = GetComponent<LightningChain>();

@@ -15,6 +15,13 @@ public class Projectile : MonoBehaviour
         lifetime = weapon.projectileLifetime;
     }
 
+    public virtual void Init(Ability ability)
+    {
+        damage = ability.damage;
+        speed = ability.abilitySpeed;
+        lifetime = ability.lifeTime;
+    }
+
     void Start()
     {
         Invoke(nameof(DestroyProjectile), lifetime);

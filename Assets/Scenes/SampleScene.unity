@@ -399,8 +399,6 @@ MonoBehaviour:
   - waveName: 1
     numberOfEnemies: 20
     enemyTypes:
-    - {fileID: 7395343294680337530, guid: dcf17bf59f05d7a4ebd304d97fb1655f, type: 3}
-    - {fileID: 6155065009679422498, guid: eb71ec8fc5f5f9e4ba2407af3cec6cfe, type: 3}
     - {fileID: 7395343294680337530, guid: 3ac6826e2e0625547bf3c909211eaac5, type: 3}
   - waveName: 2
     numberOfEnemies: 10
@@ -2075,10 +2073,10 @@ GameObject:
   - component: {fileID: 1877392722}
   - component: {fileID: 1877392727}
   - component: {fileID: 1877392718}
-  - component: {fileID: 1877392726}
   - component: {fileID: 1877392720}
   - component: {fileID: 1877392723}
   - component: {fileID: 1877392717}
+  - component: {fileID: 1877392734}
   - component: {fileID: 1877392724}
   - component: {fileID: 1877392725}
   - component: {fileID: 1877392728}
@@ -2313,11 +2311,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Gun
   fireAction: {fileID: 3502370264273996388, guid: ba7c5e20b2b235b489f49d3374feb39a, type: 3}
   projectilePrefab: {fileID: 0}
-  test: 0
   element: 0
   id: 1
   damage: 20
-  attackSpeed: 1
+  attackSpeed: 3
   projectileSpeed: 10
   projectileLifetime: 5
   projectileXRotation: 0
@@ -2336,13 +2333,13 @@ MonoBehaviour:
   baseMoveSpeed: 5
   sprintSpeed: 8
   baseMaxHealth: 50
-  baseDamage: 25
-  baseFireRate: 3
+  baseDamage: 0
+  baseAttackSpeed: 0
   baseDefense: 0
   moveSpeed: 5
   maxHealth: 100
   damage: 25
-  fireRate: 3
+  attackSpeed: 3
   defense: 0
   dodgeChance: 0.2
 --- !u!114 &1877392723
@@ -2369,12 +2366,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b78f9ef1e1e2b43821805da843aace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArrowVolley
+  element: 0
+  level: 0
+  damage: 20
+  abilitySpeed: 10
+  castTime: 0
+  lifeTime: 10
+  cooldownTime: 5
+  perLevelDamageIncrease: 0
+  perLevelDamageMultiplier: 1
+  unlocked: 0
+  isOnCooldown: 0
   arrowPrefab: {fileID: 2449417635060409822, guid: 3a9b00255f642ae42bb8ba1547584728, type: 3}
-  arrowSpeed: 12
   arrowCount: 7
   spreadAngle: 30
-  level: 0
-  unlocked: 0
 --- !u!114 &1877392725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2387,28 +2392,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa65ec13bb268b4c844f2dcf7f7c507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IceBlast
+  element: 2
+  level: 0
+  damage: 10
+  abilitySpeed: 10
+  castTime: 0
+  lifeTime: 10
+  cooldownTime: 5
+  perLevelDamageIncrease: 0
+  perLevelDamageMultiplier: 1
+  unlocked: 0
+  isOnCooldown: 0
   ringPrefab: {fileID: 8708012294227827741, guid: bcf4e50353f9a8047b7bff296e048e68, type: 3}
   iceBlastPrefab: {fileID: 6179260833480139617, guid: 84dbe930f1398974d9ea6d28ef982d9e, type: 3}
-  chargeTime: 2
   stunLength: 3
-  damage: 10
-  cooldownTime: 5
+  slowPercentage: 1
   blastRadius: 5
-  unlocked: 0
---- !u!114 &1877392726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1877392712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dae3221997a4deb4ba749bd3cdee6e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerFireball
-  fireballPrefab: {fileID: 761515458260024105, guid: ab29bf536a462474ab9a8c8f17532043, type: 3}
-  unlocked: 0
 --- !u!114 &1877392727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2446,14 +2445,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f384853bb64ea0b44bfb917bb888d0c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightningChain
-  lightningChainPrefab: {fileID: 2946929514335495902, guid: 1826df1b673aa7c45beed1d691fc3610, type: 3}
-  lightningChainSpeed: 10
+  element: 3
+  level: 0
   damage: 20
+  abilitySpeed: 10
+  castTime: 0
+  lifeTime: 10
+  cooldownTime: 0
+  perLevelDamageIncrease: 0
+  perLevelDamageMultiplier: 1
+  unlocked: 0
+  isOnCooldown: 0
+  lightningChainPrefab: {fileID: 2946929514335495902, guid: 1826df1b673aa7c45beed1d691fc3610, type: 3}
   maxChainCount: 3
   chainRange: 5
   stunLength: 1
-  cooldownTime: 5
-  unlocked: 0
+  delayBetweenChains: 0.1
 --- !u!114 &1877392729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2466,6 +2473,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ace95e2222b0766429c1f5fd42f8d141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Thornmail
+  element: 0
+  level: 0
+  damage: 20
+  abilitySpeed: 10
+  castTime: 0
+  lifeTime: 10
+  cooldownTime: 5
+  perLevelDamageIncrease: 0
+  perLevelDamageMultiplier: 1
+  unlocked: 0
+  isOnCooldown: 0
   hasThornmail: 0
   thornmailDamage: 10
 --- !u!114 &1877392730
@@ -2482,14 +2500,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FireStaff
   fireAction: {fileID: 3502370264273996388, guid: ba7c5e20b2b235b489f49d3374feb39a, type: 3}
   projectilePrefab: {fileID: 0}
-  test: 0
   element: 1
   id: 2
   damage: 10
-  attackSpeed: 1
+  attackSpeed: 3
   projectileSpeed: 10
-  projectileLifetime: 0
+  projectileLifetime: 5
   projectileXRotation: 180
+  burnDamagePerSecond: 5
+  burnDuration: 3
 --- !u!114 &1877392731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2516,11 +2535,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LightningStaff
   fireAction: {fileID: 3502370264273996388, guid: ba7c5e20b2b235b489f49d3374feb39a, type: 3}
   projectilePrefab: {fileID: 0}
-  test: 0
   element: 3
   id: 3
-  damage: 10
-  attackSpeed: 1
+  damage: 15
+  attackSpeed: 3
   projectileSpeed: 10
   projectileLifetime: 5
   projectileXRotation: 0
@@ -2539,16 +2557,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IceStaff
   fireAction: {fileID: 3502370264273996388, guid: ba7c5e20b2b235b489f49d3374feb39a, type: 3}
   projectilePrefab: {fileID: 0}
-  test: 0
   element: 2
   id: 4
   damage: 15
-  attackSpeed: 1
+  attackSpeed: 3
   projectileSpeed: 10
   projectileLifetime: 5
   projectileXRotation: 0
   slowDuration: 2
   slowPercentage: 0.5
+--- !u!114 &1877392734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877392712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5033ba59d429ff247a233a2fe9178178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Fireball
+  element: 1
+  level: 0
+  damage: 40
+  abilitySpeed: 10
+  castTime: 0
+  lifeTime: 10
+  cooldownTime: 5
+  perLevelDamageIncrease: 0
+  perLevelDamageMultiplier: 1
+  unlocked: 0
+  isOnCooldown: 0
+  fireballPrefab: {fileID: 761515458260024105, guid: ab29bf536a462474ab9a8c8f17532043, type: 3}
 --- !u!1 &1904038571
 GameObject:
   m_ObjectHideFlags: 0

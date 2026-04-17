@@ -192,6 +192,7 @@ MonoBehaviour:
   defense: 0
   xpValue: 100
   isStunned: 0
+  isSlowed: 0
   isInvulnerable: 0
   healthDropChance: 0.25
   experienceDropChance: 1

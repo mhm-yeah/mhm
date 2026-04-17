@@ -9,21 +9,15 @@ public class IceBlast : Ability
     public GameObject iceBlastPrefab;
     private GameManager gameManager;
 
-    public float chargeTime = 2f;
     public float stunLength = 3f;
-    public float damage = 10f;
-    public float cooldownTime = 5f;
+    public float slowPercentage = 1f;
     public float blastRadius = 5f; // adjusted because player sprite has weird measurements
-    private bool isOnCooldown = false;
 
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-
-    // for the cards - will change later :<
-    public bool unlocked = false;
     void Awake()
     {
         enabled = false;
@@ -46,13 +40,7 @@ public class IceBlast : Ability
             Cast();
         }
     }
-
-    private void DeactivateCooldown()
-    {
-        isOnCooldown = false;
-
-    }
-
+    
     public void Cast()
     {
         isOnCooldown = true;
@@ -65,9 +53,9 @@ public class IceBlast : Ability
     IEnumerator BlastCharge(GameObject ring, GameObject iceBlast)
     {
         // charging animation
-        for (float i = 0.01f; i <= chargeTime; i += Time.deltaTime)
+        for (float i = 0.01f; i <= castTime; i += Time.deltaTime)
         {
-            iceBlast.transform.localScale = new Vector3(1f / (chargeTime / i), 1f / (chargeTime / i), 1f);
+            iceBlast.transform.localScale = new Vector3(1f / (castTime / i), 1f / (castTime / i), 1f);
             yield return new WaitForEndOfFrame();
         }
 
@@ -76,7 +64,7 @@ public class IceBlast : Ability
         Destroy(ring);
         Destroy(iceBlast);
 
-        Invoke(nameof(DeactivateCooldown), cooldownTime);
+        StartCooldown();
     }
 
     private void ActivateBlast(GameObject ring)
@@ -87,33 +75,13 @@ public class IceBlast : Ability
             if (enemy.CompareTag("Enemy"))
             {
                 EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
-                if (enemyHealth != null)
+                EnemyStats enemyStats = enemy.GetComponent<EnemyStats>();
+
+                if (enemyHealth != null && enemyStats != null)
                 {
                     enemyHealth.TakeDamage(damage);
-                    StartCoroutine(StunEnemy(enemy));
+                    enemyStats.Slow(stunLength, slowPercentage);
                 }
-            }
-        }
-    }
-
-    IEnumerator StunEnemy(Collider2D enemy)
-    {
-        EnemyStats enemyStats = enemy.GetComponent<EnemyStats>();
-        SpriteRenderer enemySprite = enemy.GetComponent<SpriteRenderer>(); 
-        if (enemyStats != null)
-        {
-            float now = Time.time;
-            enemyStats.isStunned = true;
-            enemySprite.color = Color.cyan;
-
-            yield return new WaitForSeconds(stunLength);
-            
-            if (enemyStats != null)
-            {
-                enemyStats.isStunned = false;
-                enemySprite.color = enemyStats.GetOriginalColor();
-
-                Debug.Log("Enemy was stunned for " + (Time.time - now) + " seconds");
             }
         }
     }

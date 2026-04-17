@@ -11,13 +11,10 @@ public class LightningChain : Ability
     private GameManager gameManager;
     public GameObject lightningChainPrefab;
     
-    public float lightningChainSpeed = 10f;
-    public float damage = 20f;
     public int maxChainCount = 3;
     public float chainRange = 2f;
     public float stunLength = 1f;
-    public float cooldownTime = 5f;
-    private bool isOnCooldown = false;
+    public float delayBetweenChains = 0.1f;
 
     void Start()
     {
@@ -26,9 +23,6 @@ public class LightningChain : Ability
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-
-    // for the cards - will change later :<
-    public bool unlocked = false;
     void Awake()
     {
         enabled = false;
@@ -46,26 +40,23 @@ public class LightningChain : Ability
     {
         if (gameManager.isGameOver) return;
 
-        if (Input.GetKeyDown(KeyCode.Q) && !isOnCooldown)
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             Cast();
         }
     }
 
-    private void DeactivateCooldown()
-    {
-        isOnCooldown = false;
-    }
-
     public void Cast()
     {
         isOnCooldown = true;
+        StartCooldown();
 
         GameObject lightningChain = Instantiate(lightningChainPrefab, hands.position, hands.rotation, projectilesFolder.transform);
-        Rigidbody2D rb = lightningChain.GetComponent<Rigidbody2D>();
-        rb.AddForce(hands.transform.up * lightningChainSpeed, ForceMode2D.Impulse);
+        LightningProjectile projectileScript = lightningChain.GetComponent<LightningProjectile>();
+        projectileScript.Init(this);
 
-        Invoke(nameof(DeactivateCooldown), cooldownTime);
+        Rigidbody2D rb = lightningChain.GetComponent<Rigidbody2D>();
+        rb.AddForce(hands.transform.up * abilitySpeed, ForceMode2D.Impulse);
     }
 
     public void StartImpact(Collider2D enemy)
@@ -75,21 +66,23 @@ public class LightningChain : Ability
 
         ImpactEnemy(enemy);
 
-        StartChain(maxChainCount, enemy.gameObject, markedEnemies);
+        StartCoroutine(StartChain(maxChainCount, enemy.transform.position, markedEnemies));
     }
 
-    private void StartChain(int chainCount, GameObject currentTarget, GameObject[] markedEnemies)
+    private IEnumerator StartChain(int chainCount, Vector3 currentTarget, GameObject[] markedEnemies)
     {
-        if (chainCount <= 0) return;
+        if (chainCount <= 0) yield break;
 
-        Collider2D[] potentialTargets = Physics2D.OverlapCircleAll(currentTarget.transform.position, chainRange);
+        yield return new WaitForSeconds(delayBetweenChains);
+
+        Collider2D[] potentialTargets = Physics2D.OverlapCircleAll(currentTarget, chainRange);
         GameObject nextTarget = null;
         float closestDistance = Mathf.Infinity;
         foreach (Collider2D collider in potentialTargets)
         {
             if (collider.gameObject.CompareTag("Enemy") && !Array.Exists(markedEnemies, enemy => enemy == collider.gameObject))
             {
-                float distance = Vector2.Distance(currentTarget.transform.position, collider.transform.position);
+                float distance = Vector2.Distance(currentTarget, collider.transform.position);
                 if (distance < closestDistance)
                 {
                     closestDistance = distance;
@@ -105,7 +98,7 @@ public class LightningChain : Ability
             
             ImpactEnemy(nextTarget.GetComponent<Collider2D>());
 
-            StartChain(chainCount - 1, nextTarget, markedEnemies);
+            yield return StartCoroutine(StartChain(chainCount - 1, nextTarget.transform.position, markedEnemies));
         }
     }
 

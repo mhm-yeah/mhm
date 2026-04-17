@@ -4,15 +4,11 @@ using UnityEngine.InputSystem;
 public class ArrowVolley : Ability
 {
     [SerializeField] private GameObject arrowPrefab;
-    [SerializeField] private float arrowSpeed = 10f;
     [SerializeField] private int arrowCount = 3;
     [SerializeField] private float spreadAngle = 30f;
-    public int level = 0;
 
     private Camera mainCam;
     private GameObject projectilesFolder;
-
-    public bool unlocked = false;
 
     void Awake()
     {
@@ -60,7 +56,7 @@ public class ArrowVolley : Ability
             Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                rb.linearVelocity = rotatedDir * arrowSpeed;
+                rb.linearVelocity = rotatedDir * abilitySpeed;
             }
             //rotate arrow to face 
             float rotZ = Mathf.Atan2(rotatedDir.y, rotatedDir.x) * Mathf.Rad2Deg;

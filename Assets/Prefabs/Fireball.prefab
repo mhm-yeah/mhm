@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 452973933514253632}
   - component: {fileID: 9125044568613191870}
   - component: {fileID: 793305657941958031}
-  - component: {fileID: -3235457378010983707}
   - component: {fileID: -4917774336165129779}
+  - component: {fileID: 8842824763470275861}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Projectile
@@ -121,20 +121,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-3235457378010983707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 761515458260024105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5033ba59d429ff247a233a2fe9178178, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Fireball
-  damage: 40
-  lifetime: 3
 --- !u!58 &-4917774336165129779
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -171,3 +157,18 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.15
+--- !u!114 &8842824763470275861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761515458260024105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6463b1a3cf6d9374aaf8c92bdeb2a393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireProjectile
+  speed: 0
+  damage: 0
+  lifetime: 0

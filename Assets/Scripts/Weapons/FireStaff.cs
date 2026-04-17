@@ -6,6 +6,10 @@ public class FireStaff : Weapon
 {
     private ItemManager itemManager;
 
+    public float burnDamagePerSecond = 5f;
+    public float burnDuration = 3f;
+
+
     void Start()
     {
         itemManager = GameObject.Find("ItemManager").GetComponent<ItemManager>();

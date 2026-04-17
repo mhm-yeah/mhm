@@ -9,7 +9,6 @@ public abstract class Weapon : MonoBehaviour
 {
     public InputActionReference fireAction;
     [HideInInspector] public GameObject projectilePrefab;
-    [HideInInspector] public int test;
 
     private GameManager gameManager;
     private GameObject player;

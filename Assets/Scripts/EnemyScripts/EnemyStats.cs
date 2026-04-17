@@ -27,11 +27,16 @@ public class EnemyStats : MonoBehaviour
 
     private Color originalColor;
     private SpriteRenderer sprite;
+    private EnemyHealth enemyHealth;
+
+    private Coroutine slowCoroutine;
+    private Coroutine damageOverTimeCoroutine;
 
     void Start()
     {
         originalColor = transform.GetComponent<SpriteRenderer>().color;
         sprite = transform.GetComponent<SpriteRenderer>();
+        enemyHealth = transform.GetComponent<EnemyHealth>();
     }
 
     public Color GetOriginalColor()
@@ -61,17 +66,20 @@ public class EnemyStats : MonoBehaviour
 
     public void Slow(float duration, float slowPercentage)
     {
-        if (isSlowed == false)
+        if (slowCoroutine != null)
         {
-            isSlowed = true;
-            moveSpeed *= (1f - slowPercentage);
-            sprite.color = Color.cyan;
-
-            StartCoroutine(Unslow(duration, slowPercentage));
+            StopCoroutine(slowCoroutine); // if the enemy is already slowed, reset the timer and slow percentage.
+            // need to think of a proper solution
+            moveSpeed = baseMoveSpeed; // moveSpeed could be affected by other slows with different percentages, so just reset
         }
+
+        isSlowed = true;
+        moveSpeed *= (1f - slowPercentage);
+        sprite.color = Color.cyan;
+
+        slowCoroutine = StartCoroutine(Unslow(duration, slowPercentage));
     }
 
-    // might need to change later
     IEnumerator Unslow(float duration, float slowPercentage)
     {
         yield return new WaitForSeconds(duration);
@@ -82,5 +90,35 @@ public class EnemyStats : MonoBehaviour
             moveSpeed /= (1f - slowPercentage);
             sprite.color = originalColor;
         }
+
+        slowCoroutine = null;
+    }
+
+    public void DamageOverTime(float duration, float damagePerSecond)
+    {
+        if (damageOverTimeCoroutine != null)
+        {
+            StopCoroutine(damageOverTimeCoroutine); // reset effect if already burning.
+        }
+        damageOverTimeCoroutine = StartCoroutine(ApplyDamageOverTime(duration, damagePerSecond));
+    }
+
+    IEnumerator ApplyDamageOverTime(float duration, float damagePerSecond)
+    {
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            yield return new WaitForSeconds(1f);
+
+            if (enemyHealth != null) // it is possible for the enemy to die while burning.
+            {
+                enemyHealth.TakeDamage(damagePerSecond);
+            }
+
+            elapsed += 1f;
+        }
+
+        damageOverTimeCoroutine = null;
     }
 }
