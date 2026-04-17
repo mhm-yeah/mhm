@@ -21,7 +21,7 @@ public class LightningChain : Ability
 
     void Start()
     {
-        hands = transform.Find("Hands"); // Making the ability for the player for now.
+        hands = transform.Find("Hands");
         projectilesFolder = GameObject.Find("Projectiles");
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
@@ -112,32 +112,11 @@ public class LightningChain : Ability
     private void ImpactEnemy(Collider2D enemy)
     {
         EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
-        if (enemyHealth != null)
+        EnemyStats enemyStats = enemy.GetComponent<EnemyStats>();
+        if (enemyHealth != null && enemyStats != null)
         {
             enemyHealth.TakeDamage(damage);
-            StartCoroutine(StunEnemy(enemy));
-        }
-    }
-
-    IEnumerator StunEnemy(Collider2D enemy)
-    {
-        EnemyStats enemyStats = enemy.GetComponent<EnemyStats>();
-        SpriteRenderer enemySprite = enemy.GetComponent<SpriteRenderer>(); 
-        if (enemyStats != null)
-        {
-            float now = Time.time;
-            enemyStats.isStunned = true;
-            enemySprite.color = Color.softYellow;
-
-            yield return new WaitForSeconds(stunLength);
-            
-            if (enemyStats != null) // it is possible for the enemy to die while stunned.
-            {
-                enemyStats.isStunned = false;
-                enemySprite.color = enemyStats.GetOriginalColor();
-
-                Debug.Log("Enemy was stunned for " + (Time.time - now) + " seconds");
-            }
+            enemyStats.Stun(stunLength);
         }
     }
 }

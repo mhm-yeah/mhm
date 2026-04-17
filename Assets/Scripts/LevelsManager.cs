@@ -44,18 +44,16 @@ public class LevelsManager : MonoBehaviour
             {
                 if (cardUI.HasCardsAvailable())
                     //TriggerCardSelection();
-                    StartCoroutine(TriggerCardSelection());
+                    Invoke(nameof(TriggerCardSelection), 2f);
             }
         }
     }
 
-    IEnumerator TriggerCardSelection() {
+    void TriggerCardSelection() {
         Time.timeScale = 0f;
-        yield return new WaitForSecondsRealtime(1f); // wait a frame to ensure everything is set up
         cardUI.ShowCards();
     }
     
-    // Update is called once per frame
     void UpdateUI()
     {
          currentLVLText.text = "LV." + currentLVL;

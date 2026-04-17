@@ -1,18 +1,21 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class Gun : Weapon
+public class IceStaff : Weapon
 {
     private ItemManager itemManager;
 
+    public float slowDuration = 2f;
+    public float slowPercentage = 0.5f;
+
     void Start()
     {
-        id = 1;
-        element = Utilities.Element.Default;
         itemManager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
-        projectilePrefab = itemManager.gunProjectilePrefab;
+
+        projectilePrefab = itemManager.iceStaffProjectilePrefab;
+        id = 4;
+        element = Utilities.Element.Ice;
+        projectileXRotation = 0f;
 
         Init();
     }

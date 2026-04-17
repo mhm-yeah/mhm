@@ -1,18 +1,20 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class Gun : Weapon
+public class LightningStaff : Weapon
 {
     private ItemManager itemManager;
 
+    public float stunDuration = 0.5f;
+
     void Start()
     {
-        id = 1;
-        element = Utilities.Element.Default;
         itemManager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
-        projectilePrefab = itemManager.gunProjectilePrefab;
+
+        projectilePrefab = itemManager.lightningStaffProjectilePrefab;
+        id = 3;
+        element = Utilities.Element.Lightning;
+        projectileXRotation = 0f;
 
         Init();
     }
