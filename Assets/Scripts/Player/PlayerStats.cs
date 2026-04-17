@@ -24,19 +24,56 @@ public class PlayerStats : MonoBehaviour
     [Header("Player status")]
     private bool canAttack = true;
 
-    public bool getAttackActionStatus()
+    private GameManager gameManager;
+    private Weapon[] weapons;
+    private Weapon currentWeapon;
+    private int weaponInd = 0;
+
+
+    void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        currentWeapon = transform.GetComponent<Gun>();
+        weapons = transform.GetComponents<Weapon>();
+    }
+
+    void Update()
+    {
+        if (gameManager.isGameOver) return;
+
+        if (Input.GetKeyDown(KeyCode.F)) // change to actionmap input later
+        {
+            ChangeWeapon();
+        }
+    }
+
+    public bool GetWeaponActionStatus()
     {
         return canAttack;
     }
 
-    public void applyAttackCooldown()
+    public void ApplyWeaponCooldown()
     {
         canAttack = false;
-        Invoke(nameof(resetAttack), 1f / fireRate);
+        Invoke(nameof(ResetWeapon), 1f / fireRate);
     }
 
-    private void resetAttack()
+    private void ResetWeapon()
     {
         canAttack = true;
+    }
+
+    public Weapon GetCurrentWeapon()
+    {
+        return currentWeapon;
+    }
+
+    private void ChangeWeapon()
+    {
+        weapons[weaponInd].enabled = false;
+        weaponInd = (weaponInd + 1) % weapons.Length;
+        Debug.Log(weaponInd + ", Equipped: " + weapons[weaponInd]);
+        weapons[weaponInd].enabled = true;
+        currentWeapon = weapons[weaponInd];
     }
 }

@@ -71,14 +71,17 @@ public class EnemyHealth : MonoBehaviour
         //Debug.Log("Enemy died!");
     }
 
+    // this event should be deleted in the future (projectiles should handle their own collisions)
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Projectile"))
-        {
-            TakeDamage(playerStats.damage);
-            Destroy(collision.gameObject);
-        }
-        else if (collision.CompareTag("LightningChain")) // to change later
+        // should be deleted in the future
+        // if (collision.CompareTag("Projectile"))
+        // {
+        //     TakeDamage(playerStats.damage);
+        //     Destroy(collision.gameObject);
+        // }
+
+        if (collision.CompareTag("LightningChain")) // to change later
         {
             Destroy(collision.gameObject);
             lightningChainAttack.StartImpact(transform.GetComponent<Collider2D>()); // to change later

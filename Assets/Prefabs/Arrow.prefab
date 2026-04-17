@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1313377788497968890}
   - component: {fileID: 775337371845094696}
   - component: {fileID: 1684410720402964056}
-  - component: {fileID: 3156889856392638181}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Projectile
@@ -100,18 +99,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3156889856392638181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2449417635060409822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9a36b5a8b4bd2e42969f9d2435c24bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DestroyOutOfBounds
 --- !u!1 &2554288473101862237
 GameObject:
   m_ObjectHideFlags: 0
