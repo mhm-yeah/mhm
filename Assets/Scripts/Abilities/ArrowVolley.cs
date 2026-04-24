@@ -12,14 +12,12 @@ public class ArrowVolley : Ability
 
     void Awake()
     {
-        enabled = false;
+        unlocked = false;
     }
 
-    public void Activate()
+    public override void Activate()
     {
-        unlocked = true;
-        enabled = true;
-
+        base.Activate();
         Debug.Log("Arrow Volley unlocked!");
     }
 
@@ -31,7 +29,7 @@ public class ArrowVolley : Ability
 
     private void OnSpellCast(InputValue input)
     {
-        if (!enabled) return; // also for da cards
+        if (!unlocked) return; // also for da cards
 
         if (input.isPressed)
         {

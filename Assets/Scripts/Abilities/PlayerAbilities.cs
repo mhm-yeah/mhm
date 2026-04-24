@@ -1,40 +1,25 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAbilities : MonoBehaviour
 {
-    private ArrowVolley arrowVolley;
-    private Fireball fireball;
-    private Thornmail thornmail;
-    private LightningChain lightning;
-    private IceBlast iceBlast;
+    private Dictionary<AbilityID, Ability> abilities;
+
     void Awake()
     {
-        fireball = GetComponent<Fireball>();
-        arrowVolley = GetComponent<ArrowVolley>();
-        thornmail = GetComponent<Thornmail>();
-        lightning = GetComponent<LightningChain>();
-        iceBlast = GetComponent<IceBlast>();
+        abilities = new Dictionary<AbilityID, Ability>();
+
+        foreach (var ability in GetComponents<Ability>())
+        {
+            abilities.Add(ability.ID, ability);
+        }
     }
 
     public void ApplyAbility(AbilityID id)
     {
-        switch (id)
+        if (abilities.TryGetValue(id, out var ability))
         {
-            case AbilityID.ArrowVolley:
-                arrowVolley.Activate();
-                break;
-            case AbilityID.Fireball:
-                fireball.Activate();
-                break;
-            case AbilityID.Thornmail:
-              //  thornmail.EquipThornmail;
-                break;
-            case AbilityID.LightningChain:
-                lightning.Activate();
-                break;
-            case AbilityID.IceBlast:
-                iceBlast.Activate();
-                break;
+            ability.Activate();
         }
     }
 }
@@ -49,7 +34,8 @@ public enum AbilityID
 [System.Serializable]
 public class CardData
 {
+    public AbilityID abilityID;
+    public int level;
     public string name;
     public string description;
-    public AbilityID abilityID;
 }

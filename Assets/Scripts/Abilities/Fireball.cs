@@ -17,26 +17,22 @@ public class Fireball : Ability
 
     void Awake()
     {
-        //enabled = false;
-        enabled = true;
-        unlocked = true;
+        unlocked = false;
+        //enabled = true;
+        //unlocked = true;
     }
-    public void Activate()
+    public override void Activate()
     {
-        unlocked = true;
-        enabled = true;
-
-        Debug.Log("FireBall unlocked!");
+        base.Activate();
+        Debug.Log("Fireball upgraded to level " + level);
     }
 
     public void OnFireball(InputValue value)
     {
-        if (!enabled) return; // also for da cards
+        if (!unlocked) return;
 
         if (!value.isPressed)
             return;
-
-        //Debug.Log("FIREBALL");
 
         GameObject fireball = Instantiate(
             fireballPrefab,

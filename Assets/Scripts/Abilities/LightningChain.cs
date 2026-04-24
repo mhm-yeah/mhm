@@ -25,19 +25,16 @@ public class LightningChain : Ability
 
     void Awake()
     {
-        enabled = false;
+        unlocked = false;
     }
-    public void Activate()
+    public override void Activate()
     {
-        unlocked = true;
-        enabled = true;
-
-        Debug.Log("Lightning Chain unlocked!");
+        base.Activate();
+        Debug.Log("Lightning Chain upgraded to level " + level);
     }
-
-
     void Update()
     {
+        if (!unlocked) return;
         if (gameManager.isGameOver) return;
 
         if (Input.GetKeyDown(KeyCode.Q))

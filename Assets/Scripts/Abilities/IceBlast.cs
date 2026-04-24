@@ -20,19 +20,18 @@ public class IceBlast : Ability
 
     void Awake()
     {
-        enabled = false;
+        unlocked = false;
     }
-    public void Activate()
+    public override void Activate()
     {
-        unlocked = true;
-        enabled = true;
-
+        base.Activate();
         Debug.Log("Ice Blast unlocked!");
     }
 
 
     void Update()
     {
+        if (!unlocked) return;
         if (gameManager.isGameOver) return;
 
         if (Input.GetKeyDown(KeyCode.T) && !isOnCooldown)
