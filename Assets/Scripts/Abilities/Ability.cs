@@ -20,7 +20,7 @@ public class Ability : MonoBehaviour
     public bool isOnCooldown = false;
     private float cooldownTimer = 0f;
 
-    void Update()
+    protected virtual void Update()
     {
         if (isOnCooldown)
         {
