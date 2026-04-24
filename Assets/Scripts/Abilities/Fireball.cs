@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.UI;
 public class Fireball : Ability
 {
     private Transform hands;
@@ -8,7 +8,7 @@ public class Fireball : Ability
 
     [Header("Fireball prefab")]
     [SerializeField] private GameObject fireballPrefab;
-
+    [SerializeField] private GameObject FireballObject;
     void Start()
     {
         projectilesFolder = GameObject.Find("Projectiles");
@@ -17,12 +17,11 @@ public class Fireball : Ability
 
     void Awake()
     {
-        //enabled = false;
-        enabled = true;
-        unlocked = true;
+        enabled = false;
     }
     public void Activate()
     {
+        FireballObject.SetActive(true);
         unlocked = true;
         enabled = true;
 
@@ -31,7 +30,7 @@ public class Fireball : Ability
 
     public void OnFireball(InputValue value)
     {
-        if (!enabled) return; // also for da cards
+        if (!enabled || isOnCooldown) return; // also for da cards
 
         if (!value.isPressed)
             return;
@@ -54,5 +53,6 @@ public class Fireball : Ability
         {
             rb.linearVelocity = hands.up * abilitySpeed;
         }
+        StartCooldown();
     }
 }

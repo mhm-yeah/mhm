@@ -7,10 +7,7 @@ public class Thornmail : Ability
 
     public bool hasThornmail = false;
     public float thornmailDamage = 10f;
-   // public GameObject thornmailPrefab;
-    public void EquipThornmail()
-    {
-            hasThornmail = true;
-          //  thornmailPrefab.SetActive(true);
-    }
+    [SerializeField] private GameObject ThornmailObject;
+    // public GameObject thornmailPrefab;
+  
 }
