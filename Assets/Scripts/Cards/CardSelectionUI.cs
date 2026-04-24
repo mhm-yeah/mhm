@@ -15,7 +15,6 @@ public class CardSelectionUI : MonoBehaviour
         int amount = Mathf.Min(3, allCards.Count);
         currentCards = GetRandomCards(amount);
 
-        // disable all buttons first
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].gameObject.SetActive(i < amount);
