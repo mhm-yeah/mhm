@@ -31,7 +31,10 @@ public class EnemyMovement : MonoBehaviour
 
         float distance;
         distance = Mathf.Sqrt(direction.x * direction.x + direction.y * direction.y);
-
+        if (distance < 0.01f)
+        {
+            return;
+        }
         direction.x = direction.x / distance;
         direction.y = direction.y / distance;
 

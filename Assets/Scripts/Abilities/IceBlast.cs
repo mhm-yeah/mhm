@@ -31,8 +31,9 @@ public class IceBlast : Ability
     }
 
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         if (gameManager.isGameOver) return;
 
         if (Input.GetKeyDown(KeyCode.T) && !isOnCooldown)

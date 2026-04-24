@@ -29,7 +29,7 @@ public class ArrowVolley : Ability
         projectilesFolder = GameObject.Find("Projectiles");
     }
 
-    private void OnSpellCast(InputValue input)
+    public void OnSpellCast(InputValue input)
     {
         if (!enabled) return; // also for da cards
 
@@ -54,6 +54,11 @@ public class ArrowVolley : Ability
             Vector2 rotatedDir = RotateVector(direction, angle);
             GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity, projectilesFolder.transform);
             Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
+            Projectile projectileScript = arrow.GetComponent<Projectile>();
+            if (projectileScript != null)
+            {
+                projectileScript.Init(this);
+            }
             if (rb != null)
             {
                 rb.linearVelocity = rotatedDir * abilitySpeed;

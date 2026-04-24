@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: -2491510421747228988}
   - component: {fileID: 6314571839289180564}
   - component: {fileID: 8712956145752622714}
-  - component: {fileID: 5041783467545488130}
   - component: {fileID: 7195963956120423594}
+  - component: {fileID: -8253367605041993181}
   m_Layer: 0
   m_Name: ExploEnemy
   m_TagString: Enemy
@@ -209,18 +209,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   damageNumberPrefab: {fileID: 4224606381231520095, guid: 9b8cb2e70fa2ea74b845fbfda6817d6f, type: 3}
---- !u!114 &5041783467545488130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7395343294680337530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 700e1aaba5cd83e449718397ee71ec54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
 --- !u!114 &7195963956120423594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,3 +224,15 @@ MonoBehaviour:
   explosionDelay: 1
   explosionRadius: 5
   explosionDamage: 10
+--- !u!114 &-8253367605041993181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395343294680337530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 700e1aaba5cd83e449718397ee71ec54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
