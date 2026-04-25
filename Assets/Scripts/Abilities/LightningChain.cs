@@ -10,7 +10,7 @@ public class LightningChain : Ability
     private GameObject projectilesFolder;
     private GameManager gameManager;
     public GameObject lightningChainPrefab;
-    
+    [SerializeField] private GameObject lightningChainObject;
     public int maxChainCount = 3;
     public float chainRange = 2f;
     public float stunLength = 1f;
@@ -25,19 +25,23 @@ public class LightningChain : Ability
 
     void Awake()
     {
-        unlocked = false;
+        enabled = false;
     }
     public override void Activate()
     {
+        lightningChainObject.SetActive(true);
         base.Activate();
         Debug.Log("Lightning Chain upgraded to level " + level);
+
     }
-    void Update()
+
+
+    protected override void Update()
     {
-        if (!unlocked) return;
+        base.Update();
         if (gameManager.isGameOver) return;
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && !isOnCooldown)
         {
             Cast();
         }
@@ -45,15 +49,14 @@ public class LightningChain : Ability
 
     public void Cast()
     {
-        isOnCooldown = true;
-        StartCooldown();
-
+       
         GameObject lightningChain = Instantiate(lightningChainPrefab, hands.position, hands.rotation, projectilesFolder.transform);
         LightningProjectile projectileScript = lightningChain.GetComponent<LightningProjectile>();
         projectileScript.Init(this);
 
         Rigidbody2D rb = lightningChain.GetComponent<Rigidbody2D>();
         rb.AddForce(hands.transform.up * abilitySpeed, ForceMode2D.Impulse);
+        StartCooldown();
     }
 
     public void StartImpact(Collider2D enemy)

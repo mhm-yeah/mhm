@@ -17,6 +17,7 @@ public class PlayerAbilities : MonoBehaviour
 
     public void ApplyAbility(AbilityID id)
     {
+        Debug.Log($"Trying to activate: {id}");
         if (abilities.TryGetValue(id, out var ability))
         {
             ability.Activate();
