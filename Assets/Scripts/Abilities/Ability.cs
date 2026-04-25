@@ -16,6 +16,7 @@ public class Ability : MonoBehaviour
     public float perLevelDamageMultiplier = 1f;
 
     [Header("Ability state")]
+    public AbilityID ID;
     public bool unlocked = false;
     public bool isOnCooldown = false;
     private float cooldownTimer = 0f;
@@ -33,9 +34,26 @@ public class Ability : MonoBehaviour
             }
         }
     }
+    public virtual void Activate()
+    {
+        if (!unlocked)
+        {
+            enabled = true;
+            unlocked = true;
+            level = 1;
+            OnUnlock();
+        }
+        else
+        {
+            LevelUp();
+        }
+    }
+    protected virtual void OnUnlock() { }
 
     public void LevelUp()
     {
+        if (level >= 5) return;
+
         level++;
         damage += perLevelDamageIncrease;
         damage *= perLevelDamageMultiplier;
