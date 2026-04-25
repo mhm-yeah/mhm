@@ -8,7 +8,7 @@ public class IceBlast : Ability
     public GameObject ringPrefab;
     public GameObject iceBlastPrefab;
     private GameManager gameManager;
-
+    [SerializeField] private GameObject iceBlastObject;
     public float stunLength = 3f;
     public float slowPercentage = 1f;
     public float blastRadius = 5f; // adjusted because player sprite has weird measurements
@@ -24,6 +24,7 @@ public class IceBlast : Ability
     }
     public void Activate()
     {
+        iceBlastObject.SetActive(true);
         unlocked = true;
         enabled = true;
 

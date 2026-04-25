@@ -6,6 +6,7 @@ public class ArrowVolley : Ability
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] private int arrowCount = 3;
     [SerializeField] private float spreadAngle = 30f;
+    [SerializeField] private GameObject arrowVolleyObject;
 
     private Camera mainCam;
     private GameObject projectilesFolder;
@@ -17,6 +18,7 @@ public class ArrowVolley : Ability
 
     public void Activate()
     {
+        arrowVolleyObject.SetActive(true);
         unlocked = true;
         enabled = true;
 
@@ -41,6 +43,7 @@ public class ArrowVolley : Ability
 
     void FireVolley()
     {
+        if (isOnCooldown) return;
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue(); //fire where mouse cursor is
         Vector3 mousePos = mainCam.ScreenToWorldPoint(mouseScreenPos);
         mousePos.z = 0f;
@@ -67,6 +70,7 @@ public class ArrowVolley : Ability
             float rotZ = Mathf.Atan2(rotatedDir.y, rotatedDir.x) * Mathf.Rad2Deg;
             arrow.transform.rotation = Quaternion.Euler(0f, 0f, rotZ + 90f); //due to sprite rotation being up
         }
+        StartCooldown();
     }
 
     Vector2 RotateVector(Vector2 v, float degrees)
