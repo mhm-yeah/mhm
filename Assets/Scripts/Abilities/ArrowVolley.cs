@@ -16,12 +16,10 @@ public class ArrowVolley : Ability
         enabled = false;
     }
 
-    public void Activate()
+    public override void Activate()
     {
         arrowVolleyObject.SetActive(true);
-        unlocked = true;
-        enabled = true;
-
+        base.Activate();
         Debug.Log("Arrow Volley unlocked!");
     }
 

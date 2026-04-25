@@ -8,7 +8,7 @@ public class IceBlast : Ability
     public GameObject ringPrefab;
     public GameObject iceBlastPrefab;
     private GameManager gameManager;
-    [SerializeField] private GameObject iceBlastObject;
+   [SerializeField] private GameObject iceBlastObject;
     public float stunLength = 3f;
     public float slowPercentage = 1f;
     public float blastRadius = 5f; // adjusted because player sprite has weird measurements
@@ -22,13 +22,10 @@ public class IceBlast : Ability
     {
         enabled = false;
     }
-    public void Activate()
+    public override void Activate()
     {
         iceBlastObject.SetActive(true);
-        unlocked = true;
-        enabled = true;
-
-        Debug.Log("Ice Blast unlocked!");
+        base.Activate();
     }
 
 
@@ -45,11 +42,10 @@ public class IceBlast : Ability
     
     public void Cast()
     {
-        isOnCooldown = true;
-
         GameObject ring = Instantiate(ringPrefab, transform.position, transform.rotation, transform);
         GameObject iceBlast = Instantiate(iceBlastPrefab, transform.position, transform.rotation, ring.gameObject.transform);
         StartCoroutine(BlastCharge(ring, iceBlast));
+        
     }
 
     IEnumerator BlastCharge(GameObject ring, GameObject iceBlast)
@@ -65,7 +61,6 @@ public class IceBlast : Ability
 
         Destroy(ring);
         Destroy(iceBlast);
-
         StartCooldown();
     }
 

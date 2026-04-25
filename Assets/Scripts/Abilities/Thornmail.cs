@@ -5,7 +5,7 @@ using System.Collections;
 public class Thornmail : Ability
 {
     [Header("Thornmail Settings")]
-    [SerializeField] private GameObject thornmailPrefab;
+    //[SerializeField] private GameObject thornmailPrefab;
     [SerializeField] private GameObject ThornmailObject;
     [SerializeField] private float duration = 3f;   
 
@@ -14,13 +14,12 @@ public class Thornmail : Ability
     {
         enabled = false;
     }
-    public void Activate()
+    public override void Activate()
     {
         ThornmailObject.SetActive(true);
-        unlocked = true;
-        enabled = true;
 
         Debug.Log("Thornmail unlocked!");
+        base.Activate();
     }
     public void OnThornmail(InputValue value)
     {
@@ -35,18 +34,16 @@ public class Thornmail : Ability
     private IEnumerator ActivateThornmail()
     {
         isActive = true;
-        if (thornmailPrefab != null)
-        {
-            thornmailPrefab.SetActive(true);
-        }
 
-        Debug.Log("Thornmail Active!");
+        //thornmailPrefab.SetActive(true);
+        
+
+        Debug.Log("Thornmail Active");
         yield return new WaitForSeconds(duration);
-        if (thornmailPrefab != null)
-        {
-            thornmailPrefab.SetActive(false);
-        }
+        
+        //thornmailPrefab.SetActive(false);
         isActive = false;
+        Debug.Log("Thornmail Inactive");
         StartCooldown();
     }
     private void OnTriggerEnter2D(Collider2D other)

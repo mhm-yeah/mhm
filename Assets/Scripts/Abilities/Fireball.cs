@@ -19,13 +19,13 @@ public class Fireball : Ability
     {
         enabled = false;
     }
-    public void Activate()
+    public override void Activate()
     {
         FireballObject.SetActive(true);
-        unlocked = true;
-        enabled = true;
+        base.Activate();
+        Debug.Log("Fireball upgraded to level " + level);
 
-        Debug.Log("FireBall unlocked!");
+
     }
 
     public void OnFireball(InputValue value)

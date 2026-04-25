@@ -27,13 +27,12 @@ public class LightningChain : Ability
     {
         enabled = false;
     }
-    public void Activate()
+    public override void Activate()
     {
         lightningChainObject.SetActive(true);
-        unlocked = true;
-        enabled = true;
+        base.Activate();
+        Debug.Log("Lightning Chain upgraded to level " + level);
 
-        Debug.Log("Lightning Chain unlocked!");
     }
 
 
