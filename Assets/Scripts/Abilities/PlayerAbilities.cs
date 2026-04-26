@@ -23,6 +23,12 @@ public class PlayerAbilities : MonoBehaviour
             ability.Activate();
         }
     }
+
+    public Ability GetAbility(AbilityID id)
+    {
+        abilities.TryGetValue(id, out var ability);
+        return ability;
+    }
 }
 public enum AbilityID
 {

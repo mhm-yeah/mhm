@@ -87,7 +87,7 @@ public class EnemyStats : MonoBehaviour
         if (transform != null) // it is possible for the enemy to die while slowed.
         {
             isSlowed = false;
-            moveSpeed /= (1f - slowPercentage);
+            moveSpeed = baseMoveSpeed; // same issue
             sprite.color = originalColor;
         }
 

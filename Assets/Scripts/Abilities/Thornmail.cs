@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Thornmail : Ability
 {
@@ -10,10 +11,7 @@ public class Thornmail : Ability
     [SerializeField] private float duration = 3f;   
 
     private bool isActive = false;
-    void Awake()
-    {
-        enabled = false;
-    }
+    
     public override void Activate()
     {
         ThornmailObject.SetActive(true);
@@ -53,8 +51,18 @@ public class Thornmail : Ability
             EnemyHealth enemy = other.GetComponent<EnemyHealth>();
             if (enemy != null)
             {
-                enemy.TakeDamage(damage); 
+                enemy.TakeDamage(currentDamage); 
             }
         }
+    }
+
+    public override Dictionary<string, object> AbilityInfo()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override Dictionary<string, object> LevelUpInfo()
+    {
+        throw new System.NotImplementedException();
     }
 }

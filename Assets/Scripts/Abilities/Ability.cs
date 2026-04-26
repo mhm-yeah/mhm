@@ -1,6 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Ability : MonoBehaviour
+public abstract class Ability : MonoBehaviour
 {
     [Header("Base stats")]
     public Utilities.Element element = Utilities.Element.Default;
@@ -10,16 +11,26 @@ public class Ability : MonoBehaviour
     public float castTime = 0f;
     public float lifeTime = 10f;
     public float cooldownTime = 5f;
+    [HideInInspector] public float currentDamage = 0f;
+    [HideInInspector] public float currentCooldownTime = 0f;
 
     [Header("Ability scaling")]
+    public int levelCap = 5;
     public float perLevelDamageIncrease = 0f;
     public float perLevelDamageMultiplier = 1f;
+    public float perLevelCooldownReduction = 0f;
 
     [Header("Ability state")]
     public AbilityID ID;
     public bool unlocked = false;
     public bool isOnCooldown = false;
+    public bool isMaxLevel = false;
     private float cooldownTimer = 0f;
+
+    protected virtual void Awake()
+    {
+        ResetAbility();
+    }
 
     protected virtual void Update()
     {
@@ -52,21 +63,34 @@ public class Ability : MonoBehaviour
 
     public void LevelUp()
     {
-        if (level >= 5) return;
-
         level++;
-        damage += perLevelDamageIncrease;
-        damage *= perLevelDamageMultiplier;
+        currentDamage += perLevelDamageIncrease;
+        currentDamage *= perLevelDamageMultiplier;
+        currentCooldownTime -= perLevelCooldownReduction;
+
+        isMaxLevel = level >= levelCap;
+    }
+
+    public void ResetAbility()
+    {
+        enabled = false;
+        unlocked = false;
+        currentDamage = damage;
+        currentCooldownTime = cooldownTime;
     }
 
     public void StartCooldown()
     {
         isOnCooldown = true;
-        cooldownTimer = cooldownTime;
+        cooldownTimer = currentCooldownTime;
+        Debug.Log($"Started cooldown for {ID}. Cooldown time: {cooldownTimer}");
     }
 
     public float GetCooldownTimer()
     {
         return cooldownTimer;
     }
+
+    public abstract Dictionary<string, object> AbilityInfo();
+    public abstract Dictionary<string, object> LevelUpInfo();
 }
