@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,11 +11,6 @@ public class ArrowVolley : Ability
 
     private Camera mainCam;
     private GameObject projectilesFolder;
-
-    void Awake()
-    {
-        enabled = false;
-    }
 
     public override void Activate()
     {
@@ -81,5 +77,15 @@ public class ArrowVolley : Ability
             cos * v.x - sin * v.y,
             sin * v.x + cos * v.y
         );
+    }
+
+    public override Dictionary<string, object> AbilityInfo()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override Dictionary<string, object> LevelUpInfo()
+    {
+        throw new System.NotImplementedException();
     }
 }

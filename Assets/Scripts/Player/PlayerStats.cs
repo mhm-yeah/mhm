@@ -83,6 +83,7 @@ public class PlayerStats : MonoBehaviour
         Debug.Log(weaponInd + ", Equipped: " + weapons[weaponInd]);
         weapons[weaponInd].enabled = true;
         currentWeapon = weapons[weaponInd];
+        ChangeStats();
     }
 
     private void ChangeStats()

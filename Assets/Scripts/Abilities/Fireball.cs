@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -15,17 +16,11 @@ public class Fireball : Ability
         hands = transform.Find("Hands");
     }
 
-    void Awake()
-    {
-        enabled = false;
-    }
     public override void Activate()
     {
         FireballObject.SetActive(true);
         base.Activate();
         Debug.Log("Fireball upgraded to level " + level);
-
-
     }
 
     public void OnFireball(InputValue value)
@@ -54,5 +49,15 @@ public class Fireball : Ability
             rb.linearVelocity = hands.up * abilitySpeed;
         }
         StartCooldown();
+    }
+
+    public override Dictionary<string, object> AbilityInfo()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override Dictionary<string, object> LevelUpInfo()
+    {
+        throw new System.NotImplementedException();
     }
 }

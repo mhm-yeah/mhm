@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Analytics;
@@ -16,6 +17,13 @@ public class LightningChain : Ability
     public float stunLength = 1f;
     public float delayBetweenChains = 0.1f;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        //enabled = true;
+        //unlocked = true;
+    }
+
     void Start()
     {
         hands = transform.Find("Hands");
@@ -23,10 +31,6 @@ public class LightningChain : Ability
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    void Awake()
-    {
-        enabled = false;
-    }
     public override void Activate()
     {
         lightningChainObject.SetActive(true);
@@ -49,14 +53,13 @@ public class LightningChain : Ability
 
     public void Cast()
     {
-       
+        StartCooldown();
         GameObject lightningChain = Instantiate(lightningChainPrefab, hands.position, hands.rotation, projectilesFolder.transform);
         LightningProjectile projectileScript = lightningChain.GetComponent<LightningProjectile>();
         projectileScript.Init(this);
 
         Rigidbody2D rb = lightningChain.GetComponent<Rigidbody2D>();
         rb.AddForce(hands.transform.up * abilitySpeed, ForceMode2D.Impulse);
-        StartCooldown();
     }
 
     public void StartImpact(Collider2D enemy)
@@ -108,8 +111,18 @@ public class LightningChain : Ability
         EnemyStats enemyStats = enemy.GetComponent<EnemyStats>();
         if (enemyHealth != null && enemyStats != null)
         {
-            enemyHealth.TakeDamage(damage);
+            enemyHealth.TakeDamage(currentDamage);
             enemyStats.Stun(stunLength);
         }
+    }
+
+    public override Dictionary<string, object> AbilityInfo()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override Dictionary<string, object> LevelUpInfo()
+    {
+        throw new System.NotImplementedException();
     }
 }

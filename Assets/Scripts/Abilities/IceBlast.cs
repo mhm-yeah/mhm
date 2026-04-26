@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
@@ -18,10 +19,14 @@ public class IceBlast : Ability
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    void Awake()
+    protected override void Awake()
     {
-        enabled = false;
+        cooldownTime += castTime;
+        base.Awake();
+        //enabled = true;
+        //unlocked = true;
     }
+    
     public override void Activate()
     {
         iceBlastObject.SetActive(true);
@@ -32,9 +37,9 @@ public class IceBlast : Ability
     protected override void Update()
     {
         base.Update();
-        if (gameManager.isGameOver) return;
+        if (gameManager.isGameOver || isOnCooldown) return;
 
-        if (Input.GetKeyDown(KeyCode.T) && !isOnCooldown)
+        if (Input.GetKeyDown(KeyCode.T))
         {
             Cast();
         }
@@ -42,10 +47,10 @@ public class IceBlast : Ability
     
     public void Cast()
     {
+        StartCooldown();
         GameObject ring = Instantiate(ringPrefab, transform.position, transform.rotation, transform);
         GameObject iceBlast = Instantiate(iceBlastPrefab, transform.position, transform.rotation, ring.gameObject.transform);
         StartCoroutine(BlastCharge(ring, iceBlast));
-        
     }
 
     IEnumerator BlastCharge(GameObject ring, GameObject iceBlast)
@@ -61,7 +66,6 @@ public class IceBlast : Ability
 
         Destroy(ring);
         Destroy(iceBlast);
-        StartCooldown();
     }
 
     private void ActivateBlast(GameObject ring)
@@ -76,10 +80,20 @@ public class IceBlast : Ability
 
                 if (enemyHealth != null && enemyStats != null)
                 {
-                    enemyHealth.TakeDamage(damage);
+                    enemyHealth.TakeDamage(currentDamage);
                     enemyStats.Slow(stunLength, slowPercentage);
                 }
             }
         }
+    }
+
+    public override Dictionary<string, object> AbilityInfo()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override Dictionary<string, object> LevelUpInfo()
+    {
+        throw new System.NotImplementedException();
     }
 }
