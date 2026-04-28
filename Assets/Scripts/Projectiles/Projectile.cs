@@ -117,7 +117,7 @@ public class Projectile : MonoBehaviour
         Debug.Log($"{vfx} vfx");
         if (vfx != null)
         {
-            Instantiate(vfx, transform.position, Quaternion.identity, transform); // the issue is w the parent objects
+            Instantiate(vfx, transform.position, transform.rotation, transform); // the issue is w the parent objects
             //Instantiate(vfx, transform.position, Quaternion.identity);
         }
     }
