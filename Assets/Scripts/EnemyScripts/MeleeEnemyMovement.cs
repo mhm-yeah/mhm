@@ -5,14 +5,14 @@ public class EnemyMovement : MonoBehaviour
     Transform player;
     private EnemyStats enemyStats;
     private GameManager gameManager;
-    private SpriteRenderer spriteRenderer; // ?? prid�ta
+    private SpriteRenderer spriteRenderer; // ?? pridėta
 
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         enemyStats = GetComponent<EnemyStats>();
-        spriteRenderer = GetComponent<SpriteRenderer>(); // ?? prid�ta
+        spriteRenderer = GetComponent<SpriteRenderer>(); // ?? pridėta
 
         GameObject playerObject;
         playerObject = GameObject.FindWithTag("Player");
