@@ -17,10 +17,17 @@ public class PlayerAbilities : MonoBehaviour
 
     public void ApplyAbility(AbilityID id)
     {
+        Debug.Log($"Trying to activate: {id}");
         if (abilities.TryGetValue(id, out var ability))
         {
             ability.Activate();
         }
+    }
+
+    public Ability GetAbility(AbilityID id)
+    {
+        abilities.TryGetValue(id, out var ability);
+        return ability;
     }
 }
 public enum AbilityID

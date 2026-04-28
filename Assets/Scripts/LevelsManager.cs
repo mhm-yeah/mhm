@@ -18,6 +18,7 @@ public class LevelsManager : MonoBehaviour
     [SerializeField] CardSelectionUI cardUI;
     int currentLVL;
     float currentXP;
+    private float waitForCardSelection = 2f;
 
     void Start()
     {
@@ -44,13 +45,13 @@ public class LevelsManager : MonoBehaviour
             {
                 if (cardUI.HasCardsAvailable())
                     //TriggerCardSelection();
-                    Invoke(nameof(TriggerCardSelection), 2f);
+                    Invoke(nameof(TriggerCardSelection), waitForCardSelection);
             }
         }
     }
 
     void TriggerCardSelection() {
-        Time.timeScale = 0f;
+        Time.timeScale = 0;
         cardUI.ShowCards();
     }
     

@@ -29,7 +29,14 @@ public class CardSelectionUI : MonoBehaviour
     public void OnCardSelected(CardData card)
     {
         player.ApplyAbility(card.abilityID);
-        allCards.RemoveAll(c => c.abilityID == card.abilityID);
+        // might need to change
+        Ability ability = player.GetAbility(card.abilityID);
+
+        if (ability != null && ability.isMaxLevel == true)
+        {
+            allCards.RemoveAll(c => c.abilityID == card.abilityID);
+        }
+        
         Time.timeScale = 1f;
         gameObject.SetActive(false);
     }

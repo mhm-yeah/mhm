@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
 
     public virtual void Init(Ability ability)
     {
-        damage = ability.damage;
+        damage = ability.currentDamage;
         speed = ability.abilitySpeed;
         lifetime = ability.lifeTime;
         element = ability.element;

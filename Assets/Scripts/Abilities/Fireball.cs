@@ -1,6 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.UI;
 public class Fireball : Ability
 {
     private Transform hands;
@@ -8,7 +9,7 @@ public class Fireball : Ability
 
     [Header("Fireball prefab")]
     [SerializeField] private GameObject fireballPrefab;
-
+    [SerializeField] private GameObject FireballObject;
     void Start()
     {
         projectilesFolder = GameObject.Find("Projectiles");
@@ -24,16 +25,19 @@ public class Fireball : Ability
     }
     public override void Activate()
     {
+        FireballObject.SetActive(true);
         base.Activate();
         Debug.Log("Fireball upgraded to level " + level);
     }
 
     public void OnFireball(InputValue value)
     {
-        if (!unlocked) return;
+        if (!enabled || isOnCooldown) return; // also for da cards
 
         if (!value.isPressed)
             return;
+
+        //Debug.Log("FIREBALL");
 
         GameObject fireball = Instantiate(
             fireballPrefab,
@@ -58,5 +62,16 @@ public class Fireball : Ability
         {
             rb.linearVelocity = hands.up * abilitySpeed;
         }
+        StartCooldown();
+    }
+
+    public override Dictionary<string, object> AbilityInfo()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override Dictionary<string, object> LevelUpInfo()
+    {
+        throw new System.NotImplementedException();
     }
 }

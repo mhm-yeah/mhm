@@ -28,15 +28,6 @@ public class PlayerHealth : MonoBehaviour
         {
             damage = playerDefense.ApplyDefense(damage);
         }
-        Thornmail thornmail = GetComponent<Thornmail>();
-        if (thornmail.hasThornmail && attacker != null)
-        {
-            EnemyHealth enemy = attacker.GetComponent<EnemyHealth>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(thornmail.thornmailDamage);
-            }
-        }
         currentHealth -= damage;
 
         if (currentHealth <= 0)
