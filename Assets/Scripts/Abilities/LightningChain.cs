@@ -57,6 +57,12 @@ public class LightningChain : Ability
         GameObject lightningChain = Instantiate(lightningChainPrefab, hands.position, hands.rotation, projectilesFolder.transform);
         LightningProjectile projectileScript = lightningChain.GetComponent<LightningProjectile>();
         projectileScript.Init(this);
+        
+        //for matching particles
+        PlayerStats playerStats = GetComponent<PlayerStats>();
+        bool hasElementalSynergy = playerStats.HasElementalSynergy(element);
+        projectileScript.SetElementSynergy(hasElementalSynergy);
+
 
         Rigidbody2D rb = lightningChain.GetComponent<Rigidbody2D>();
         rb.AddForce(hands.transform.up * abilitySpeed, ForceMode2D.Impulse);

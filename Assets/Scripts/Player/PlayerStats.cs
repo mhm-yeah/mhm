@@ -93,4 +93,20 @@ public class PlayerStats : MonoBehaviour
         damage = baseDamage + weapon.damage;
         attackSpeed = baseAttackSpeed + weapon.attackSpeed;
     }
+
+    public bool HasElementalSynergy(Utilities.Element element)
+    {
+        Weapon weapon = GetCurrentWeapon();
+        if (weapon == null || weapon.element != element)
+            return false;
+
+        Ability[] abilities = GetComponents<Ability>();
+        foreach (Ability ability in abilities)
+        {
+            if (ability.unlocked && ability.element == element)
+                return true;
+        }
+
+        return false;
+    }
 }

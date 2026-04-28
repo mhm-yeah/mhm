@@ -16,6 +16,13 @@ public class Fireball : Ability
         hands = transform.Find("Hands");
     }
 
+    void Awake()
+    {
+        unlocked = false;
+        element = Utilities.Element.Fire;
+        //enabled = true;
+        //unlocked = true;
+    }
     public override void Activate()
     {
         FireballObject.SetActive(true);
@@ -40,7 +47,14 @@ public class Fireball : Ability
         );
 
         FireProjectile projectileScript = fireball.GetComponent<FireProjectile>();
+        //for matching particles
+        PlayerStats playerStats = FindFirstObjectByType<PlayerStats>();
+        bool hasSynergy = playerStats.HasElementalSynergy(element);
+        projectileScript.SetElementSynergy(hasSynergy);
+
         projectileScript.Init(this);
+
+        
 
         Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
 
