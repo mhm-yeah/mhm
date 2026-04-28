@@ -183,11 +183,11 @@ MonoBehaviour:
   damage: 0
   lifetime: 0
   fireVfx: {fileID: 0}
-  iceVfx: {fileID: 8048912605973002475, guid: acd9d0176e29ca948af437c50f998c4e, type: 3}
+  iceVfx: {fileID: 0}
   lightningVfx: {fileID: 0}
-  fireSynergyVfx: {fileID: 4008462435949851508, guid: 5f2a8996abb17da43be8da4aa4251622, type: 3}
-  iceSynergyVfx: {fileID: 4008462435949851508, guid: 5f2a8996abb17da43be8da4aa4251622, type: 3}
-  lightningSynergyVfx: {fileID: 4008462435949851508, guid: 5f2a8996abb17da43be8da4aa4251622, type: 3}
+  fireSynergyVfx: {fileID: 8048912605973002475, guid: acd9d0176e29ca948af437c50f998c4e, type: 3}
+  iceSynergyVfx: {fileID: 8048912605973002475, guid: acd9d0176e29ca948af437c50f998c4e, type: 3}
+  lightningSynergyVfx: {fileID: 8048912605973002475, guid: acd9d0176e29ca948af437c50f998c4e, type: 3}
   element: 2
   slowDuration: 2
   slowPercentage: 0.5
