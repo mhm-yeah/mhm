@@ -172,3 +172,12 @@ MonoBehaviour:
   speed: 0
   damage: 0
   lifetime: 0
+  fireVfx: {fileID: 0}
+  iceVfx: {fileID: 0}
+  lightningVfx: {fileID: 0}
+  fireSynergyVfx: {fileID: 2893349519344066547, guid: 5ac79040b5d4fdf45869793be757280f, type: 3}
+  iceSynergyVfx: {fileID: 0}
+  lightningSynergyVfx: {fileID: 0}
+  element: 1
+  burnDamagePerSecond: 5
+  burnDuration: 3

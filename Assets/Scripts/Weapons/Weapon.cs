@@ -86,6 +86,9 @@ public abstract class Weapon : MonoBehaviour
         if (projectileScript != null)
         {
             projectileScript.Init(currentWeapon);
+
+            bool hasElementalSynergy = playerStats.HasElementalSynergy(currentWeapon.element);
+            projectileScript.SetElementSynergy(hasElementalSynergy);
         }
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();

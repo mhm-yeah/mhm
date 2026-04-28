@@ -13,6 +13,8 @@ public class IceBlast : Ability
     public float slowPercentage = 1f;
     public float blastRadius = 5f; // adjusted because player sprite has weird measurements
 
+    [SerializeField] private GameObject synergyBlastParticles;
+
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -21,6 +23,7 @@ public class IceBlast : Ability
     void Awake()
     {
         unlocked = false;
+        element = Utilities.Element.Ice;
     }
     public override void Activate()
     {
@@ -69,6 +72,15 @@ public class IceBlast : Ability
 
     private void ActivateBlast(GameObject ring)
     {
+        PlayerStats playerStats = GetComponent<PlayerStats>();
+        bool hasSynergy = playerStats.HasElementalSynergy(element);
+        //a bit redundant
+        if (hasSynergy && synergyBlastParticles != null)
+        {
+            GameObject vfx = Instantiate(synergyBlastParticles, ring.transform.position, Quaternion.identity);
+            Destroy(vfx, 3f); // match particle duration
+        }
+
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(ring.transform.position, blastRadius);
         foreach (Collider2D enemy in hitEnemies)
         {
