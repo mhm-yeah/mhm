@@ -16,8 +16,9 @@ public class Fireball : Ability
         hands = transform.Find("Hands");
     }
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         unlocked = false;
         element = Utilities.Element.Fire;
         //enabled = true;
@@ -67,11 +68,21 @@ public class Fireball : Ability
 
     public override Dictionary<string, object> AbilityInfo()
     {
-        throw new System.NotImplementedException();
+        return new Dictionary<string, object>
+        {
+            { "Level", 1 },
+            { "Damage", currentDamage },
+            { "Cooldown", currentCooldownTime }
+        };
     }
 
     public override Dictionary<string, object> LevelUpInfo()
     {
-        throw new System.NotImplementedException();
+        return new Dictionary<string, object>
+        {
+            { "Level", $"{level} -> {level + 1}" },
+            { "Damage", $"{currentDamage} -> {currentDamage + perLevelDamageIncrease}" },
+            { "Cooldown", $"{currentCooldownTime} -> {currentCooldownTime - perLevelCooldownReduction}" }
+        };
     }
 }

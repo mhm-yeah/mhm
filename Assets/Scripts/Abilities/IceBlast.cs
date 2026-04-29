@@ -23,6 +23,7 @@ public class IceBlast : Ability
 
     protected override void Awake()
     {
+        base.Awake();
         unlocked = false;
         element = Utilities.Element.Ice;
     }
@@ -98,11 +99,23 @@ public class IceBlast : Ability
 
     public override Dictionary<string, object> AbilityInfo()
     {
-        throw new System.NotImplementedException();
+        return new Dictionary<string, object>
+        {
+            { "Level", 1 },
+            { "Damage", currentDamage },
+            { "Cooldown", currentCooldownTime },
+            { "Stun duration", stunLength }
+        };
     }
 
     public override Dictionary<string, object> LevelUpInfo()
     {
-        throw new System.NotImplementedException();
+        return new Dictionary<string, object>
+        {
+            { "Level", $"{level} -> {level + 1}" },
+            { "Damage", $"{currentDamage} -> {currentDamage + perLevelDamageIncrease}" },
+            { "Cooldown", $"{currentCooldownTime} -> {currentCooldownTime - perLevelCooldownReduction}" },
+            { "Stun duration", stunLength }
+        };
     }
 }

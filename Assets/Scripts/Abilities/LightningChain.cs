@@ -124,11 +124,25 @@ public class LightningChain : Ability
 
     public override Dictionary<string, object> AbilityInfo()
     {
-        throw new System.NotImplementedException();
+        return new Dictionary<string, object>
+        {
+            { "Level", 1 },
+            { "Damage", currentDamage },
+            { "Cooldown", currentCooldownTime },
+            { "Stun duration", stunLength },
+            { "Chain count", maxChainCount }
+        };
     }
 
     public override Dictionary<string, object> LevelUpInfo()
     {
-        throw new System.NotImplementedException();
+        return new Dictionary<string, object>
+        {
+            { "Level", $"{level} -> {level + 1}" },
+            { "Damage", $"{currentDamage} -> {currentDamage + perLevelDamageIncrease}" },
+            { "Cooldown", $"{currentCooldownTime} -> {currentCooldownTime - perLevelCooldownReduction}" },
+            { "Stun duration", stunLength },
+            { "Chain count", maxChainCount }
+        };
     }
 }

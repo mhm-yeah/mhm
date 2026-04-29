@@ -58,11 +58,23 @@ public class Thornmail : Ability
 
     public override Dictionary<string, object> AbilityInfo()
     {
-        throw new System.NotImplementedException();
+        return new Dictionary<string, object>
+        {
+            { "Level", 1 },
+            { "Damage", currentDamage },
+            { "Cooldown", currentCooldownTime },
+            { "Duration", duration }
+        };
     }
 
     public override Dictionary<string, object> LevelUpInfo()
     {
-        throw new System.NotImplementedException();
+        return new Dictionary<string, object>
+        {
+            { "Level", $"{level} -> {level + 1}" },
+            { "Damage", $"{currentDamage} -> {currentDamage + perLevelDamageIncrease}" },
+            { "Cooldown", $"{currentCooldownTime} -> {currentCooldownTime - perLevelCooldownReduction}" },
+            { "Duration", duration }
+        };
     }
 }

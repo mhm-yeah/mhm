@@ -9,6 +9,29 @@ public class CardSelectionUI : MonoBehaviour
     public CardButton[] buttons;
     List<CardData> currentCards;
 
+    private void SetupStatsInfo(CardData card)
+    {
+        Ability ability = player.GetAbility(card.abilityID);
+        string description = "";
+
+        if (ability.level > 0)
+        {
+            foreach (var stat in ability.LevelUpInfo())
+            {
+                description += $"{stat.Key}: {stat.Value}\n";
+            }
+        }
+        else
+        {
+            foreach (var stat in ability.AbilityInfo())
+            {
+                description += $"{stat.Key}: {stat.Value}\n";
+            }
+        }
+        
+        card.description = description;
+    }
+
     public void ShowCards()
     {
         gameObject.SetActive(true);
@@ -22,6 +45,7 @@ public class CardSelectionUI : MonoBehaviour
 
         for (int i = 0; i < amount; i++)
         {
+            SetupStatsInfo(currentCards[i]);
             buttons[i].Setup(currentCards[i], this);
         }
     }

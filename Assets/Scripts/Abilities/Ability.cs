@@ -93,4 +93,10 @@ public abstract class Ability : MonoBehaviour
 
     public abstract Dictionary<string, object> AbilityInfo();
     public abstract Dictionary<string, object> LevelUpInfo();
+
+    // TO DO an actual description, not just stats
+    public virtual string GetDescription()
+    {
+        throw new System.NotImplementedException("GetDescription() not implemented for " + ID);
+    }
 }
