@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LevelsManager : MonoBehaviour
 {
     [Header("References")]
+    private GameManager gameManager;
     [SerializeField] TextMeshProUGUI currentLVLText;
     [SerializeField] Image xpBar;
 
@@ -22,12 +23,14 @@ public class LevelsManager : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         currentLVL= 0;
         currentXP = 0;
         UpdateUI();
     }
     public void IncreaseXP(float amount)
     {
+        gameManager.totalScore += amount;
         currentXP += amount;
         CheckForLVLUP();
         UpdateUI();

@@ -19,6 +19,11 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (enemyStats.isInvulnerable)
+        {
+            return;
+        }
+        
         currentHealth -= damage;
 
         GameObject dmgNum = Instantiate(damageNumberPrefab, transform.position, Quaternion.identity);

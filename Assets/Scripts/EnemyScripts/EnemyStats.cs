@@ -44,6 +44,20 @@ public class EnemyStats : MonoBehaviour
         return originalColor;
     }
 
+    public void MakeInvulnerable(float duration)
+    {
+        isInvulnerable = true;
+        sprite.color = Color.magenta;
+
+        Invoke(nameof(RemoveInvulnerability), duration);
+    }
+
+    private void RemoveInvulnerability()
+    {
+        isInvulnerable = false;
+        sprite.color = originalColor;
+    }
+
     public void Stun(float duration)
     {
         if (isStunned == false)
@@ -113,7 +127,10 @@ public class EnemyStats : MonoBehaviour
 
             if (enemyHealth != null) // it is possible for the enemy to die while burning.
             {
-                enemyHealth.TakeDamage(damagePerSecond);
+                if (!isInvulnerable)
+                {
+                    enemyHealth.TakeDamage(damagePerSecond);
+                }
             }
 
             elapsed += 1f;

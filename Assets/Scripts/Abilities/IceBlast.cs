@@ -24,7 +24,7 @@ public class IceBlast : Ability
     protected override void Awake()
     {
         base.Awake();
-        unlocked = false;
+        //unlocked = true;
         element = Utilities.Element.Ice;
     }
     

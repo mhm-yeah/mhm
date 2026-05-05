@@ -1282,7 +1282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 529417377270939593, guid: 3dce9f27579783d45b120372398adf17, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -506.62924
+      value: -506.62927
       objectReference: {fileID: 0}
     - target: {fileID: 727743163298519321, guid: 3dce9f27579783d45b120372398adf17, type: 3}
       propertyPath: m_overflowMode
@@ -1402,7 +1402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4052869765312597244, guid: 3dce9f27579783d45b120372398adf17, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -506.62924
+      value: -506.62927
       objectReference: {fileID: 0}
     - target: {fileID: 4231625751280926138, guid: 3dce9f27579783d45b120372398adf17, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1638,7 +1638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8823690494088163124, guid: 3dce9f27579783d45b120372398adf17, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -506.62924
+      value: -506.62927
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2375,7 +2375,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -10
+  m_SortingOrder: -100
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: cdbce3be7cde4b54ea5e8e87aa33ff51, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2665,6 +2665,18 @@ PrefabInstance:
     - target: {fileID: 4539790754347116935, guid: 23c1e688c4e14d1408a150aae998c111, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Restart
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029308070415515712, guid: 23c1e688c4e14d1408a150aae998c111, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5329865756157635676, guid: 23c1e688c4e14d1408a150aae998c111, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599920996616604747, guid: 23c1e688c4e14d1408a150aae998c111, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 8559898194883789665, guid: 23c1e688c4e14d1408a150aae998c111, type: 3}
       propertyPath: m_Name
@@ -3024,7 +3036,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   gameOverUI: {fileID: 1393634176}
+  finalScoreText: {fileID: 1567070561}
   isGameOver: 0
+  totalScore: 0
 --- !u!114 &1497587722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3163,6 +3177,17 @@ Transform:
   - {fileID: 1904038572}
   m_Father: {fileID: 1877392716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1567070561 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2419705643533289221, guid: 23c1e688c4e14d1408a150aae998c111, type: 3}
+  m_PrefabInstance: {fileID: 1393634175}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1576964356
 GameObject:
   m_ObjectHideFlags: 0
@@ -3873,7 +3898,7 @@ MonoBehaviour:
   perLevelDamageMultiplier: 1
   perLevelCooldownReduction: 0.5
   ID: 4
-  unlocked: 0
+  unlocked: 1
   isOnCooldown: 0
   isMaxLevel: 0
   ringPrefab: {fileID: 8708012294227827741, guid: bcf4e50353f9a8047b7bff296e048e68, type: 3}

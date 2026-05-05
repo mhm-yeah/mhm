@@ -1,21 +1,28 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public GameObject gameOverUI;
+    public TextMeshProUGUI finalScoreText;
+
     public bool isGameOver = false;
+    public float totalScore = 0f;
 
     void Start()
     {
         Time.timeScale = 1f;
         isGameOver = false;
+        totalScore = 0f;
     }
 
     public void GameOver()
     {
         isGameOver = true;
         Time.timeScale = 0;
+        finalScoreText.text = "Final Score: " + Mathf.RoundToInt(totalScore).ToString();
         gameOverUI.SetActive(true);
     }
     public void Restart()
