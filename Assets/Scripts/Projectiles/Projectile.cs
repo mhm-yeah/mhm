@@ -41,10 +41,6 @@ public class Projectile : MonoBehaviour
         SpawnVFX();
         Invoke(nameof(DestroyProjectile), lifetime);
     }
-    //public void FinalizeProjectile()
-    //{
-    //    SpawnVFX();
-    //}
 
     void DestroyProjectile()
     {
@@ -71,12 +67,13 @@ public class Projectile : MonoBehaviour
     public void SetElementSynergy(bool value)
     {
         hasElementalSynergy = value;
+        //Debug.Log($"[Projectile] Synergy set to: {value}");
     }
 
     public void SpawnVFX()
     {
         GameObject vfx = null;
-        Debug.Log($"{element} current");
+        //Debug.Log($"{element} current");
         if (hasElementalSynergy)
         {
             switch (element)
@@ -114,10 +111,10 @@ public class Projectile : MonoBehaviour
                     break;
             }
         }
-        Debug.Log($"{vfx} vfx");
+        //Debug.Log($"Synergy: {hasElementalSynergy}, Element: {element}, VFX: {vfx}");
         if (vfx != null)
         {
-            Instantiate(vfx, transform.position, transform.rotation, transform); // the issue is w the parent objects
+            Instantiate(vfx, transform.position, transform.rotation, transform); 
             //Instantiate(vfx, transform.position, Quaternion.identity);
         }
     }

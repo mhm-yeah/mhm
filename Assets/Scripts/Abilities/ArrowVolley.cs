@@ -62,7 +62,7 @@ public class ArrowVolley : Ability
             }
             //rotate arrow to face 
             float rotZ = Mathf.Atan2(rotatedDir.y, rotatedDir.x) * Mathf.Rad2Deg;
-            arrow.transform.rotation = Quaternion.Euler(0f, 0f, rotZ + 90f); //due to sprite rotation being up
+            arrow.transform.rotation = Quaternion.Euler(0f, 0f, rotZ - 90f); //due to sprite rotation being up
         }
         StartCooldown();
     }
