@@ -20,6 +20,7 @@ public class EnemyStats : MonoBehaviour
     public bool isStunned = false;
     public bool isSlowed = false;
     public bool isInvulnerable = false;
+    public bool isBelowHalfHealth = false;
 
     [Header("Drops table")]
     public float healthDropChance = 0.1f;

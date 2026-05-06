@@ -47,5 +47,11 @@ TagManager:
   - name: ui
     uniqueID: 4108512705
     locked: 0
+  - name: RingOuter
+    uniqueID: 2312645795
+    locked: 0
+  - name: RingInner
+    uniqueID: 3488763175
+    locked: 0
   m_RenderingLayers:
   - Default

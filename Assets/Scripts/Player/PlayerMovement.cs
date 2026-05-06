@@ -6,13 +6,16 @@ public class PlayerMovement : MonoBehaviour
 {
     private float moveSpeed;
     private float sprintSpeed;
+    private float currentSpeed;
     private PlayerStats playerStats;
+    private GameManager gameManager;
     private Rigidbody2D rb;
     private Vector2 moveInput;
-    private float currentSpeed;
+
 
     private void Awake()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         rb = GetComponent<Rigidbody2D>();
         playerStats = GetComponent<PlayerStats>();
         moveSpeed = playerStats.moveSpeed;
@@ -22,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (gameManager.isGameOver || playerStats.GetStunStatus()) return;
+
         if (Keyboard.current == null)
             return;
 
@@ -33,6 +38,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (gameManager.isGameOver) return;
+
+        if (playerStats.GetStunStatus())
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
         rb.linearVelocity = moveInput * currentSpeed;
     }
 
