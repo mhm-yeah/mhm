@@ -559,7 +559,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &283661821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1200,7 +1200,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000a32cd889274df2cf
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1252,6 +1252,83 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2531608534355877791, guid: ea6da0b2dcfa4ea4da1247202c30a275, type: 3}
   m_PrefabInstance: {fileID: 1405053303}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &800410490
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -3514336696573364018, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -3514336696573364018, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
+      propertyPath: baseMaxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -592388831515524953, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
+      propertyPath: groundSlamPrefab
+      value: 
+      objectReference: {fileID: 1407276691880381287, guid: 55f8008829acc1c49a0eba03e0550d9d, type: 3}
+    - target: {fileID: -592388831515524953, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
+      propertyPath: attacksBeforeAbility
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -592388831515524953, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
+      propertyPath: groundSlamChargeTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044646188334991521, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044646188334991521, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044646188334991521, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044646188334991521, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044646188334991521, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044646188334991521, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044646188334991521, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044646188334991521, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044646188334991521, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044646188334991521, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163076635662951265, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
+      propertyPath: m_Name
+      value: BossEnemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
 --- !u!1001 &820085006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3372,7 +3449,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1, y: 231.00006}
+  m_AnchoredPosition: {x: 1, y: 231}
   m_SizeDelta: {x: 12, y: 14}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1642109382 stripped
@@ -4316,3 +4393,4 @@ SceneRoots:
   - {fileID: 587543232}
   - {fileID: 283661822}
   - {fileID: 1267564568}
+  - {fileID: 800410490}

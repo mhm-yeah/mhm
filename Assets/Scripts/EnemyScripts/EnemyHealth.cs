@@ -26,6 +26,11 @@ public class EnemyHealth : MonoBehaviour
         
         currentHealth -= damage;
 
+        if (currentHealth <= enemyStats.maxHealth / 2)
+        {
+            enemyStats.isBelowHalfHealth = true;
+        }
+
         GameObject dmgNum = Instantiate(damageNumberPrefab, transform.position, Quaternion.identity);
         dmgNum.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(Mathf.RoundToInt(damage).ToString());
 

@@ -23,6 +23,11 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Player status")]
     private bool canAttack = true;
+    private bool isStunned = false;
+    private bool isInvulnerable = false;
+    
+    private SpriteRenderer sprite;
+    private Color originalColor;
 
     private GameManager gameManager;
     private Weapon[] weapons;
@@ -36,6 +41,8 @@ public class PlayerStats : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         currentWeapon = transform.GetComponent<Gun>();
         weapons = transform.GetComponents<Weapon>();
+        sprite = transform.GetComponent<SpriteRenderer>();
+        originalColor = sprite.color;
 
         ChangeStats();
     }
@@ -53,6 +60,11 @@ public class PlayerStats : MonoBehaviour
     public bool GetWeaponActionStatus()
     {
         return canAttack;
+    }
+
+    public bool GetStunStatus()
+    {
+        return isStunned;
     }
 
     public Weapon GetCurrentWeapon()
@@ -126,5 +138,28 @@ public class PlayerStats : MonoBehaviour
         }
 
         return count >= 2;
+    }
+
+    public void Stun(float duration)
+    {
+        if (isStunned == false)
+        {
+            isStunned = true;
+            canAttack = false;
+            
+            sprite.color = Color.cyan;
+
+            Invoke(nameof(Unstun), duration);
+        }
+    }
+
+    private void Unstun()
+    {
+        if (transform != null) // it is possible for the player to die while stunned.
+        {
+            isStunned = false;
+            canAttack = true;
+            sprite.color = originalColor;
+        }
     }
 }
