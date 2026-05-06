@@ -17,7 +17,7 @@ public class FireStaff : Weapon
         projectilePrefab = itemManager.fireStaffProjectilePrefab;
         id = 2;
         element = Utilities.Element.Fire;
-        projectileXRotation = 180f;
+        projectileXRotation = 0f;
 
         Init();
     }

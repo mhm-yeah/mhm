@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 7, z: 1}
+  m_LocalScale: {x: 0.42857143, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1346638040250587804}
@@ -115,6 +115,13 @@ MonoBehaviour:
   speed: 0
   damage: 0
   lifetime: 0
+  fireVfx: {fileID: 0}
+  iceVfx: {fileID: 0}
+  lightningVfx: {fileID: 0}
+  fireSynergyVfx: {fileID: 0}
+  iceSynergyVfx: {fileID: 0}
+  lightningSynergyVfx: {fileID: 0}
+  element: 0
 --- !u!1 &2554288473101862237
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +149,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 6, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1313377788497968890}
@@ -196,8 +203,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: 0.13883066, b: 1, a: 1}
+  m_Sprite: {fileID: 6786317417502753268, guid: 17ebe34cf15c8834f86d2c2207239554, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -877,7 +884,7 @@ ParticleSystem:
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 270, y: 0, z: 0}
+    m_Rotation: {x: 90, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0

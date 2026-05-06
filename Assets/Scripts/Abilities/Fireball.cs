@@ -51,12 +51,13 @@ public class Fireball : Ability
         //for matching particles
         PlayerStats playerStats = FindFirstObjectByType<PlayerStats>();
         bool hasSynergy = playerStats.HasElementalSynergy(element);
+        Debug.Log($"[Fireball] Has synergy? {hasSynergy}");
+
         projectileScript.SetElementSynergy(hasSynergy);
 
         projectileScript.Init(this);
-
+        //projectileScript.SpawnVFX();
         
-
         Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
 
         if (rb != null)
