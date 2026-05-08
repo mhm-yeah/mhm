@@ -8,13 +8,14 @@ public class EnemyHealth : MonoBehaviour
     private GameObject collectiblesFolder;
     private float currentHealth;
     public GameObject damageNumberPrefab;
-
+    AudioManager audioManager;
     void Start()
     {
         itemManager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
         collectiblesFolder = GameObject.Find("Collectibles");
         enemyStats = GetComponent<EnemyStats>();
         currentHealth = enemyStats.maxHealth;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     public void TakeDamage(float damage)
@@ -25,7 +26,7 @@ public class EnemyHealth : MonoBehaviour
         }
         
         currentHealth -= damage;
-
+        audioManager.PlaySFX(audioManager.enemyDamaged);
         if (currentHealth <= enemyStats.maxHealth / 2)
         {
             enemyStats.isBelowHalfHealth = true;
