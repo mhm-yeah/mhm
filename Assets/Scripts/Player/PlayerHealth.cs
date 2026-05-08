@@ -7,13 +7,14 @@ public class PlayerHealth : MonoBehaviour
     private PlayerDefense playerDefense;
     private GameManager gameManager;
     private float currentHealth;
-
+    AudioManager audioManager;
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerStats = GetComponent<PlayerStats>();
         currentHealth = playerStats.maxHealth;
         playerDefense = GetComponent<PlayerDefense>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     public void TakeDamage(float damage, GameObject attacker)
@@ -29,7 +30,7 @@ public class PlayerHealth : MonoBehaviour
             damage = playerDefense.ApplyDefense(damage);
         }
         currentHealth -= damage;
-
+        audioManager.PlaySFX(audioManager.playerDamaged);
         if (currentHealth <= 0)
         {
             Die();
