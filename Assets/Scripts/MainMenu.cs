@@ -13,8 +13,14 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
         Debug.Log("Quit");
     }
-    public void Options()
+    public void Settings()
     {
-        Debug.Log("Options");
+        SceneManager.LoadScene("Settings");
+        Debug.Log("Settings");
+    }
+    public void Back()
+    {
+        SceneManager.LoadScene("MainMenu");
+        Debug.Log("GoToMainMenu");
     }
 }

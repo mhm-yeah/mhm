@@ -12,11 +12,19 @@ public class AudioManager : MonoBehaviour
     public AudioClip enemyDamaged;
     public AudioClip playerDamaged;
     public AudioClip bossBattle;
+    public AudioClip MainMenu;
     private void Start()
     {
-        musicSource.clip = background;
-        musicSource.Play();
-       
+        if (background != null) {
+            musicSource.clip = background;
+            musicSource.Play(); 
+        }
+        if (MainMenu != null) {
+            musicSource.clip = MainMenu;
+            musicSource.Play(); 
+        }
+
+
     }
     public void PlaySFX(AudioClip clip)
     {
