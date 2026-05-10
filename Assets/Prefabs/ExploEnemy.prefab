@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7195963956120423594}
   - component: {fileID: -8253367605041993181}
   - component: {fileID: 4992240669556654709}
+  - component: {fileID: 935188231562871354}
   m_Layer: 0
   m_Name: ExploEnemy
   m_TagString: Enemy
@@ -148,6 +149,7 @@ MonoBehaviour:
   isStunned: 0
   isSlowed: 0
   isInvulnerable: 0
+  isBelowHalfHealth: 0
   healthDropChance: 0.25
   experienceDropChance: 1
 --- !u!114 &8712956145752622714
@@ -175,9 +177,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a725f9db3e6ca419292cd42c9e15b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExplosiveEnemy
-  explosionDelay: 1
   explosionRadius: 5
   explosionDamage: 10
+  animator: {fileID: 935188231562871354}
 --- !u!114 &-8253367605041993181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,3 +238,25 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.08, y: 0.16}
   m_EdgeRadius: 0
+--- !u!95 &935188231562871354
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395343294680337530}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd9ce4cc601eda445943736e72f3f14f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
