@@ -47,7 +47,6 @@ public class EnemyHealth : MonoBehaviour
         if (explosive != null && !explosive.IsTriggered())
         {
             explosive.TriggerExplosion();
-            Debug.Log("explodes");
             return;
         }
         // Add death animation or effects here

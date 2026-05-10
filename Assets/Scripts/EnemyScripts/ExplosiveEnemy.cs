@@ -1,19 +1,18 @@
-using System.Collections;
 using UnityEngine;
 
 public class ExplosiveEnemy : MonoBehaviour
 {
-    public float explosionDelay = 1f;
     public float explosionRadius = 2f;
     public float explosionDamage = 20f;
+    public Animator animator;
 
     private bool isTriggered = false;
 
-    private EnemyHealth enemyHealth;
+    private Collider2D enemyCollider;
 
     void Start()
     {
-        enemyHealth = GetComponent<EnemyHealth>();
+        enemyCollider = GetComponent<Collider2D>();
     }
 
     public void TriggerExplosion()
@@ -22,39 +21,47 @@ public class ExplosiveEnemy : MonoBehaviour
 
         isTriggered = true;
 
-        StartCoroutine(ExplosionCountdown());
-    }
+        if (enemyCollider != null)
+            enemyCollider.enabled = false;
 
-    IEnumerator ExplosionCountdown()
-    {
-        yield return new WaitForSeconds(explosionDelay);
-        Explode();
-    }
-
-    void Explode()
-    {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
-
-        for (int i = 0; i < hits.Length; i++)
-        {
-            GameObject obj = hits[i].gameObject;
-            PlayerHealth playerHealth = obj.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(explosionDamage, gameObject);
-            }
-            EnemyHealth enemyHealth = obj.GetComponent<EnemyHealth>();
-            if (enemyHealth != null && obj != gameObject)
-            {
-                enemyHealth.TakeDamage(explosionDamage);
-            }
-        }
-
-        Destroy(gameObject);
+        transform.localScale = Vector3.one * 20f;
+        animator.SetTrigger("isExplode");
     }
 
     public bool IsTriggered()
     {
         return isTriggered;
+    }
+
+    public void Explode()
+    {
+        Collider2D[] hits =
+            Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+
+        foreach (Collider2D hit in hits)
+        {
+            GameObject obj = hit.gameObject;
+
+            PlayerHealth playerHealth =
+                obj.GetComponent<PlayerHealth>();
+
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(explosionDamage, gameObject);
+            }
+
+            EnemyHealth enemyHealth =
+                obj.GetComponent<EnemyHealth>();
+
+            if (enemyHealth != null && obj != gameObject)
+            {
+                enemyHealth.TakeDamage(explosionDamage);
+            }
+        }
+    }
+
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }

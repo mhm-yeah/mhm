@@ -147,6 +147,7 @@ MonoBehaviour:
   isStunned: 0
   isSlowed: 0
   isInvulnerable: 0
+  isBelowHalfHealth: 0
   healthDropChance: 0.3
   experienceDropChance: 0.9
 --- !u!114 &8277738455000591381
@@ -162,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargingEnemyMovement
   chargeDistance: 7
-  chargeTime: 0.5
+  chargeTime: 0.8
   dashSpeed: 20
   dashDuration: 0.7
 --- !u!114 &5814101112354810190
