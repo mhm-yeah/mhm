@@ -1,0 +1,339 @@
+fileFormatVersion: 2
+guid: 6ca447f65a2a8524bb682cb225a383c0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4744391591890115945
+    second: arrowFall_0
+  - first:
+      213: -7533547952524624945
+    second: arrowFall_1
+  - first:
+      213: 2158865851418109440
+    second: arrowFall_2
+  - first:
+      213: -1015989044639769307
+    second: arrowFall_3
+  - first:
+      213: -3075364364736443836
+    second: arrowFall_4
+  - first:
+      213: -4730664186373715962
+    second: arrowFall_5
+  - first:
+      213: 4714417488809219495
+    second: arrowFall_6
+  - first:
+      213: -7672304042260570341
+    second: arrowFall_7
+  - first:
+      213: -1235711016109900083
+    second: arrowFall_8
+  - first:
+      213: 5524080538896315894
+    second: arrowFall_9
+  - first:
+      213: 4314899510778889262
+    second: arrowFall_10
+  - first:
+      213: -6902107527469342160
+    second: arrowFall_11
+  - first:
+      213: 2023157091483444
+    second: arrowFall_12
+  - first:
+      213: -9144446377775596835
+    second: arrowFall_13
+  - first:
+      213: -7808078449693617558
+    second: arrowFall_14
+  - first:
+      213: -6154138509191772199
+    second: arrowFall_15
+  - first:
+      213: -8402638342053598931
+    second: arrowFall_16
+  - first:
+      213: -8202713556489875401
+    second: arrowFall_17
+  - first:
+      213: 2682981327936058112
+    second: arrowFall_18
+  - first:
+      213: -7197428206144433899
+    second: arrowFall_19
+  - first:
+      213: 4761204385912977896
+    second: arrowFall_20
+  - first:
+      213: 3650332387611830301
+    second: arrowFall_21
+  - first:
+      213: -6379079940029164607
+    second: arrowFall_22
+  - first:
+      213: -2442940698486884512
+    second: arrowFall_23
+  - first:
+      213: 2798150078572473260
+    second: arrowFall_24
+  - first:
+      213: -8960950469161053510
+    second: arrowFall_25
+  - first:
+      213: 797171782191219016
+    second: arrowFall_26
+  - first:
+      213: -7253412176409049481
+    second: arrowFall_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: arrowFall_0
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 49
+        width: 94
+        height: 86
+      alignment: 9
+      pivot: {x: 0.49513894, y: 0.29013017}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7922a0aebf8882eb0800000000000000
+      internalID: -4744391591890115945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arrowFall_1
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 51
+        width: 96
+        height: 84
+      alignment: 9
+      pivot: {x: 0.54283714, y: 0.26065463}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcbf5673d06737790800000000000000
+      internalID: -7533547952524624945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arrowFall_3
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 47
+        width: 129
+        height: 100
+      alignment: 9
+      pivot: {x: 0.50354195, y: 0.25097206}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52dde8ac85b76e1f0800000000000000
+      internalID: -1015989044639769307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arrowFall_5
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 32
+        width: 148
+        height: 119
+      alignment: 9
+      pivot: {x: 0.5355047, y: 0.2638545}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60848839cfd495eb0800000000000000
+      internalID: -4730664186373715962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arrowFall_18
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 36
+        width: 128
+        height: 71
+      alignment: 9
+      pivot: {x: 0.5053544, y: 0.35519776}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00372ae7d4ddb3520800000000000000
+      internalID: 2682981327936058112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b1d673bcbcedf044ebf8e9c398eba75f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      arrowFall_0: -4744391591890115945
+      arrowFall_1: -7533547952524624945
+      arrowFall_10: 4314899510778889262
+      arrowFall_11: -6902107527469342160
+      arrowFall_12: 2023157091483444
+      arrowFall_13: -9144446377775596835
+      arrowFall_14: -7808078449693617558
+      arrowFall_15: -6154138509191772199
+      arrowFall_16: -8402638342053598931
+      arrowFall_17: -8202713556489875401
+      arrowFall_18: 2682981327936058112
+      arrowFall_19: -7197428206144433899
+      arrowFall_2: 2158865851418109440
+      arrowFall_20: 4761204385912977896
+      arrowFall_21: 3650332387611830301
+      arrowFall_22: -6379079940029164607
+      arrowFall_23: -2442940698486884512
+      arrowFall_24: 2798150078572473260
+      arrowFall_25: -8960950469161053510
+      arrowFall_26: 797171782191219016
+      arrowFall_27: -7253412176409049481
+      arrowFall_3: -1015989044639769307
+      arrowFall_4: -3075364364736443836
+      arrowFall_5: -4730664186373715962
+      arrowFall_6: 4714417488809219495
+      arrowFall_7: -7672304042260570341
+      arrowFall_8: -1235711016109900083
+      arrowFall_9: 5524080538896315894
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
