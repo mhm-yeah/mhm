@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1044646188334991521}
   - component: {fileID: 6000261776719921001}
-  - component: {fileID: -7693523651244218113}
   - component: {fileID: 1792548684525507734}
   - component: {fileID: -1434553694241409210}
   - component: {fileID: -3514336696573364018}
@@ -96,33 +95,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!50 &-7693523651244218113
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2163076635662951265}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &1792548684525507734
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -206,6 +178,7 @@ MonoBehaviour:
   isStunned: 0
   isSlowed: 0
   isInvulnerable: 0
+  isBelowHalfHealth: 0
   healthDropChance: 0.1
   experienceDropChance: 0.9
 --- !u!114 &-592388831515524953
@@ -222,10 +195,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossEnemy
   basicAttackRingPrefab: {fileID: 8708012294227827741, guid: 91a108917dacf9a4198c166a7c34cfa7, type: 3}
   basicAttackCirclePrefab: {fileID: 6179260833480139617, guid: 00888a17e1f490d4790551f4b1da84e8, type: 3}
+  groundSlamPrefab: {fileID: 1407276691880381287, guid: 55f8008829acc1c49a0eba03e0550d9d, type: 3}
+  spinningSunPrefab: {fileID: 319446275183406358, guid: 4392c7017636dcf4cba4782efc01fc48, type: 3}
+  secondPhaseHasteModifier: 2
+  attacksBeforeAbility: 100
   basicAttackChargeTime: 1
   basicCooldownDuration: 0.5
   abilityCooldownDuration: 5
-  secondPhaseHasteMultiplier: 2
-  attacksBeforeAbility: 100
+  groundSlamDamage: 20
+  groundSlamChargeTime: 3
+  groundSlamStunDuration: 2
+  spinningSunRays: 4
+  spinningSunRayChargeTime: 2
+  spinningSunRayMovingDuration: 20
+  spinningSunRayMoveDegrees: 360
   isOnCooldown: 0
   isOnSecondPhase: 0
