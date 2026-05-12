@@ -18,22 +18,35 @@ public class BossEnemy : MonoBehaviour
     public GameObject basicAttackRingPrefab;
     public GameObject basicAttackCirclePrefab;
     public GameObject groundSlamPrefab;
+    public GameObject spinningSunPrefab;
 
     [Header("Boss settings")]
-    public float basicAttackChargeTime = 1f;
-    public float basicCooldownDuration = 0.5f;
-    public float abilityCooldownDuration = 5f;
-    public float groundSlamDamage = 20f;
-    public float groundSlamChargeTime = 3f;
-    public float groundSlamStunDuration = 2f;
     public float secondPhaseHasteModifier = 2f;
     public int attacksBeforeAbility = 100;
     private int attackCounter = 0;
     private float modifier = 1f;
+    private Color abilityColor;
+
+    [Header("Basic attack settings")]
+    public float basicAttackChargeTime = 1f;
+    public float basicCooldownDuration = 0.5f;
+    public float abilityCooldownDuration = 5f;
+
+    [Header("Ground slam settings")]
+    public float groundSlamDamage = 20f;
+    public float groundSlamChargeTime = 3f;
+    public float groundSlamStunDuration = 2f;
+
+    [Header("Spinning sun settings")]
+    public int spinningSunRays = 4;
+    public float spinningSunRayChargeTime = 2f;
+    public float spinningSunRayMovingDuration = 10f;
+    public float spinningSunRayMoveDegrees = 360f;
 
     [Header("Boss status")]
     public bool isOnCooldown = false;
     public bool isOnSecondPhase = false;
+    private bool cannotGetSpinningSun = false;
 
     void Start()
     {
@@ -43,6 +56,8 @@ public class BossEnemy : MonoBehaviour
         playerStats = player.GetComponent<PlayerStats>();
         playerHealth = player.GetComponent<PlayerHealth>();
         projectilesFolder = GameObject.Find("Projectiles");
+
+        abilityColor = groundSlamPrefab.GetComponent<SpriteRenderer>().color;
     }
 
     void Update()
@@ -70,25 +85,35 @@ public class BossEnemy : MonoBehaviour
         {
             attackCounter = 0;
 
-            // choose random ability
-            // int abilityIndex = Random.Range(0, 3);
-            // switch (abilityIndex)
-            // {
-            //     case 0:
-            //         GroundSlam();
-            //         break;
-            //     case 1:
-            //         BulletRain();
-            //         break;
-            //     case 2:
-            //         SpinningSun();
-            //         break;
-            // }
+            //choose random ability
+            int abilityIndex = GetRandomIndex();
 
-            StartCoroutine(GroundSlam());
+            while (cannotGetSpinningSun && abilityIndex == 1)
+            {
+                abilityIndex = GetRandomIndex();
+            }
+
+            switch (abilityIndex)
+            {
+                case 0:
+                    StartCoroutine(GroundSlam());
+                    break;
+                case 1:
+                    SpinningSun();
+                    break;
+                case 2:
+                    BulletRain();
+                    break;
+            }
 
             //Invoke(nameof(RemoveCooldown), abilityCooldownDuration / modifier);
         }
+    }
+
+    private int GetRandomIndex()
+    {
+        int randomIndex = UnityEngine.Random.Range(0, 2);
+        return randomIndex;
     }
 
     private void RemoveCooldown()
@@ -100,6 +125,12 @@ public class BossEnemy : MonoBehaviour
     {
         GameObject ring = Instantiate(basicAttackRingPrefab, player.transform.position, player.transform.rotation, projectilesFolder.transform);
         GameObject blast = Instantiate(basicAttackCirclePrefab, player.transform.position, player.transform.rotation, ring.transform);
+        
+        SpriteRenderer ringRenderer = ring.GetComponent<SpriteRenderer>();
+        SpriteRenderer blastRenderer = blast.GetComponent<SpriteRenderer>();
+
+        ringRenderer.color = abilityColor;
+        blastRenderer.color = abilityColor;
 
         StartCoroutine(BasicAttackCharge(ring, blast));
     }
@@ -241,12 +272,96 @@ public class BossEnemy : MonoBehaviour
         }
     }
 
-    private void BulletRain()
+    private void SpinningSun()
     {
-        
+        Debug.Log("Spinning sun");
+
+        cannotGetSpinningSun = true;
+
+        int numberOfRays = (int)(spinningSunRays * 1f * modifier);
+
+        GameObject[] movingRays = new GameObject[numberOfRays];
+
+        for (int i = 0; i < numberOfRays; i++)
+        {
+            float angle = i * (180f / numberOfRays);
+            GameObject ray = Instantiate(spinningSunPrefab, transform.position, transform.rotation, projectilesFolder.transform);
+            GameObject rayFilling = ray.transform.Find("Fill").gameObject;
+
+            SpriteRenderer rayRenderer = ray.GetComponent<SpriteRenderer>();
+            SpriteRenderer rayFillingRenderer = rayFilling.GetComponent<SpriteRenderer>();
+
+            rayRenderer.color = abilityColor;
+            rayFillingRenderer.color = abilityColor;
+
+            ray.transform.Rotate(0f, 0f, angle);
+            movingRays[i] = ray;
+        }
+
+        StartCoroutine(SpinningSunCharge(movingRays));
     }
 
-    private void SpinningSun()
+    IEnumerator SpinningSunCharge(GameObject[] rays)
+    {
+        GameObject[] rayFillings = new GameObject[rays.Length];
+
+        for (int i = 0; i < rays.Length; i++)
+        {
+            rayFillings[i] = rays[i].transform.Find("Fill").gameObject;
+        }
+
+        float chargeTime = spinningSunRayChargeTime / modifier;
+
+        for (float i = 0; i <= chargeTime; i += Time.deltaTime)
+        {
+            float newScale = i / chargeTime;
+            foreach (GameObject ray in rayFillings)
+            {
+                ray.transform.localScale = new Vector3(1f, newScale, 1f);
+            }
+            yield return new WaitForEndOfFrame();
+        }
+
+        foreach (GameObject ray in rayFillings)
+        {
+            EnemyDamageObject script = ray.gameObject.GetComponent<EnemyDamageObject>();
+            script.enabled = true;
+        }
+
+        StartCoroutine(SpinningSunMove(rays));
+
+        // start casting other abilities after spinning rays start moving
+        RemoveCooldown();
+    }
+
+    IEnumerator SpinningSunMove(GameObject[] rays)
+    {
+        float elapsedTime = 0f;
+        float moveDuration = spinningSunRayMovingDuration / modifier;
+        float moveDegreesPerSecond = spinningSunRayMoveDegrees / moveDuration;
+
+        while (elapsedTime < moveDuration)
+        {
+            float degressToRotate = moveDegreesPerSecond * Time.deltaTime;
+            //Debug.Log("Rotating rays by " + degressToRotate + " degrees");
+
+            foreach (GameObject ray in rays)
+            {
+                ray.transform.Rotate(0f, 0f, degressToRotate);
+            }
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        foreach (GameObject ray in rays)
+        {
+            Destroy(ray);
+        }
+
+        cannotGetSpinningSun = false;
+    }
+
+    private void BulletRain()
     {
         
     }
