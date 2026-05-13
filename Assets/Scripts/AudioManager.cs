@@ -28,11 +28,6 @@ public class AudioManager : MonoBehaviour
     private AudioClip currentTrack;
     private void Awake()
     {
-        if (background != null)
-        {
-            musicSource.clip = background;
-            musicSource.Play();
-        }
         if (instance == null)
         {
             instance = this;
