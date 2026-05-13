@@ -1,11 +1,15 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 public class FireballCooldownUISlots : MonoBehaviour
 {
     public Fireball abilitySource;
     public Image cooldownOverlay;
-    
-
+    public TextMeshProUGUI TextElement;
+    private void Start()
+    {
+        TextElement.gameObject.SetActive(true);
+    }
     // Update is called once per frame
     void Update()
     {
