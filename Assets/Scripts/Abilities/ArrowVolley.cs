@@ -11,6 +11,7 @@ public class ArrowVolley : Ability
 
     private Camera mainCam;
     private GameObject projectilesFolder;
+    private AudioManager audioManager;
 
     public override void Activate()
     {
@@ -23,11 +24,12 @@ public class ArrowVolley : Ability
     {
         mainCam = Camera.main;
         projectilesFolder = GameObject.Find("Projectiles");
+        audioManager = FindFirstObjectByType<AudioManager>();
     }
 
     public void OnSpellCast(InputValue input)
     {
-        if (!enabled) return; // also for da cards
+        if (!enabled) return;
 
         if (input.isPressed)
         {
@@ -38,38 +40,60 @@ public class ArrowVolley : Ability
     void FireVolley()
     {
         if (isOnCooldown) return;
-        Vector2 mouseScreenPos = Mouse.current.position.ReadValue(); //fire where mouse cursor is
+
+        if (audioManager != null)
+        {
+            audioManager.PlaySFX(audioManager.arrowVolleySound);
+        }
+
+        Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
         Vector3 mousePos = mainCam.ScreenToWorldPoint(mouseScreenPos);
+
         mousePos.z = 0f;
+
         Vector2 direction = (mousePos - transform.position).normalized;
+
         float startAngle = -spreadAngle / 2f;
         float angleStep = spreadAngle / (arrowCount - 1);
 
         for (int i = 0; i < arrowCount; i++)
         {
             float angle = startAngle + (angleStep * i);
+
             Vector2 rotatedDir = RotateVector(direction, angle);
-            GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity, projectilesFolder.transform);
+
+            GameObject arrow = Instantiate(
+                arrowPrefab,
+                transform.position,
+                Quaternion.identity,
+                projectilesFolder.transform
+            );
+
             Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
             Projectile projectileScript = arrow.GetComponent<Projectile>();
+
             if (projectileScript != null)
             {
                 projectileScript.Init(this);
             }
+
             if (rb != null)
             {
                 rb.linearVelocity = rotatedDir * abilitySpeed;
             }
-            //rotate arrow to face 
+
             float rotZ = Mathf.Atan2(rotatedDir.y, rotatedDir.x) * Mathf.Rad2Deg;
-            arrow.transform.rotation = Quaternion.Euler(0f, 0f, rotZ - 90f); //due to sprite rotation being up
+
+            arrow.transform.rotation = Quaternion.Euler(0f, 0f, rotZ - 90f);
         }
+
         StartCooldown();
     }
 
     Vector2 RotateVector(Vector2 v, float degrees)
     {
         float rad = degrees * Mathf.Deg2Rad;
+
         float sin = Mathf.Sin(rad);
         float cos = Mathf.Cos(rad);
 

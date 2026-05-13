@@ -1,19 +1,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
+
 public class Fireball : Ability
 {
     private Transform hands;
     private GameObject projectilesFolder;
+    private AudioManager audioManager;
 
     [Header("Fireball prefab")]
     [SerializeField] private GameObject fireballPrefab;
     [SerializeField] private GameObject FireballObject;
+
     void Start()
     {
         projectilesFolder = GameObject.Find("Projectiles");
         hands = transform.Find("Hands");
+        audioManager = FindFirstObjectByType<AudioManager>();
     }
 
     protected override void Awake()
@@ -21,9 +24,8 @@ public class Fireball : Ability
         base.Awake();
         unlocked = false;
         element = Utilities.Element.Fire;
-        //enabled = true;
-        //unlocked = true;
     }
+
     public override void Activate()
     {
         FireballObject.SetActive(true);
@@ -33,12 +35,10 @@ public class Fireball : Ability
 
     public void OnFireball(InputValue value)
     {
-        if (!enabled || isOnCooldown) return; // also for da cards
+        if (!enabled || isOnCooldown) return;
 
         if (!value.isPressed)
             return;
-
-        //Debug.Log("FIREBALL");
 
         GameObject fireball = Instantiate(
             fireballPrefab,
@@ -47,23 +47,27 @@ public class Fireball : Ability
             projectilesFolder.transform
         );
 
+        if (audioManager != null)
+        {
+            audioManager.PlaySFX(audioManager.fireballSound);
+        }
+
         FireProjectile projectileScript = fireball.GetComponent<FireProjectile>();
-        //for matching particles
+
         PlayerStats playerStats = FindFirstObjectByType<PlayerStats>();
         bool hasSynergy = playerStats.HasElementalSynergy(element);
         Debug.Log($"[Fireball] Has synergy? {hasSynergy}");
 
         projectileScript.SetElementSynergy(hasSynergy);
-
         projectileScript.Init(this);
-        //projectileScript.SpawnVFX();
-        
+
         Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
 
         if (rb != null)
         {
             rb.linearVelocity = hands.up * abilitySpeed;
         }
+
         StartCooldown();
     }
 

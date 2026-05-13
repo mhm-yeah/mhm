@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveInput;
 
-
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();

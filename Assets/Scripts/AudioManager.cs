@@ -17,10 +17,22 @@ public class AudioManager : MonoBehaviour
     public AudioClip playerDamaged;
     public AudioClip bossBattle;
     public AudioClip MainMenu;
+
+    [Header("Ability SFX")]
+    public AudioClip fireballSound;
+    public AudioClip iceBlastSound;
+    public AudioClip arrowVolleySound;
+    public AudioClip lightningSound;
+
     public AudioClip LevelUp;
     private AudioClip currentTrack;
     private void Awake()
     {
+        if (background != null)
+        {
+            musicSource.clip = background;
+            musicSource.Play();
+        }
         if (instance == null)
         {
             instance = this;
@@ -37,9 +49,13 @@ public class AudioManager : MonoBehaviour
             musicSource.Play(); 
         }
     }
+
     public void PlaySFX(AudioClip clip)
     {
-        SFXSource.PlayOneShot(clip);
+        if (clip != null && SFXSource != null)
+        {
+            SFXSource.PlayOneShot(clip);
+        }
     }
     public void PlayMusic(AudioClip newClip)
     {
