@@ -1045,33 +1045,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &341950392 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2163076635662951265, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
-  m_PrefabInstance: {fileID: 1430721146}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &341950400
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341950392}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 169cdb6f443ed8b4f9e1ef1d7da84d4f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &345362396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2282,7 +2255,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &829766068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3304,7 +3277,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -3514336696573364018, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
       propertyPath: damage
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -3514336696573364018, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
       propertyPath: maxHealth
@@ -3312,7 +3285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3514336696573364018, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
       propertyPath: baseDamage
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -3514336696573364018, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
       propertyPath: baseMaxHealth
@@ -3338,6 +3311,14 @@ PrefabInstance:
       propertyPath: groundSlamChargeTime
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: -592388831515524953, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
+      propertyPath: spinningSunRayPrefab
+      value: 
+      objectReference: {fileID: 739994465019511661, guid: 713676cdc8d8cec45983a1031f025589, type: 3}
+    - target: {fileID: -592388831515524953, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
+      propertyPath: basicAttackBlastPrefab
+      value: 
+      objectReference: {fileID: 8700946967605602677, guid: 7b05764b0b9fcf64c8fc793c1f71579a, type: 3}
     - target: {fileID: 1044646188334991521, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.18
@@ -3389,10 +3370,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2163076635662951265, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 341950400}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b120ebffbd3017b499ec0c3b39e2c5ab, type: 3}
 --- !u!1 &1434751378
 GameObject:
