@@ -22,6 +22,7 @@ public class BossEnemy : MonoBehaviour
 
     public GameObject groundSlamPrefab;
     public GameObject spinningSunPrefab;
+    public GameObject bossBulletPrefab;
     //to animate
     public GameObject spinningSunRayPrefab;
 
@@ -32,6 +33,7 @@ public class BossEnemy : MonoBehaviour
     private int attackCounter = 0;
     private float modifier = 1f;
     private Color abilityColor;
+    private string specialTag = "EnemyProjectile";
 
     [Header("Basic attack settings")]
     public float basicAttackChargeTime = 1f;
@@ -48,6 +50,14 @@ public class BossEnemy : MonoBehaviour
     public float spinningSunRayChargeTime = 2f;
     public float spinningSunRayMovingDuration = 10f;
     public float spinningSunRayMoveDegrees = 360f;
+
+    [Header("Bullet circle settings")]
+    public int bulletCircleCount = 4;
+    public int bulletCount = 8;
+    public float bulletDamage = 10f;
+    public float bulletSpeed = 5f;
+    public float bulletLifetime = 10f;
+    public float bulletWaitTime = 1f;
 
     [Header("Boss status")]
     public bool isOnCooldown = false;
@@ -109,7 +119,7 @@ public class BossEnemy : MonoBehaviour
                     SpinningSun();
                     break;
                 case 2:
-                    BulletRain();
+                    StartCoroutine(BulletCircle());
                     break;
             }
 
@@ -117,9 +127,20 @@ public class BossEnemy : MonoBehaviour
         }
     }
 
+    public void ObjectCleanUp()
+    {
+        foreach (Transform child in projectilesFolder.transform)
+        {
+            if (child.CompareTag(specialTag))
+            {
+                Destroy(child.gameObject);
+            }
+        }
+    }
+
     private int GetRandomIndex()
     {
-        int randomIndex = UnityEngine.Random.Range(0, 2);
+        int randomIndex = UnityEngine.Random.Range(0, 3);
         return randomIndex;
     }
 
@@ -132,6 +153,9 @@ public class BossEnemy : MonoBehaviour
     {
         GameObject ring = Instantiate(basicAttackRingPrefab, player.transform.position, player.transform.rotation, projectilesFolder.transform);
         GameObject blast = Instantiate(basicAttackCirclePrefab, player.transform.position, player.transform.rotation, ring.transform);
+        
+        ring.tag = specialTag;
+        blast.tag = specialTag;
 
         SpriteRenderer ringRenderer = ring.GetComponent<SpriteRenderer>();
         SpriteRenderer blastRenderer = blast.GetComponent<SpriteRenderer>();
@@ -194,6 +218,8 @@ public class BossEnemy : MonoBehaviour
         Debug.Log("ground slam");
 
         GameObject slam = Instantiate(groundSlamPrefab, transform.position, transform.rotation, projectilesFolder.transform);
+        slam.tag = specialTag;
+
         GameObject innerRing = slam.transform.Find("InnerRing").gameObject;
 
         slam = ResizeSlam(slam);
@@ -208,6 +234,7 @@ public class BossEnemy : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             GameObject newSlam = Instantiate(groundSlamPrefab, transform.position, transform.rotation, projectilesFolder.transform);
+            newSlam.tag = specialTag;
             GameObject newInnerRing = newSlam.transform.Find("InnerRing").gameObject;
 
             newSlam = ResizeSlam(newSlam, previousSlamScale, previousInnerRingScale);
@@ -295,6 +322,7 @@ public class BossEnemy : MonoBehaviour
         {
             float angle = i * (180f / numberOfRays);
             GameObject ray = Instantiate(spinningSunPrefab, transform.position, transform.rotation, projectilesFolder.transform);
+            ray.tag = specialTag;
             GameObject rayFilling = ray.transform.Find("Fill").gameObject;
             SpriteRenderer rayRenderer = ray.GetComponent<SpriteRenderer>();
             SpriteRenderer rayFillingRenderer = rayFilling.GetComponent<SpriteRenderer>();
@@ -385,8 +413,56 @@ public class BossEnemy : MonoBehaviour
         cannotGetSpinningSun = false;
     }
 
-    private void BulletRain()
+    IEnumerator BulletCircle()
     {
+        Debug.Log("bullet circle");
+
+        int numberOfBullets = (int)(bulletCount * modifier);
+        int numberOfCircles = (int)(bulletCircleCount * modifier);
+
+        float customAngle = 360f / numberOfBullets / 2f;
+
+        for (int i = 0; i < numberOfCircles; i++)
+        {
+            GameObject[] bullets = new GameObject[numberOfBullets];
+
+            for (int j = 0; j < numberOfBullets; j++)
+            {
+                float angle = j * (360f / numberOfBullets) + customAngle * i;
+                GameObject bullet = Instantiate(bossBulletPrefab, transform.position, transform.rotation, projectilesFolder.transform);
+                bullet.tag = specialTag;
+
+                bullet.transform.Rotate(0f, 0f, angle);
+
+                EnemyProjectile bulletScript = bullet.GetComponent<EnemyProjectile>();
+                bulletScript.Init(bulletDamage, bulletLifetime);
+
+                bullets[j] = bullet;
+            }
+
+            ActivateBulletCircle(bullets);
+
+            yield return new WaitForSeconds(bulletWaitTime / modifier);
+        }
+
+        RemoveCooldown();
+    }
+
+    private void ActivateBulletCircle(GameObject[] bullets)
+    {
+        foreach (GameObject bullet in bullets)
+        {
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(bullet.transform.up * bulletSpeed * modifier, ForceMode2D.Impulse);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            playerHealth.TakeDamage(enemyStats.damage);
+        }
 
     }
 }
