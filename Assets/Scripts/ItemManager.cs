@@ -10,5 +10,7 @@ public class ItemManager : MonoBehaviour
     
     [Header("Drops")]
     public GameObject healthDrop;
-    public GameObject experienceDrop;
+    public GameObject smallExperienceDrop;
+    public GameObject mediumExperienceDrop;
+    public GameObject bigExperienceDrop;
 }

@@ -143,12 +143,12 @@ MonoBehaviour:
   maxHealth: 100
   damage: 10
   defense: 0
-  xpValue: 75
+  xpValue: 100
   isStunned: 0
   isSlowed: 0
   isInvulnerable: 0
   isBelowHalfHealth: 0
-  healthDropChance: 0.3
+  healthDropChance: 0.1
   experienceDropChance: 0.9
 --- !u!114 &8277738455000591381
 MonoBehaviour:
@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   damageNumberPrefab: {fileID: 4224606381231520095, guid: 9b8cb2e70fa2ea74b845fbfda6817d6f, type: 3}
+  healthBar: {fileID: 0}
 --- !u!61 &8091177196224735186
 BoxCollider2D:
   m_ObjectHideFlags: 0

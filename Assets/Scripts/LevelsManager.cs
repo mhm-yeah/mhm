@@ -50,8 +50,8 @@ public class LevelsManager : MonoBehaviour
             if (currentLVL % levelsPerCard == 0)
             {
                 if (cardUI.HasCardsAvailable())
-                    //TriggerCardSelection();
-                    Invoke(nameof(TriggerCardSelection), waitForCardSelection);
+                    TriggerCardSelection();
+                    //Invoke(nameof(TriggerCardSelection), waitForCardSelection);
             }
         }
     }

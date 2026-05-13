@@ -1,7 +1,10 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    public TextMeshProUGUI weaponText;
+
     [Header("Base stats")]
     public float baseMoveSpeed = 5f;
     public float sprintSpeed = 8f;
@@ -100,6 +103,7 @@ public class PlayerStats : MonoBehaviour
 
     private void ChangeStats()
     {
+        weaponText.text = $"Current weapon: {currentWeapon.weaponName}";
         Weapon weapon = weapons[weaponInd];
         currentElement = weapon.element;
         damage = baseDamage + weapon.damage;

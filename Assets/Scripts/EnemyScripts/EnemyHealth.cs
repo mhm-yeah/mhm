@@ -62,12 +62,6 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
-        ExplosiveEnemy explosive = GetComponent<ExplosiveEnemy>();
-        if (explosive != null && !explosive.IsTriggered())
-        {
-            explosive.TriggerExplosion();
-            return;
-        }
         // Add death animation or effects here
         // drop xp and loot here
 
@@ -80,10 +74,27 @@ public class EnemyHealth : MonoBehaviour
         }
         else
         {
-            GameObject expDrop = itemManager.experienceDrop;
+            float expAmount = enemyStats.xpValue;
+            GameObject expDrop = itemManager.smallExperienceDrop;
+            if (expAmount >= itemManager.bigExperienceDrop.GetComponent<ExperienceDrop>().expAmount)
+            {
+                expDrop = itemManager.bigExperienceDrop;
+            }
+            else if (expAmount >= itemManager.mediumExperienceDrop.GetComponent<ExperienceDrop>().expAmount)
+            {
+                expDrop = itemManager.mediumExperienceDrop;
+            }
+
             ExperienceDrop expScript = expDrop.GetComponent<ExperienceDrop>();
             expScript.expAmount = enemyStats.xpValue;
             Instantiate(expDrop, transform.position, transform.rotation, collectiblesFolder.transform);
+        }
+
+        ExplosiveEnemy explosive = GetComponent<ExplosiveEnemy>();
+        if (explosive != null && !explosive.IsTriggered())
+        {
+            explosive.TriggerExplosion();
+            return;
         }
 
         Destroy(gameObject);
