@@ -35,31 +35,23 @@ public class ExplosiveEnemy : MonoBehaviour
 
     public void Explode()
     {
-        Collider2D[] hits =
-            Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
 
         foreach (Collider2D hit in hits)
         {
             GameObject obj = hit.gameObject;
-
-            PlayerHealth playerHealth =
-                obj.GetComponent<PlayerHealth>();
-
+            PlayerHealth playerHealth = obj.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(explosionDamage, gameObject);
             }
-
-            EnemyHealth enemyHealth =
-                obj.GetComponent<EnemyHealth>();
-
+            EnemyHealth enemyHealth = obj.GetComponent<EnemyHealth>();
             if (enemyHealth != null && obj != gameObject)
             {
                 enemyHealth.TakeDamage(explosionDamage);
             }
         }
     }
-
     public void DestroySelf()
     {
         Destroy(gameObject);

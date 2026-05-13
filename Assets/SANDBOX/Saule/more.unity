@@ -632,6 +632,7 @@ MonoBehaviour:
   playerDamaged: {fileID: 8300000, guid: b408d0a6c48ba4146bdcb114e162a229, type: 3}
   bossBattle: {fileID: 8300000, guid: 1fdab3e56e16d364e9bde205991aae0f, type: 3}
   MainMenu: {fileID: 0}
+  LevelUp: {fileID: 8300000, guid: e21ddbc8972afc84d907f183ef348e13, type: 3}
 --- !u!4 &159165211
 Transform:
   m_ObjectHideFlags: 0
@@ -2276,7 +2277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &829766068
 MonoBehaviour:
   m_ObjectHideFlags: 0
