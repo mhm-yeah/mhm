@@ -38,7 +38,7 @@ public class BossEnemy : MonoBehaviour
     [Header("Basic attack settings")]
     public float basicAttackChargeTime = 1f;
     public float basicCooldownDuration = 0.5f;
-    public float abilityCooldownDuration = 5f;
+    public float abilityCooldownDuration = 2f;
 
     [Header("Ground slam settings")]
     public float groundSlamDamage = 20f;
@@ -102,8 +102,7 @@ public class BossEnemy : MonoBehaviour
             attackCounter = 0;
 
             //choose random ability
-            //int abilityIndex = GetRandomIndex();
-            int abilityIndex = 1;
+            int abilityIndex = GetRandomIndex();
 
             while (cannotGetSpinningSun && abilityIndex == 1)
             {
@@ -113,17 +112,18 @@ public class BossEnemy : MonoBehaviour
             switch (abilityIndex)
             {
                 case 0:
+                    Debug.Log("Ground slam chosen");
                     StartCoroutine(GroundSlam());
                     break;
                 case 1:
+                    Debug.Log("Spinning sun chosen");
                     SpinningSun();
                     break;
                 case 2:
+                    Debug.Log("Bullet circle chosen");
                     StartCoroutine(BulletCircle());
                     break;
             }
-
-            //Invoke(nameof(RemoveCooldown), abilityCooldownDuration / modifier);
         }
     }
 
@@ -215,8 +215,6 @@ public class BossEnemy : MonoBehaviour
 
     IEnumerator GroundSlam()
     {
-        Debug.Log("ground slam");
-
         GameObject slam = Instantiate(groundSlamPrefab, transform.position, transform.rotation, projectilesFolder.transform);
         slam.tag = specialTag;
 
@@ -247,7 +245,7 @@ public class BossEnemy : MonoBehaviour
             yield return new WaitForSeconds(groundSlamChargeTime / modifier);
         }
 
-        RemoveCooldown();
+        Invoke(nameof(RemoveCooldown), abilityCooldownDuration / modifier);
     }
 
     IEnumerator GroundSlamCharge(GameObject slam, GameObject innerRing)
@@ -286,16 +284,16 @@ public class BossEnemy : MonoBehaviour
             {
                 hitPlayer = true;
                 inCollider = true;
-                Debug.Log("Slam radius: " + outerRadius + ", InnerRing radius: " + innerRadius);
+                //Debug.Log("Slam radius: " + outerRadius + ", InnerRing radius: " + innerRadius);
 
                 if (hitColliders2.Contains(collider))
                 {
                     inCollider = false;
-                    Debug.Log("In the inner collider, no damage");
+                    //Debug.Log("In the inner collider, no damage");
                 }
                 else
                 {
-                    Debug.Log("In the outer collider, deal damage");
+                    //Debug.Log("In the outer collider, deal damage");
                 }
             }
         }
@@ -309,8 +307,6 @@ public class BossEnemy : MonoBehaviour
 
     private void SpinningSun()
     {
-        Debug.Log("Spinning sun");
-
         cannotGetSpinningSun = true;
 
         int numberOfRays = (int)(spinningSunRays * 1f * modifier);
@@ -415,8 +411,6 @@ public class BossEnemy : MonoBehaviour
 
     IEnumerator BulletCircle()
     {
-        Debug.Log("bullet circle");
-
         int numberOfBullets = (int)(bulletCount * modifier);
         int numberOfCircles = (int)(bulletCircleCount * modifier);
 
@@ -445,7 +439,7 @@ public class BossEnemy : MonoBehaviour
             yield return new WaitForSeconds(bulletWaitTime / modifier);
         }
 
-        RemoveCooldown();
+        Invoke(nameof(RemoveCooldown), abilityCooldownDuration / modifier);
     }
 
     private void ActivateBulletCircle(GameObject[] bullets)
@@ -463,6 +457,5 @@ public class BossEnemy : MonoBehaviour
         {
             playerHealth.TakeDamage(enemyStats.damage);
         }
-
     }
 }

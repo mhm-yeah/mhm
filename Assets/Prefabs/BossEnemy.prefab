@@ -197,14 +197,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossEnemy
   basicAttackRingPrefab: {fileID: 8708012294227827741, guid: 91a108917dacf9a4198c166a7c34cfa7, type: 3}
   basicAttackCirclePrefab: {fileID: 6179260833480139617, guid: 00888a17e1f490d4790551f4b1da84e8, type: 3}
+  basicAttackBlastPrefab: {fileID: 0}
   groundSlamPrefab: {fileID: 1407276691880381287, guid: 55f8008829acc1c49a0eba03e0550d9d, type: 3}
   spinningSunPrefab: {fileID: 319446275183406358, guid: 4392c7017636dcf4cba4782efc01fc48, type: 3}
   bossBulletPrefab: {fileID: 4423443186663068880, guid: cdd75a09067969048a44401b8aff71f7, type: 3}
+  spinningSunRayPrefab: {fileID: 0}
   secondPhaseHasteModifier: 2
   attacksBeforeAbility: 5
   basicAttackChargeTime: 1
   basicCooldownDuration: 0.5
-  abilityCooldownDuration: 5
+  abilityCooldownDuration: 1
   groundSlamDamage: 20
   groundSlamChargeTime: 3
   groundSlamStunDuration: 2
