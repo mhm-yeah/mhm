@@ -20,12 +20,14 @@ public class LevelsManager : MonoBehaviour
     int currentLVL;
     float currentXP;
     private float waitForCardSelection = 2f;
+    AudioManager audioManager;
 
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         currentLVL= 0;
         currentXP = 0;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         UpdateUI();
     }
     public void IncreaseXP(float amount)
@@ -43,6 +45,7 @@ public class LevelsManager : MonoBehaviour
             currentLVL++;
             currentXP -= targetXP;
             targetXP += targetXPIncrease;
+            audioManager.PlaySFX(audioManager.LevelUp);
             Debug.Log("Leveled Up! LVL: " + currentLVL);
             if (currentLVL % levelsPerCard == 0)
             {

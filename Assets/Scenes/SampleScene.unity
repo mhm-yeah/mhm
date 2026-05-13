@@ -790,6 +790,7 @@ MonoBehaviour:
   playerDamaged: {fileID: 8300000, guid: b408d0a6c48ba4146bdcb114e162a229, type: 3}
   bossBattle: {fileID: 8300000, guid: 1fdab3e56e16d364e9bde205991aae0f, type: 3}
   MainMenu: {fileID: 0}
+  LevelUp: {fileID: 8300000, guid: e21ddbc8972afc84d907f183ef348e13, type: 3}
 --- !u!4 &404750693
 Transform:
   m_ObjectHideFlags: 0

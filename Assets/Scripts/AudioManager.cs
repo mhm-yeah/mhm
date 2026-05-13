@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip playerDamaged;
     public AudioClip bossBattle;
     public AudioClip MainMenu;
+    public AudioClip LevelUp;
     private void Start()
     {
         if (background != null) {
