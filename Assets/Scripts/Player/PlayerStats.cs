@@ -1,7 +1,10 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    public TextMeshProUGUI weaponText;
+
     [Header("Base stats")]
     public float baseMoveSpeed = 5f;
     public float sprintSpeed = 8f;
@@ -100,28 +103,13 @@ public class PlayerStats : MonoBehaviour
 
     private void ChangeStats()
     {
+        weaponText.text = $"Current weapon: {currentWeapon.weaponName}";
         Weapon weapon = weapons[weaponInd];
         currentElement = weapon.element;
         damage = baseDamage + weapon.damage;
         attackSpeed = baseAttackSpeed + weapon.attackSpeed;
     }
 
-    //public bool HasElementalSynergy(Utilities.Element element)
-    //{
-    //    //return true;
-
-    //    Weapon weapon = GetCurrentWeapon();
-    //    if (weapon == null || weapon.element != element)
-    //        return false;
-
-    //    Ability[] abilities = GetComponents<Ability>();
-    //    foreach (Ability ability in abilities)
-    //    {
-    //        if (ability.unlocked && ability.element == element)
-    //            return true;
-    //    }
-    //    return false;
-    //}
     public bool HasElementalSynergy(Utilities.Element element)
     {
         int count = 0;

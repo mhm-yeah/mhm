@@ -19,6 +19,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip arrowVolleySound;
     public AudioClip lightningSound;
 
+    public AudioClip LevelUp;
     private void Start()
     {
         if (background != null)

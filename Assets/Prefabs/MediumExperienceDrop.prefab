@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1339150617613266783}
   - component: {fileID: 1002927979905447130}
   - component: {fileID: 4255123898377165581}
-  - component: {fileID: -429480258212303621}
+  - component: {fileID: -6134942679656840429}
   m_Layer: 0
-  m_Name: ExperienceDrop
+  m_Name: MediumExperienceDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -133,8 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc8992d1294296047b37c39d8026e478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExperienceDrop
-  expAmount: 100
---- !u!61 &-429480258212303621
+  expAmount: 50
+--- !u!61 &-6134942679656840429
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

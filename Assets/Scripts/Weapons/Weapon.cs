@@ -22,6 +22,7 @@ public abstract class Weapon : MonoBehaviour
     public float attackSpeed = 0f;
     public float projectileSpeed = 0f;
     public float projectileLifetime = 0f;
+    public string weaponName = "Weapon";
     [HideInInspector] public float projectileXRotation = 0f;
 
     private bool isFiring = false;

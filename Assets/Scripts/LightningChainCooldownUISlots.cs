@@ -1,10 +1,15 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 public class LightningCooldownUISlots : MonoBehaviour
 {
     public LightningChain abilitySource;
     public Image cooldownOverlay;
-    
+    public TextMeshProUGUI TextElement;
+    private void Start()
+    {
+        TextElement.gameObject.SetActive(true);
+    }
 
     // Update is called once per frame
     void Update()
