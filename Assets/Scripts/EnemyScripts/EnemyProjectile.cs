@@ -6,6 +6,12 @@ public class EnemyProjectile : MonoBehaviour
     public float lifetime = 4f;
     float lifetimer = 0f;
 
+    public void Init(float damage, float lifetime)
+    {
+        this.damage = damage;
+        this.lifetime = lifetime;
+    }
+
     public void Launch(float dirX, float dirY, float speed)
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
