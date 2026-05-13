@@ -45,4 +45,5 @@ public class CardData
     public int level;
     public string name;
     public string description;
+    public Sprite icon;
 }

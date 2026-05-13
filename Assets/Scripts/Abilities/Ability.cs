@@ -27,6 +27,9 @@ public abstract class Ability : MonoBehaviour
     public bool isMaxLevel = false;
     private float cooldownTimer = 0f;
 
+    [Header("UI")]
+    public Sprite icon;
+
     protected virtual void Awake()
     {
         ResetAbility();
@@ -45,6 +48,7 @@ public abstract class Ability : MonoBehaviour
             }
         }
     }
+
     public virtual void Activate()
     {
         if (!unlocked)
@@ -59,6 +63,7 @@ public abstract class Ability : MonoBehaviour
             LevelUp();
         }
     }
+
     protected virtual void OnUnlock() { }
 
     public void LevelUp()
@@ -94,7 +99,6 @@ public abstract class Ability : MonoBehaviour
     public abstract Dictionary<string, object> AbilityInfo();
     public abstract Dictionary<string, object> LevelUpInfo();
 
-    // TO DO an actual description, not just stats
     public virtual string GetDescription()
     {
         throw new System.NotImplementedException("GetDescription() not implemented for " + ID);

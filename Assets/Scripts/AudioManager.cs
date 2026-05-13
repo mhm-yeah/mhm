@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -13,22 +12,27 @@ public class AudioManager : MonoBehaviour
     public AudioClip playerDamaged;
     public AudioClip bossBattle;
     public AudioClip MainMenu;
+
+    [Header("Ability SFX")]
+    public AudioClip fireballSound;
+    public AudioClip iceBlastSound;
+    public AudioClip arrowVolleySound;
+    public AudioClip lightningSound;
+
     private void Start()
     {
-        if (background != null) {
+        if (background != null)
+        {
             musicSource.clip = background;
-            musicSource.Play(); 
+            musicSource.Play();
         }
-        if (MainMenu != null) {
-            musicSource.clip = MainMenu;
-            musicSource.Play(); 
-        }
-
-
     }
+
     public void PlaySFX(AudioClip clip)
     {
-        SFXSource.PlayOneShot(clip);
+        if (clip != null && SFXSource != null)
+        {
+            SFXSource.PlayOneShot(clip);
+        }
     }
-
 }

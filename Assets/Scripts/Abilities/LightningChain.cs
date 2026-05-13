@@ -1,17 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Analytics;
 
 public class LightningChain : Ability
 {
     private Transform hands;
     private GameObject projectilesFolder;
     private GameManager gameManager;
+    private AudioManager audioManager;
+
     public GameObject lightningChainPrefab;
     [SerializeField] private GameObject lightningChainObject;
+
     public int maxChainCount = 3;
     public float chainRange = 2f;
     public float stunLength = 1f;
@@ -20,8 +21,6 @@ public class LightningChain : Ability
     protected override void Awake()
     {
         base.Awake();
-        //enabled = true;
-        //unlocked = true;
     }
 
     void Start()
@@ -29,6 +28,7 @@ public class LightningChain : Ability
         hands = transform.Find("Hands");
         projectilesFolder = GameObject.Find("Projectiles");
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        audioManager = FindFirstObjectByType<AudioManager>();
     }
 
     public override void Activate()
@@ -36,13 +36,12 @@ public class LightningChain : Ability
         lightningChainObject.SetActive(true);
         base.Activate();
         Debug.Log("Lightning Chain upgraded to level " + level);
-
     }
-
 
     protected override void Update()
     {
         base.Update();
+
         if (gameManager.isGameOver) return;
 
         if (Input.GetKeyDown(KeyCode.Q) && !isOnCooldown)
@@ -54,15 +53,25 @@ public class LightningChain : Ability
     public void Cast()
     {
         StartCooldown();
-        GameObject lightningChain = Instantiate(lightningChainPrefab, hands.position, hands.rotation, projectilesFolder.transform);
+
+        if (audioManager != null)
+        {
+            audioManager.PlaySFX(audioManager.lightningSound);
+        }
+
+        GameObject lightningChain = Instantiate(
+            lightningChainPrefab,
+            hands.position,
+            hands.rotation,
+            projectilesFolder.transform
+        );
+
         LightningProjectile projectileScript = lightningChain.GetComponent<LightningProjectile>();
         projectileScript.Init(this);
-        
-        //for matching particles
+
         PlayerStats playerStats = GetComponent<PlayerStats>();
         bool hasElementalSynergy = playerStats.HasElementalSynergy(element);
         projectileScript.SetElementSynergy(hasElementalSynergy);
-
 
         Rigidbody2D rb = lightningChain.GetComponent<Rigidbody2D>();
         rb.AddForce(hands.transform.up * abilitySpeed, ForceMode2D.Impulse);
@@ -87,11 +96,14 @@ public class LightningChain : Ability
         Collider2D[] potentialTargets = Physics2D.OverlapCircleAll(currentTarget, chainRange);
         GameObject nextTarget = null;
         float closestDistance = Mathf.Infinity;
+
         foreach (Collider2D collider in potentialTargets)
         {
-            if (collider.gameObject.CompareTag("Enemy") && !Array.Exists(markedEnemies, enemy => enemy == collider.gameObject))
+            if (collider.gameObject.CompareTag("Enemy") &&
+                !Array.Exists(markedEnemies, enemy => enemy == collider.gameObject))
             {
                 float distance = Vector2.Distance(currentTarget, collider.transform.position);
+
                 if (distance < closestDistance)
                 {
                     closestDistance = distance;
@@ -103,8 +115,7 @@ public class LightningChain : Ability
         if (nextTarget != null)
         {
             markedEnemies[maxChainCount - chainCount + 1] = nextTarget;
-            // Add the logic to visually connect the currentTarget and nextTarget with a lightning effect.
-            
+
             ImpactEnemy(nextTarget.GetComponent<Collider2D>());
 
             yield return StartCoroutine(StartChain(chainCount - 1, nextTarget.transform.position, markedEnemies));
@@ -115,6 +126,7 @@ public class LightningChain : Ability
     {
         EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
         EnemyStats enemyStats = enemy.GetComponent<EnemyStats>();
+
         if (enemyHealth != null && enemyStats != null)
         {
             enemyHealth.TakeDamage(currentDamage);
