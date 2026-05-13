@@ -929,10 +929,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   musicSource: {fileID: 1628500908}
   SFXSource: {fileID: 881631487}
-  background: {fileID: 8300000, guid: 804a63770c4aeed458318914ca4a27bf, type: 3}
+  background1: {fileID: 8300000, guid: e6e3ac8bb4c383b4b9b6b181966372a6, type: 3}
+  background2: {fileID: 8300000, guid: f380c2728fac06b4e85560a637b14a3b, type: 3}
+  background3: {fileID: 8300000, guid: e0a7bddf34a233f43948298340cf5687, type: 3}
   enemyDamaged: {fileID: 8300000, guid: cfbe234a4e81ba2429eeaf128b3ad595, type: 3}
   playerDamaged: {fileID: 8300000, guid: b408d0a6c48ba4146bdcb114e162a229, type: 3}
-  bossBattle: {fileID: 8300000, guid: 1fdab3e56e16d364e9bde205991aae0f, type: 3}
+  bossBattle: {fileID: 8300000, guid: 1292273b38998ee4baaac5914d4dec31, type: 3}
   MainMenu: {fileID: 0}
   fireballSound: {fileID: 8300000, guid: 601daa79937354945a351a9a8107246b, type: 3}
   iceBlastSound: {fileID: 8300000, guid: d5530b70edc56b94a898109368982569, type: 3}

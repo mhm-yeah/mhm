@@ -11,7 +11,7 @@ public class WaveSpawner : MonoBehaviour
     private float nextSpawnTime;
     private float spawnInterval = 1f;
     private int minimumEnemiesLeft = 5;
-
+    private int previousWave = -1;
     private void Start()
     {
         enemyFolder = GameObject.Find("Enemies");
@@ -26,6 +26,12 @@ public class WaveSpawner : MonoBehaviour
         {
             currentWaveNumber++;
             canSpawn = true;
+        }
+        if (currentWaveNumber != previousWave)
+        {
+            previousWave = currentWaveNumber;
+
+            ChangeMusicForWave(currentWaveNumber);
         }
     }
 
@@ -60,6 +66,25 @@ public class WaveSpawner : MonoBehaviour
         }
 
         return new Vector3(x, y, 0);
+    }
+    private void ChangeMusicForWave(int wave)
+    {
+        if (wave < 2)
+        {
+            AudioManager.instance.PlayMusic(AudioManager.instance.background1);
+        }
+        else if (wave < 3)
+        {
+            AudioManager.instance.PlayMusic(AudioManager.instance.background2);
+        }
+        else if (wave < 4)
+        {
+            AudioManager.instance.PlayMusic(AudioManager.instance.background3);
+        }
+        else
+        {
+            AudioManager.instance.PlayMusic(AudioManager.instance.bossBattle);
+        }
     }
 }
 [System.Serializable]

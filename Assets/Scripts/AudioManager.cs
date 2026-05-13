@@ -1,13 +1,18 @@
+using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager instance;
     [Header("Audio Source")]
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
 
     [Header("Audio Clip")]
-    public AudioClip background;
+    public AudioClip background1;
+    public AudioClip background2;
+    public AudioClip background3;
     public AudioClip enemyDamaged;
     public AudioClip playerDamaged;
     public AudioClip bossBattle;
@@ -20,12 +25,28 @@ public class AudioManager : MonoBehaviour
     public AudioClip lightningSound;
 
     public AudioClip LevelUp;
-    private void Start()
+    private AudioClip currentTrack;
+    private void Awake()
     {
         if (background != null)
         {
             musicSource.clip = background;
             musicSource.Play();
+        }
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    private void Start()
+    {
+        if (MainMenu != null) {
+            musicSource.clip = MainMenu;
+            musicSource.Play(); 
         }
     }
 
@@ -35,5 +56,40 @@ public class AudioManager : MonoBehaviour
         {
             SFXSource.PlayOneShot(clip);
         }
+    }
+    public void PlayMusic(AudioClip newClip)
+    {
+        if (newClip == currentTrack)
+        {
+            return;
+        }
+
+        currentTrack = newClip;
+
+       // StopAllCoroutines();
+        StartCoroutine(SmoothTransition(newClip));
+    }
+
+    private IEnumerator SmoothTransition(AudioClip newClip)
+    {
+        float fadeSpeed = 2f;
+
+        while (musicSource.volume > 0)
+        {
+            musicSource.volume -= fadeSpeed * Time.deltaTime;
+            yield return null;
+        }
+
+        musicSource.Stop();
+        musicSource.clip = newClip;
+        musicSource.Play();
+
+        while (musicSource.volume < 1)
+        {
+            musicSource.volume += fadeSpeed * Time.deltaTime;
+            yield return null;
+        }
+
+        musicSource.volume = 1;
     }
 }
