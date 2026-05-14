@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject gameOverUI;
     public TextMeshProUGUI finalScoreText;
-
+    public AudioManager audioManager;
     public bool isGameOver = false;
     public float totalScore = 0f;
 
@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         Time.timeScale = 0;
         finalScoreText.text = "Final Score: " + Mathf.RoundToInt(totalScore).ToString();
+        audioManager.StopMusic();
+        audioManager.PlaySFX(audioManager.gameOver);
         gameOverUI.SetActive(true);
     }
     public void Restart()
@@ -40,5 +42,10 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Quit");
+    }
+
+    public void Victory()
+    {
+        Invoke(nameof(GameOver), 3);
     }
 }

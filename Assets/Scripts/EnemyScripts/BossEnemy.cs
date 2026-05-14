@@ -129,6 +129,7 @@ public class BossEnemy : MonoBehaviour
 
     public void ObjectCleanUp()
     {
+        Debug.Log("|Should be deleted");
         foreach (Transform child in projectilesFolder.transform)
         {
             if (child.CompareTag(specialTag))
@@ -185,6 +186,7 @@ public class BossEnemy : MonoBehaviour
     private void ActivateBlast(GameObject ring)
     {
         GameObject visualBlast = Instantiate(basicAttackBlastPrefab, ring.transform.position, Quaternion.identity, projectilesFolder.transform);
+        visualBlast.tag = specialTag;
         BA_Animation blastScript = visualBlast.GetComponent<BA_Animation>();
         blastScript.Setup(this, ring.transform.localScale.x / 2f);
     }
@@ -236,6 +238,7 @@ public class BossEnemy : MonoBehaviour
             GameObject newInnerRing = newSlam.transform.Find("InnerRing").gameObject;
 
             newSlam = ResizeSlam(newSlam, previousSlamScale, previousInnerRingScale);
+            newSlam.tag = specialTag;
 
             previousSlamScale = newSlam.transform.localScale;
             previousInnerRingScale = newInnerRing.transform.localScale;
@@ -329,6 +332,7 @@ public class BossEnemy : MonoBehaviour
 
             //vfx
             GameObject rayAnim = Instantiate(spinningSunRayPrefab, ray.transform.position, ray.transform.rotation, projectilesFolder.transform);
+            rayAnim.tag = specialTag;
             SpriteRenderer fillRenderer = rayFilling.GetComponent<SpriteRenderer>();
             SpriteRenderer animRenderer = rayAnim.GetComponent<SpriteRenderer>();
 

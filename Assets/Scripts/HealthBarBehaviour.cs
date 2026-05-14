@@ -28,6 +28,11 @@ public class HealthBarBehaviour : MonoBehaviour
         slider.maxValue = maxHealth;
 
         slider.fillRect.GetComponent<Image>().color = Color.Lerp(lowHealthColor, highHealthColor, slider.normalizedValue);
-        healthText.text = $"{Mathf.RoundToInt(health)}";
+        if (healthText != null)
+        {
+            //slider.GetComponentInChildren<TextMeshProUGUI>();
+            healthText.text = $"{Mathf.RoundToInt(health)}";
+        }
+        
     }
 }

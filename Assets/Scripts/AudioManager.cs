@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip playerDamaged;
     public AudioClip bossBattle;
     public AudioClip MainMenu;
+    public AudioClip gameOver;
 
     [Header("Ability SFX")]
     public AudioClip fireballSound;
@@ -63,6 +64,10 @@ public class AudioManager : MonoBehaviour
 
        // StopAllCoroutines();
         StartCoroutine(SmoothTransition(newClip));
+    }
+    public void StopMusic()
+    {
+        musicSource.Stop();
     }
 
     private IEnumerator SmoothTransition(AudioClip newClip)

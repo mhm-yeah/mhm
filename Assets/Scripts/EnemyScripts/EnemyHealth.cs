@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -11,24 +12,30 @@ public class EnemyHealth : MonoBehaviour
     public GameObject damageNumberPrefab;
     public HealthBarBehaviour healthBar;
     AudioManager audioManager;
+
+    private GameManager gameManager;
+    private bool isBoss = false;
+    private bool isDead = false;
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         itemManager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
         collectiblesFolder = GameObject.Find("Collectibles");
         enemyStats = GetComponent<EnemyStats>();
         currentHealth = enemyStats.maxHealth;
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        
+
         if (GetComponent<BossEnemy>() != null)
         {
             healthBar.SetHealth(currentHealth, enemyStats.maxHealth);
             bossEnemyScript = GetComponent<BossEnemy>();
+            isBoss = true;
         }
     }
 
     public void TakeDamage(float damage)
     {
-        if (enemyStats.isInvulnerable)
+        if (enemyStats.isInvulnerable || isDead)
         {
             return;
         }
@@ -37,6 +44,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (healthBar != null)
         {
+            currentHealth = Mathf.Max(0f, currentHealth);
             healthBar.SetHealth(currentHealth, enemyStats.maxHealth);
         }
 
@@ -51,8 +59,10 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            if (bossEnemyScript != null)
+            isDead = true;
+            if (isBoss == true)
             {
+                Debug.Log("boss died");
                 bossEnemyScript.ObjectCleanUp();
             }
 
@@ -97,6 +107,11 @@ public class EnemyHealth : MonoBehaviour
             return;
         }
 
+        if (isBoss == true)
+        {
+            Debug.Log("boss died");
+            gameManager.Victory();
+        }
         Destroy(gameObject);
     }
 }

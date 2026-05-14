@@ -169,14 +169,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
   baseMoveSpeed: 0
-  baseMaxHealth: 100
+  baseMaxHealth: 1000
   baseDamage: 10
   baseDefense: 0
   moveSpeed: 0
-  maxHealth: 100
+  maxHealth: 1000
   damage: 10
   defense: 0
-  xpValue: 100
+  xpValue: 1000
   isStunned: 0
   isSlowed: 0
   isInvulnerable: 0
@@ -197,11 +197,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossEnemy
   basicAttackRingPrefab: {fileID: 8708012294227827741, guid: 91a108917dacf9a4198c166a7c34cfa7, type: 3}
   basicAttackCirclePrefab: {fileID: 6179260833480139617, guid: 00888a17e1f490d4790551f4b1da84e8, type: 3}
-  basicAttackBlastPrefab: {fileID: 0}
+  basicAttackBlastPrefab: {fileID: 8700946967605602677, guid: 7b05764b0b9fcf64c8fc793c1f71579a, type: 3}
   groundSlamPrefab: {fileID: 1407276691880381287, guid: 55f8008829acc1c49a0eba03e0550d9d, type: 3}
   spinningSunPrefab: {fileID: 319446275183406358, guid: 4392c7017636dcf4cba4782efc01fc48, type: 3}
   bossBulletPrefab: {fileID: 4423443186663068880, guid: cdd75a09067969048a44401b8aff71f7, type: 3}
-  spinningSunRayPrefab: {fileID: 0}
+  spinningSunRayPrefab: {fileID: 739994465019511661, guid: 713676cdc8d8cec45983a1031f025589, type: 3}
   secondPhaseHasteModifier: 2
   attacksBeforeAbility: 5
   basicAttackChargeTime: 1

@@ -12,9 +12,16 @@ public class WaveSpawner : MonoBehaviour
     private float spawnInterval = 1f;
     private int minimumEnemiesLeft = 5;
     private int previousWave = -1;
+    private bool isBossSpawn = false;
+
+    public GameObject bossPrefab;
+    private Vector3 bossSpawnOffset = new Vector3(0f, 10f, 0f);
+    private GameObject playerObj;
+
     private void Start()
     {
         enemyFolder = GameObject.Find("Enemies");
+        playerObj = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
@@ -33,6 +40,11 @@ public class WaveSpawner : MonoBehaviour
 
             ChangeMusicForWave(currentWaveNumber);
         }
+        //if(totalEnemies.Length <= 0 && !isBossSpawn && currentWaveNumber > 4)
+        //{
+            
+        //    isBossSpawn = true;
+        //}
     }
 
     private void SpawnWave()
@@ -46,9 +58,16 @@ public class WaveSpawner : MonoBehaviour
             if (currentWave.numberOfEnemies <= 0)
             {
                 canSpawn = false;
+                if(currentWaveNumber == 3)
+                {
+                    Vector3 position = playerObj.transform.position + bossSpawnOffset;
+                    GameObject boss = Instantiate(bossPrefab, position, Quaternion.identity);
+                }
             }
+
         }
     }
+
     private Vector3 GetOffScreenCoord()
     {
         Vector2 bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
