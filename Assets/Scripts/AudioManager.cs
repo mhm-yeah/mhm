@@ -16,8 +16,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip enemyDamaged;
     public AudioClip playerDamaged;
     public AudioClip bossBattle;
+    public AudioClip bossScream;
     public AudioClip MainMenu;
     public AudioClip gameOver;
+    public AudioClip victory;
 
     [Header("Ability SFX")]
     public AudioClip fireballSound;
@@ -53,6 +55,15 @@ public class AudioManager : MonoBehaviour
             SFXSource.PlayOneShot(clip);
         }
     }
+
+    public void StopSFX()
+    {
+        if (SFXSource != null)
+        {
+            SFXSource.Stop();
+        }
+    }
+
     public void PlayMusic(AudioClip newClip)
     {
         if (newClip == currentTrack)

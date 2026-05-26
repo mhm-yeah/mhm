@@ -8,6 +8,7 @@ using UnityEngine;
 public class BossEnemy : MonoBehaviour
 {
     private GameManager gameManager;
+    private AudioManager audioManager;
     private EnemyStats enemyStats;
     private GameObject player;
     private PlayerStats playerStats;
@@ -67,6 +68,7 @@ public class BossEnemy : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         enemyStats = GetComponent<EnemyStats>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerStats = player.GetComponent<PlayerStats>();
@@ -78,16 +80,20 @@ public class BossEnemy : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.isGameOver || isOnCooldown || enemyStats.isStunned)
+        if (gameManager.isGameOver || enemyStats.isInvulnerable)
         {
             return;
         }
 
         if (enemyStats.isBelowHalfHealth && !isOnSecondPhase)
         {
-            isOnSecondPhase = true;
-            modifier = secondPhaseHasteModifier;
-            Debug.Log("second phase");
+            SecondPhase();
+            return;
+        }
+
+        if (isOnCooldown || enemyStats.isStunned)
+        {
+            return;
         }
 
         isOnCooldown = true;
@@ -137,6 +143,21 @@ public class BossEnemy : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
+    }
+
+    private void StopScream()
+    {
+        audioManager.StopSFX();
+    }
+
+    private void SecondPhase()
+    {
+        isOnSecondPhase = true;
+        modifier = secondPhaseHasteModifier;
+        Debug.Log("second phase");
+        enemyStats.MakeInvulnerable(5f);
+        audioManager.PlaySFX(audioManager.bossScream);
+        Invoke(nameof(StopScream), 5f);
     }
 
     private int GetRandomIndex()

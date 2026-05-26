@@ -110,7 +110,7 @@ public class EnemyHealth : MonoBehaviour
         if (isBoss == true)
         {
             Debug.Log("boss died");
-            gameManager.Victory();
+            gameManager.VictoryDelay();
         }
         Destroy(gameObject);
     }

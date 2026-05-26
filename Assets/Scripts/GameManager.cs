@@ -18,13 +18,22 @@ public class GameManager : MonoBehaviour
         totalScore = 0f;
     }
 
-    public void GameOver()
+    public void GameOver(bool victory = false)
     {
         isGameOver = true;
         Time.timeScale = 0;
         finalScoreText.text = "Final Score: " + Mathf.RoundToInt(totalScore).ToString();
         audioManager.StopMusic();
-        audioManager.PlaySFX(audioManager.gameOver);
+
+        if (victory)
+        {
+            audioManager.PlaySFX(audioManager.victory);
+        }
+        else
+        {
+            audioManager.PlaySFX(audioManager.gameOver);
+        }
+
         gameOverUI.SetActive(true);
     }
     public void Restart()
@@ -44,8 +53,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("Quit");
     }
 
+    public void VictoryDelay()
+    {
+        Invoke(nameof(Victory), 3f);
+    }
+
     public void Victory()
     {
-        Invoke(nameof(GameOver), 3);
+        GameOver(true);
     }
 }
