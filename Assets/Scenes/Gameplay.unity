@@ -444,22 +444,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Wave
   waves:
   - waveName: 1
-    numberOfEnemies: 10
+    numberOfEnemies: 20
     enemyTypes:
     - {fileID: 7395343294680337530, guid: dcf17bf59f05d7a4ebd304d97fb1655f, type: 3}
   - waveName: 2
-    numberOfEnemies: 10
+    numberOfEnemies: 40
     enemyTypes:
     - {fileID: 7395343294680337530, guid: dcf17bf59f05d7a4ebd304d97fb1655f, type: 3}
     - {fileID: 6155065009679422498, guid: eb71ec8fc5f5f9e4ba2407af3cec6cfe, type: 3}
   - waveName: 3
-    numberOfEnemies: 10
+    numberOfEnemies: 80
     enemyTypes:
     - {fileID: 7395343294680337530, guid: dcf17bf59f05d7a4ebd304d97fb1655f, type: 3}
     - {fileID: 6155065009679422498, guid: eb71ec8fc5f5f9e4ba2407af3cec6cfe, type: 3}
     - {fileID: 6643231086824672642, guid: aed0cefe609c74e4f93b5cdafc170940, type: 3}
   - waveName: 4
-    numberOfEnemies: 10
+    numberOfEnemies: 120
     enemyTypes:
     - {fileID: 7395343294680337530, guid: dcf17bf59f05d7a4ebd304d97fb1655f, type: 3}
     - {fileID: 6643231086824672642, guid: aed0cefe609c74e4f93b5cdafc170940, type: 3}
@@ -1976,6 +1976,30 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1877392731}
+    - target: {fileID: 3561524772137559932, guid: 3dce9f27579783d45b120372398adf17, type: 3}
+      propertyPath: allCards.Array.data[0].icon
+      value: 
+      objectReference: {fileID: 5353841184698615464, guid: 4682c8ea88bd0984bab82ba4f7f88607, type: 3}
+    - target: {fileID: 3561524772137559932, guid: 3dce9f27579783d45b120372398adf17, type: 3}
+      propertyPath: allCards.Array.data[1].icon
+      value: 
+      objectReference: {fileID: -4202619407619676208, guid: 3b65af9e68ebc364f9cc249dfc79b3ee, type: 3}
+    - target: {fileID: 3561524772137559932, guid: 3dce9f27579783d45b120372398adf17, type: 3}
+      propertyPath: allCards.Array.data[2].icon
+      value: 
+      objectReference: {fileID: 6786317417502753268, guid: 17ebe34cf15c8834f86d2c2207239554, type: 3}
+    - target: {fileID: 3561524772137559932, guid: 3dce9f27579783d45b120372398adf17, type: 3}
+      propertyPath: allCards.Array.data[3].icon
+      value: 
+      objectReference: {fileID: 5082169933448888265, guid: 6058d22928e8d2a4ab436aa3983e7a58, type: 3}
+    - target: {fileID: 3561524772137559932, guid: 3dce9f27579783d45b120372398adf17, type: 3}
+      propertyPath: allCards.Array.data[4].icon
+      value: 
+      objectReference: {fileID: -8372167046765375636, guid: e776074b271965c4e829e6fdb818e809, type: 3}
+    - target: {fileID: 3561524772137559932, guid: 3dce9f27579783d45b120372398adf17, type: 3}
+      propertyPath: allCards.Array.data[3].description
+      value: Summons an offensive barrier that damages enemies upon player hit.
+      objectReference: {fileID: 0}
     - target: {fileID: 3627113497887860958, guid: 3dce9f27579783d45b120372398adf17, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
