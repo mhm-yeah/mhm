@@ -12,7 +12,6 @@ public class WaveSpawner : MonoBehaviour
     private float spawnInterval = 1f;
     private int minimumEnemiesLeft = 5;
     private int previousWave = -1;
-    private bool isBossSpawn = false;
 
     public GameObject bossPrefab;
     private Vector3 bossSpawnOffset = new Vector3(0f, 10f, 0f);

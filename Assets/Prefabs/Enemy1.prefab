@@ -183,19 +183,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
   baseMoveSpeed: 3
   baseMaxHealth: 100
-  baseDamage: 10
+  baseDamage: 20
   baseDefense: 0
   moveSpeed: 3
   maxHealth: 100
-  damage: 10
+  damage: 20
   defense: 0
-  xpValue: 25
+  xpValue: 10
   isStunned: 0
   isSlowed: 0
   isInvulnerable: 0
   isBelowHalfHealth: 0
-  healthDropChance: 0.1
-  experienceDropChance: 0.9
+  healthDropChance: 0.15
+  experienceDropChance: 0.85
 --- !u!114 &8712956145752622714
 MonoBehaviour:
   m_ObjectHideFlags: 0

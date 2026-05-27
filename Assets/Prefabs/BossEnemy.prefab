@@ -169,12 +169,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
   baseMoveSpeed: 0
-  baseMaxHealth: 1000
-  baseDamage: 10
+  baseMaxHealth: 20000
+  baseDamage: 40
   baseDefense: 0
   moveSpeed: 0
-  maxHealth: 1000
-  damage: 10
+  maxHealth: 20000
+  damage: 40
   defense: 0
   xpValue: 1000
   isStunned: 0
@@ -207,7 +207,7 @@ MonoBehaviour:
   basicAttackChargeTime: 1
   basicCooldownDuration: 0.5
   abilityCooldownDuration: 1
-  groundSlamDamage: 20
+  groundSlamDamage: 75
   groundSlamChargeTime: 3
   groundSlamStunDuration: 2
   spinningSunRays: 4
@@ -216,7 +216,7 @@ MonoBehaviour:
   spinningSunRayMoveDegrees: 360
   bulletCircleCount: 8
   bulletCount: 8
-  bulletDamage: 10
+  bulletDamage: 25
   bulletSpeed: 8
   bulletLifetime: 10
   bulletWaitTime: 1

@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc8992d1294296047b37c39d8026e478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExperienceDrop
-  expAmount: 100
+  expAmount: 50
 --- !u!61 &5697505499253595231
 BoxCollider2D:
   m_ObjectHideFlags: 0

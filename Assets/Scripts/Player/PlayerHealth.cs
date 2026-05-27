@@ -1,5 +1,7 @@
+using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -8,6 +10,11 @@ public class PlayerHealth : MonoBehaviour
     private GameManager gameManager;
     private float currentHealth;
     AudioManager audioManager;
+
+    public Image healthBarBackground;
+    private Image healthBar;
+    private TextMeshProUGUI healthText;
+
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -15,6 +22,17 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = playerStats.maxHealth;
         playerDefense = GetComponent<PlayerDefense>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
+        healthBar = healthBarBackground.transform.Find("Health bar").GetComponent<Image>();
+        healthText = healthBarBackground.transform.Find("Healthtxt").GetComponent<TextMeshProUGUI>();
+
+        UpdateHp();
+    }
+
+    private void UpdateHp()
+    {
+        healthBar.fillAmount = currentHealth / playerStats.maxHealth;
+        healthText.text = Mathf.FloorToInt(currentHealth) + "/" + Mathf.FloorToInt(playerStats.maxHealth);
     }
 
     public void TakeDamage(float damage, GameObject attacker)
@@ -31,6 +49,9 @@ public class PlayerHealth : MonoBehaviour
         }
         currentHealth -= damage;
         audioManager.PlaySFX(audioManager.playerDamaged);
+
+        UpdateHp();
+
         if (currentHealth <= 0)
         {
             Die();
@@ -44,11 +65,7 @@ public class PlayerHealth : MonoBehaviour
     public void Heal(float amount)
     {
         currentHealth = Mathf.Min(currentHealth + amount, playerStats.maxHealth);
-    }
-
-    public float GetCurrentHealth()
-    {
-        return currentHealth;
+        UpdateHp();
     }
 
     private bool TryDodge()

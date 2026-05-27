@@ -27,7 +27,6 @@ public class PlayerStats : MonoBehaviour
     [Header("Player status")]
     private bool canAttack = true;
     private bool isStunned = false;
-    private bool isInvulnerable = false;
     
     private SpriteRenderer sprite;
     private Color originalColor;

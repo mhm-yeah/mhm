@@ -135,21 +135,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef6e32ea633e094197276da6ce054b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
-  baseMoveSpeed: 3
-  baseMaxHealth: 100
-  baseDamage: 15
+  baseMoveSpeed: 4
+  baseMaxHealth: 150
+  baseDamage: 50
   baseDefense: 0
-  moveSpeed: 2
-  maxHealth: 100
-  damage: 10
+  moveSpeed: 4
+  maxHealth: 150
+  damage: 50
   defense: 0
-  xpValue: 100
+  xpValue: 75
   isStunned: 0
   isSlowed: 0
   isInvulnerable: 0
   isBelowHalfHealth: 0
-  healthDropChance: 0.1
-  experienceDropChance: 0.9
+  healthDropChance: 0.15
+  experienceDropChance: 0.85
 --- !u!114 &8277738455000591381
 MonoBehaviour:
   m_ObjectHideFlags: 0

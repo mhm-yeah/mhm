@@ -740,7 +740,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8955561863424540037, guid: 3aa9a587206d8594baa8d3335843cd07, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 6.5
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8955561863424540037, guid: 3aa9a587206d8594baa8d3335843cd07, type: 3}
       propertyPath: m_SizeDelta.y
@@ -748,7 +748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8955561863424540037, guid: 3aa9a587206d8594baa8d3335843cd07, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 3.25
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8955561863424540037, guid: 3aa9a587206d8594baa8d3335843cd07, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4071,17 +4071,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea6da0b2dcfa4ea4da1247202c30a275, type: 3}
---- !u!114 &1405053304 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1793821119023627289, guid: ea6da0b2dcfa4ea4da1247202c30a275, type: 3}
-  m_PrefabInstance: {fileID: 1405053303}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &1432487880
 GameObject:
   m_ObjectHideFlags: 0
@@ -4382,7 +4371,6 @@ GameObject:
   - component: {fileID: 1497587720}
   - component: {fileID: 1497587721}
   - component: {fileID: 1497587722}
-  - component: {fileID: 1497587723}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4437,22 +4425,9 @@ MonoBehaviour:
   currentLVLText: {fileID: 1642109382}
   xpBar: {fileID: 2113001873}
   targetXP: 100
-  targetXPIncrease: 25
+  targetXPIncrease: 50
   levelsPerCard: 1
   cardUI: {fileID: 820085008}
---- !u!114 &1497587723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1497587719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5924b3d629037b341895eadf1ae0c18e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthManager
-  healthBar: {fileID: 1405053304}
 --- !u!1 &1507003210
 GameObject:
   m_ObjectHideFlags: 0
@@ -5475,12 +5450,12 @@ MonoBehaviour:
   weaponText: {fileID: 1432487882}
   baseMoveSpeed: 5
   sprintSpeed: 8
-  baseMaxHealth: 5000
+  baseMaxHealth: 500
   baseDamage: 0
   baseAttackSpeed: 0
   baseDefense: 0
   moveSpeed: 5
-  maxHealth: 5000
+  maxHealth: 500
   damage: 25
   attackSpeed: 3
   defense: 0
@@ -5497,6 +5472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc117f376a1c63a4e861cc82ed402beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  healthBarBackground: {fileID: 1901141126}
 --- !u!114 &1877392724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5511,7 +5487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArrowVolley
   element: 0
   level: 0
-  damage: 20
+  damage: 30
   abilitySpeed: 10
   castTime: 0
   lifeTime: 10
@@ -5545,7 +5521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IceBlast
   element: 2
   level: 0
-  damage: 10
+  damage: 30
   abilitySpeed: 10
   castTime: 2
   lifeTime: 10
@@ -5553,7 +5529,7 @@ MonoBehaviour:
   currentDamage: 0
   currentCooldownTime: 0
   levelCap: 5
-  perLevelDamageIncrease: 5
+  perLevelDamageIncrease: 10
   perLevelDamageMultiplier: 1
   perLevelCooldownReduction: 0.5
   ID: 4
@@ -5607,7 +5583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LightningChain
   element: 3
   level: 0
-  damage: 20
+  damage: 35
   abilitySpeed: 10
   castTime: 0
   lifeTime: 10
@@ -5615,7 +5591,7 @@ MonoBehaviour:
   currentDamage: 0
   currentCooldownTime: 0
   levelCap: 5
-  perLevelDamageIncrease: 5
+  perLevelDamageIncrease: 10
   perLevelDamageMultiplier: 1
   perLevelCooldownReduction: 0.25
   ID: 1
@@ -5628,7 +5604,7 @@ MonoBehaviour:
   maxChainCount: 3
   chainRange: 5
   stunLength: 1
-  delayBetweenChains: 0.1
+  delayBetweenChains: 0.15
 --- !u!114 &1877392729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5643,7 +5619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Thornmail
   element: 0
   level: 0
-  damage: 20
+  damage: 25
   abilitySpeed: 10
   castTime: 0
   lifeTime: 10
@@ -5651,7 +5627,7 @@ MonoBehaviour:
   currentDamage: 0
   currentCooldownTime: 0
   levelCap: 5
-  perLevelDamageIncrease: 10
+  perLevelDamageIncrease: 15
   perLevelDamageMultiplier: 1
   perLevelCooldownReduction: 0.5
   ID: 3
@@ -5678,7 +5654,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 0}
   element: 1
   id: 2
-  damage: 10
+  damage: 15
   attackSpeed: 3
   projectileSpeed: 10
   projectileLifetime: 5
@@ -5744,7 +5720,7 @@ MonoBehaviour:
   weaponName: Ice staff
   projectileXRotation: 0
   slowDuration: 2
-  slowPercentage: 0.5
+  slowPercentage: 0.25
 --- !u!114 &1877392734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5759,15 +5735,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Fireball
   element: 1
   level: 0
-  damage: 40
+  damage: 75
   abilitySpeed: 10
   castTime: 0
   lifeTime: 10
-  cooldownTime: 5
+  cooldownTime: 6
   currentDamage: 0
   currentCooldownTime: 0
   levelCap: 5
-  perLevelDamageIncrease: 10
+  perLevelDamageIncrease: 15
   perLevelDamageMultiplier: 1
   perLevelCooldownReduction: 0.75
   ID: 0
@@ -5777,6 +5753,17 @@ MonoBehaviour:
   icon: {fileID: 5353841184698615464, guid: 4682c8ea88bd0984bab82ba4f7f88607, type: 3}
   fireballPrefab: {fileID: 761515458260024105, guid: ab29bf536a462474ab9a8c8f17532043, type: 3}
   FireballObject: {fileID: 877335509}
+--- !u!114 &1901141126 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2379200587340787724, guid: ea6da0b2dcfa4ea4da1247202c30a275, type: 3}
+  m_PrefabInstance: {fileID: 1405053303}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &1904038571
 GameObject:
   m_ObjectHideFlags: 0

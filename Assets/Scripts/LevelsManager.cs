@@ -19,7 +19,6 @@ public class LevelsManager : MonoBehaviour
     [SerializeField] CardSelectionUI cardUI;
     int currentLVL;
     float currentXP;
-    private float waitForCardSelection = 2f;
     AudioManager audioManager;
 
     void Start()
@@ -63,7 +62,7 @@ public class LevelsManager : MonoBehaviour
     
     void UpdateUI()
     {
-         currentLVLText.text = "LV." + currentLVL;
+         currentLVLText.text = "LV." + currentLVL + "  XP: " + Mathf.FloorToInt(currentXP) + "/" + Mathf.FloorToInt(targetXP);
          xpBar.fillAmount = (float)currentXP / (float)targetXP;
     }
 }

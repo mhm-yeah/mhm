@@ -335,5 +335,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb2621ca2bfe6f458ff82d264924859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDamageObject
-  damage: 5
+  damage: 20
   lifetime: 999
